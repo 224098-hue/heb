@@ -25,7 +25,7 @@ const Loader = ({ onLoadComplete }) => {
         initial={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
-        className="fixed inset-0 z-[100] bg-gradient-to-b from-gray-900 to-black flex flex-col items-center justify-center"
+        className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center"
       >
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
@@ -55,7 +55,7 @@ const Loader = ({ onLoadComplete }) => {
           {/* Progress Bar */}
           <div className="w-64 h-1 bg-white/20 rounded-full overflow-hidden">
             <motion.div
-              className="h-full bg-gradient-to-r from-yellow-700 to-yellow-500 rounded-full"
+              className="h-full bg-gradient-to-r from-amber-600 to-amber-500 rounded-full"
               style={{ width: `${progress}%` }}
               transition={{ duration: 0.3 }}
             />

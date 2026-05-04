@@ -4,63 +4,43 @@ import { ChevronDown } from 'lucide-react';
 
 const Hero = ({ language, t }) => {
   return (
-    <section className="relative min-h-screen flex flex-col items-start justify-center overflow-hidden px-4 lg:px-12">
-      {/* Background with geometric pattern */}
+    <section className="relative min-h-screen flex flex-col items-start justify-start overflow-hidden px-4 lg:px-12 pt-32 lg:pt-40">
+      {/* Background with large geometric pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-100">
-        {/* Large geometric pattern */}
+        {/* Large visible geometric pattern */}
         <div
-          className="absolute inset-0 opacity-[0.08]"
+          className="absolute inset-0 opacity-[0.15]"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 0L120 60L60 120L0 60Z' fill='none' stroke='%23C9A030' stroke-width='0.5'/%3E%3Ccircle cx='60' cy='60' r='40' fill='none' stroke='%23C9A030' stroke-width='0.5'/%3E%3C/svg%3E")`,
-            backgroundSize: '180px 180px',
-            backgroundPosition: 'center',
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C9A030' stroke-width='1.5'%3E%3Cpath d='M100 20 L180 100 L100 180 L20 100 Z'/%3E%3Ccircle cx='100' cy='100' r='60'/%3E%3Ccircle cx='100' cy='100' r='40'/%3E%3Cpath d='M100 40 L160 100 L100 160 L40 100 Z'/%3E%3C/g%3E%3C/svg%3E")`,
+            backgroundSize: '300px 300px',
+            backgroundPosition: 'center center',
           }}
         />
         
-        {/* Overlay gradient for depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-white/60" />
+        {/* Subtle overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/60" />
       </div>
 
-      {/* Large faint eagle watermark in background - positioned lower */}
-      <div className="absolute inset-0 flex items-end justify-center pb-24 lg:pb-32 opacity-[0.04]">
+      {/* Large faint eagle watermark - positioned at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 flex items-end justify-center pb-0 opacity-[0.05] pointer-events-none">
         <img
           src="/syrian-eagle-official.png"
           alt=""
-          className="w-[70%] h-auto max-w-2xl object-contain"
+          className="w-full h-auto max-w-3xl object-contain"
         />
       </div>
 
-      {/* Animated golden glow behind text */}
-      <motion.div
-        className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-        style={{
-          width: '400px',
-          height: '400px',
-          background: 'radial-gradient(circle, rgba(201, 160, 48, 0.12) 0%, rgba(201, 160, 48, 0) 70%)',
-          filter: 'blur(60px)',
-        }}
-        animate={{
-          x: [-50, 30, -50],
-          y: [-30, 20, -30],
-          scale: [1, 1.1, 1],
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      />
-
-      {/* Content - Aligned to right for Arabic */}
-      <div className={`relative z-10 w-full max-w-7xl mx-auto ${language === 'ar' ? 'text-right' : 'text-left'} mt-20 lg:mt-0`}>
+      {/* Content - Aligned to right for Arabic, positioned higher */}
+      <div className={`relative z-10 w-full max-w-7xl mx-auto ${language === 'ar' ? 'text-right' : 'text-left'}`}>
         <motion.h1
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight"
+          style={{ fontFamily: 'Cairo, sans-serif' }}
         >
           <motion.span 
-            className="text-teal-700 block mb-1"
+            className="text-teal-700 block mb-2"
             initial={{ opacity: 0, x: language === 'ar' ? 50 : -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
@@ -78,19 +58,19 @@ const Hero = ({ language, t }) => {
         </motion.h1>
       </div>
 
-      {/* Scroll indicator arrow - positioned lower and to the right */}
+      {/* Scroll indicator arrow - positioned above the eagle image */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 1.2 }}
-        className={`absolute bottom-20 lg:bottom-32 z-10 ${language === 'ar' ? 'left-8 lg:left-16' : 'right-8 lg:right-16'}`}
+        className={`absolute bottom-[280px] md:bottom-[320px] lg:bottom-[380px] z-20 ${language === 'ar' ? 'left-1/2 -translate-x-1/2' : 'left-1/2 -translate-x-1/2'}`}
       >
         <motion.div
           animate={{ y: [0, 12, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           className="flex flex-col items-center gap-2"
         >
-          <ChevronDown className="w-8 h-8 lg:w-10 lg:h-10 text-gray-600" strokeWidth={1.5} />
+          <ChevronDown className="w-10 h-10 lg:w-12 lg:h-12 text-gray-700" strokeWidth={2} />
         </motion.div>
       </motion.div>
 
@@ -106,12 +86,12 @@ const Hero = ({ language, t }) => {
             <img
               src="https://images.unsplash.com/photo-1700387340416-2e2ee7690191"
               alt="Syrian Heritage"
-              className="w-full h-48 object-cover"
+              className="w-full h-56 object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-            <div className={`absolute bottom-4 ${language === 'ar' ? 'right-4' : 'left-4'}`}>
-              <p className="text-white font-bold text-lg">{t.cards.brandStory}</p>
-              <p className="text-white/80 text-sm">{t.cards.brandStorySubtitle}</p>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+            <div className={`absolute bottom-5 ${language === 'ar' ? 'right-5' : 'left-5'}`}>
+              <p className="text-white font-bold text-xl mb-1">{t.cards.brandStory}</p>
+              <p className="text-white/90 text-sm">{t.cards.brandStorySubtitle}</p>
             </div>
           </div>
         </div>

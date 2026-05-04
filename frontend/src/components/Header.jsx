@@ -32,7 +32,7 @@ const Header = ({ language, setLanguage, t }) => {
           scrolled ? 'bg-white shadow-sm' : 'bg-white/95'
         }`}
       >
-        <div className="w-full px-4 py-3 lg:max-w-7xl lg:mx-auto lg:px-6 lg:py-4">
+        <div className="w-full px-4 py-4 lg:max-w-7xl lg:mx-auto lg:px-6 lg:py-5">
           <div className="flex items-center justify-between">
             {/* Mobile Menu Button - Left */}
             <button
@@ -103,7 +103,7 @@ const Header = ({ language, setLanguage, t }) => {
         </div>
       </motion.header>
 
-      {/* Mobile Menu Overlay - Dark Theme */}
+      {/* Mobile Menu Overlay - Pure Black */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -111,7 +111,7 @@ const Header = ({ language, setLanguage, t }) => {
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
             transition={{ type: 'tween', duration: 0.3 }}
-            className="fixed inset-0 z-[60] bg-gradient-to-b from-gray-900 to-black lg:hidden"
+            className="fixed inset-0 z-[60] bg-black lg:hidden"
           >
             <div className="p-6 h-full flex flex-col">
               {/* Close button */}
@@ -124,15 +124,15 @@ const Header = ({ language, setLanguage, t }) => {
               </button>
 
               {/* Logo and Title */}
-              <div className="flex flex-col items-center mt-12 mb-8">
+              <div className="flex flex-col items-center mt-16 mb-10">
                 <img
                   src="/syrian-eagle-official.png"
                   alt="Syrian Arab Republic"
-                  className="h-20 w-20 mb-4 object-contain"
+                  className="h-20 w-20 mb-5 object-contain"
                 />
-                <div className="text-center text-white">
-                  <div className="text-base font-semibold mb-1">الجمهورية العربية السورية</div>
-                  <div className="text-xs opacity-80">SYRIAN ARAB REPUBLIC</div>
+                <div className="text-center">
+                  <div className="text-base font-semibold mb-1 text-white">الجمهورية العربية السورية</div>
+                  <div className="text-xs text-white/70">SYRIAN ARAB REPUBLIC</div>
                 </div>
               </div>
 
@@ -142,14 +142,14 @@ const Header = ({ language, setLanguage, t }) => {
                   setLanguage(language === 'ar' ? 'en' : 'ar');
                   setMobileMenuOpen(false);
                 }}
-                className="w-full py-4 mb-8 bg-gradient-to-r from-yellow-700 to-yellow-600 text-white rounded-lg flex items-center justify-center gap-3 font-semibold text-lg"
+                className="w-full py-4 mb-10 bg-gradient-to-r from-amber-600 to-amber-500 text-white rounded-lg flex items-center justify-center gap-3 font-bold text-base tracking-wide"
               >
                 <Globe className="w-5 h-5" />
                 <span>ENGLISH</span>
               </button>
 
               {/* Navigation Menu */}
-              <nav className={`flex flex-col gap-3 ${language === 'ar' ? 'text-right' : 'text-left'}`}>
+              <nav className="flex flex-col gap-1 text-right">
                 {navItems.map((item, index) => (
                   <motion.a
                     key={item.label}
@@ -158,7 +158,7 @@ const Header = ({ language, setLanguage, t }) => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 * index }}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-white hover:text-yellow-500 transition-colors duration-200 font-medium text-xl py-3"
+                    className="text-white hover:text-amber-500 transition-colors duration-200 font-medium text-xl py-4 border-b border-white/10"
                   >
                     {item.label}
                   </motion.a>
