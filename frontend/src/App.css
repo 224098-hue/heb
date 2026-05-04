@@ -33,3 +33,23 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #1e4948;
 }
+
+/* Hide Emergent watermark */
+[class*="emergent"],
+[class*="Emergent"],
+[id*="emergent"],
+[id*="Emergent"],
+a[href*="emergent" i],
+div:has(> a[href*="emergent" i]) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Additional hiding for any made with emergent text */
+*:has-text("Made with Emergent"),
+*:has-text("emergent"),
+*[class*="made"] {
+  display: none !important;
+}

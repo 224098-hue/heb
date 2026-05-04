@@ -35,9 +35,9 @@ const Loader = ({ onLoadComplete }) => {
         >
           {/* Logo */}
           <motion.img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Coat_of_arms_of_Syria_%282024%29.svg/200px-Coat_of_arms_of_Syria_%282024%29.svg.png"
+            src="/syrian-eagle-logo.svg"
             alt="Syrian Arab Republic"
-            className="h-24 w-auto mx-auto mb-8 brightness-0 invert"
+            className="h-24 w-auto mx-auto mb-8"
             animate={{ rotate: [0, 360] }}
             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
           />

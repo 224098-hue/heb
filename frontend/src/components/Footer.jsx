@@ -41,7 +41,7 @@ const Footer = ({ language, t }) => {
           >
             <div className="flex items-center gap-3">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Coat_of_arms_of_Syria_%282024%29.svg/200px-Coat_of_arms_of_Syria_%282024%29.svg.png"
+                src="/syrian-eagle-logo.svg"
                 alt="Syrian Arab Republic"
                 className="h-16 w-auto brightness-0 invert"
               />
