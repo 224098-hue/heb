@@ -13,7 +13,8 @@ const Footer = ({ language, t }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-xl md:text-2xl font-bold leading-relaxed mb-8 text-gray-100"
+              className="text-xl md:text-2xl font-bold leading-relaxed mb-8"
+              style={{ color: '#b9a779' }}
             >
               {t.sections.footerTitle}
             </motion.h2>
@@ -24,7 +25,8 @@ const Footer = ({ language, t }) => {
               transition={{ duration: 0.6, delay: 0.3 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-yellow-700 to-yellow-600 text-white rounded-full hover:from-yellow-600 hover:to-yellow-500 transition-all duration-200 font-semibold"
+              className="inline-flex items-center gap-2 px-6 py-3 text-white rounded-full transition-all duration-200 font-semibold"
+              style={{ backgroundColor: '#b9a779' }}
             >
               {t.sections.footerButton}
               {language === 'ar' ? <ArrowLeft className="w-5 h-5" /> : <ArrowRight className="w-5 h-5" />}

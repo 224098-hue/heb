@@ -142,7 +142,8 @@ const Header = ({ language, setLanguage, t }) => {
                   setLanguage(language === 'ar' ? 'en' : 'ar');
                   setMobileMenuOpen(false);
                 }}
-                className="w-full py-4 mb-10 bg-gradient-to-r from-amber-600 to-amber-500 text-white rounded-lg flex items-center justify-center gap-3 font-bold text-base tracking-wide"
+                className="w-full py-4 mb-10 rounded-lg flex items-center justify-center gap-3 font-bold text-base tracking-wide"
+                style={{ backgroundColor: '#b9a779', color: '#ffffff' }}
               >
                 <Globe className="w-5 h-5" />
                 <span>ENGLISH</span>

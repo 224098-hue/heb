@@ -37,7 +37,7 @@ const Hero = ({ language, t }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight"
-          style={{ fontFamily: 'Cairo, sans-serif' }}
+          style={{ fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif" }}
         >
           <motion.span 
             className="text-teal-700 block mb-2"

@@ -55,8 +55,11 @@ const Loader = ({ onLoadComplete }) => {
           {/* Progress Bar */}
           <div className="w-64 h-1 bg-white/20 rounded-full overflow-hidden">
             <motion.div
-              className="h-full bg-gradient-to-r from-amber-600 to-amber-500 rounded-full"
-              style={{ width: `${progress}%` }}
+              className="h-full rounded-full"
+              style={{ 
+                width: `${progress}%`,
+                backgroundColor: '#b9a779'
+              }}
               transition={{ duration: 0.3 }}
             />
           </div>
