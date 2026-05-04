@@ -1,0 +1,35 @@
+* {
+  scroll-behavior: smooth;
+}
+
+.App {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* RTL Support */
+[dir='rtl'] {
+  direction: rtl;
+}
+
+[dir='ltr'] {
+  direction: ltr;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2d6a69;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1e4948;
+}
