@@ -1,62 +1,69 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ChevronDown } from 'lucide-react';
 
 const Hero = ({ language, t }) => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background pattern - faint */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white">
+    <section className="relative min-h-screen flex flex-col items-start justify-center overflow-hidden px-4 lg:px-12">
+      {/* Background with geometric pattern */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-100">
+        {/* Large geometric pattern */}
         <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.08]"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 0L120 60L60 120L0 60Z' fill='none' stroke='%23C9A030' stroke-width='0.5'/%3E%3Ccircle cx='60' cy='60' r='40' fill='none' stroke='%23C9A030' stroke-width='0.5'/%3E%3C/svg%3E")`,
+            backgroundSize: '180px 180px',
+            backgroundPosition: 'center',
           }}
         />
+        
+        {/* Overlay gradient for depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-white/60" />
       </div>
 
-      {/* Large faint eagle watermark in background */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-[0.02]">
+      {/* Large faint eagle watermark in background - positioned lower */}
+      <div className="absolute inset-0 flex items-end justify-center pb-24 lg:pb-32 opacity-[0.04]">
         <img
-          src="/syrian-eagle-logo.svg"
+          src="/syrian-eagle-official.png"
           alt=""
-          className="w-[80%] h-auto max-w-4xl"
+          className="w-[70%] h-auto max-w-2xl object-contain"
         />
       </div>
 
       {/* Animated golden glow behind text */}
       <motion.div
-        className="absolute"
+        className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
         style={{
-          width: '500px',
-          height: '500px',
-          background: 'radial-gradient(circle, rgba(217, 179, 89, 0.15) 0%, rgba(217, 179, 89, 0) 70%)',
+          width: '400px',
+          height: '400px',
+          background: 'radial-gradient(circle, rgba(201, 160, 48, 0.12) 0%, rgba(201, 160, 48, 0) 70%)',
           filter: 'blur(60px)',
         }}
         animate={{
-          x: [0, 30, 0, -30, 0],
-          y: [0, -20, 0, 20, 0],
-          scale: [1, 1.08, 1, 1.05, 1],
+          x: [-50, 30, -50],
+          y: [-30, 20, -30],
+          scale: [1, 1.1, 1],
         }}
         transition={{
-          duration: 20,
+          duration: 15,
           repeat: Infinity,
           ease: 'easeInOut',
         }}
       />
 
-      {/* Content */}
-      <div className={`relative z-10 text-center px-4 ${language === 'ar' ? 'rtl' : 'ltr'}`}>
+      {/* Content - Aligned to right for Arabic */}
+      <div className={`relative z-10 w-full max-w-7xl mx-auto ${language === 'ar' ? 'text-right' : 'text-left'} mt-20 lg:mt-0`}>
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight"
         >
           <motion.span 
-            className="text-teal-700 block mb-1 sm:mb-2"
+            className="text-teal-700 block mb-1"
             initial={{ opacity: 0, x: language === 'ar' ? 50 : -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
           >
             {t.hero.title1}
           </motion.span>
@@ -64,12 +71,51 @@ const Hero = ({ language, t }) => {
             className="text-red-900 block"
             initial={{ opacity: 0, x: language === 'ar' ? -50 : 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
           >
             {t.hero.title2}
           </motion.span>
         </motion.h1>
       </div>
+
+      {/* Scroll indicator arrow - positioned lower and to the right */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 1.2 }}
+        className={`absolute bottom-20 lg:bottom-32 z-10 ${language === 'ar' ? 'left-8 lg:left-16' : 'right-8 lg:right-16'}`}
+      >
+        <motion.div
+          animate={{ y: [0, 12, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          className="flex flex-col items-center gap-2"
+        >
+          <ChevronDown className="w-8 h-8 lg:w-10 lg:h-10 text-gray-600" strokeWidth={1.5} />
+        </motion.div>
+      </motion.div>
+
+      {/* First image preview at bottom - visible on mobile */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1 }}
+        className="absolute bottom-0 left-0 right-0 z-10 lg:hidden"
+      >
+        <div className="w-full px-4 pb-4">
+          <div className="relative rounded-t-2xl overflow-hidden shadow-2xl">
+            <img
+              src="https://images.unsplash.com/photo-1700387340416-2e2ee7690191"
+              alt="Syrian Heritage"
+              className="w-full h-48 object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+            <div className={`absolute bottom-4 ${language === 'ar' ? 'right-4' : 'left-4'}`}>
+              <p className="text-white font-bold text-lg">{t.cards.brandStory}</p>
+              <p className="text-white/80 text-sm">{t.cards.brandStorySubtitle}</p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 };
