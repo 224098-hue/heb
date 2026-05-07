@@ -7,18 +7,18 @@ const Hero = ({ language, t }) => {
     <section className="relative min-h-screen flex flex-col items-start justify-start overflow-hidden px-4 lg:px-12 pt-32 lg:pt-40">
       {/* Background with large geometric pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-100">
-        {/* Large visible geometric pattern */}
+        {/* Islamic/Arabic pattern */}
         <div
-          className="absolute inset-0 opacity-[0.15]"
+          className="absolute inset-0 opacity-[0.12]"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C9A030' stroke-width='1.5'%3E%3Cpath d='M100 20 L180 100 L100 180 L20 100 Z'/%3E%3Ccircle cx='100' cy='100' r='60'/%3E%3Ccircle cx='100' cy='100' r='40'/%3E%3Cpath d='M100 40 L160 100 L100 160 L40 100 Z'/%3E%3C/g%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='240' height='240' viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23BA9B70' stroke-width='2'%3E%3Cpath d='M120 40 L160 80 L120 120 L80 80 Z'/%3E%3Ccircle cx='120' cy='80' r='30'/%3E%3Cpath d='M120 160 L160 200 L120 240 L80 200 Z' transform='translate(0,-80)'/%3E%3Cpath d='M40 120 L80 160 L40 200 L0 160 Z'/%3E%3Cpath d='M200 120 L240 160 L200 200 L160 160 Z'/%3E%3Cpath d='M90 50 L130 90 L150 70'/%3E%3Cpath d='M150 90 L130 110 L110 90'/%3E%3C/g%3E%3C/svg%3E")`,
             backgroundSize: '300px 300px',
             backgroundPosition: 'center center',
           }}
         />
         
         {/* Subtle overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/60\" />
       </div>
 
       {/* Large faint eagle watermark - positioned at bottom */}
@@ -40,7 +40,8 @@ const Hero = ({ language, t }) => {
           style={{ fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif" }}
         >
           <motion.span 
-            className="text-teal-700 block mb-2"
+            className="block mb-2"
+            style={{ color: '#BA9B70' }}
             initial={{ opacity: 0, x: language === 'ar' ? 50 : -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
@@ -48,7 +49,8 @@ const Hero = ({ language, t }) => {
             {t.hero.title1}
           </motion.span>
           <motion.span 
-            className="text-red-900 block"
+            className="block"
+            style={{ color: '#553B2E' }}
             initial={{ opacity: 0, x: language === 'ar' ? -50 : 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X, Globe, ChevronDown } from 'lucide-react';
 
 const Header = ({ language, setLanguage, t }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [aboutUsOpen, setAboutUsOpen] = useState(false);
+  const [discoverOpen, setDiscoverOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,15 +15,6 @@ const Header = ({ language, setLanguage, t }) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const navItems = [
-    { label: t.nav.home, href: '#' },
-    { label: t.nav.brandStory, href: '#story' },
-    { label: t.nav.brandElements, href: '#elements' },
-    { label: t.nav.team, href: '#team' },
-    { label: t.nav.mediaCenter, href: '#press' },
-    { label: t.nav.contact, href: '#contact' },
-  ];
 
   return (
     <>
@@ -45,21 +38,49 @@ const Header = ({ language, setLanguage, t }) => {
 
             {/* Desktop Navigation - Center */}
             <nav className="hidden lg:flex items-center gap-6 xl:gap-8 order-2 mx-auto">
-              {navItems.map((item, index) => (
-                <motion.a
-                  key={item.label}
-                  href={item.href}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 * index }}
-                  className="text-gray-700 hover:text-teal-700 transition-colors duration-200 font-medium text-sm"
-                >
-                  {item.label}
-                </motion.a>
-              ))}
+              <a href="#" className="text-gray-700 hover:text-[#BA9B70] transition-colors duration-200 font-medium text-sm">
+                {t.nav.home}
+              </a>
+              
+              {/* About Us Dropdown */}
+              <div className="relative group">
+                <button className="flex items-center gap-1 text-gray-700 hover:text-[#BA9B70] transition-colors duration-200 font-medium text-sm">
+                  {t.nav.aboutUs}
+                  <ChevronDown className="w-4 h-4" />
+                </button>
+                <div className="absolute top-full right-0 mt-2 w-56 bg-white shadow-lg rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  <a href="#" className="block px-4 py-3 text-gray-700 hover:bg-[#BA9B70] hover:text-white transition-colors text-sm">{t.nav.aboutUsInfo}</a>
+                  <a href="#" className="block px-4 py-3 text-gray-700 hover:bg-[#BA9B70] hover:text-white transition-colors text-sm">{t.nav.aboutUsGoals}</a>
+                  <a href="#" className="block px-4 py-3 text-gray-700 hover:bg-[#BA9B70] hover:text-white transition-colors text-sm">{t.nav.team}</a>
+                </div>
+              </div>
+
+              {/* Discover Dropdown */}
+              <div className="relative group">
+                <button className="flex items-center gap-1 text-gray-700 hover:text-[#BA9B70] transition-colors duration-200 font-medium text-sm">
+                  {t.nav.discover}
+                  <ChevronDown className="w-4 h-4" />
+                </button>
+                <div className="absolute top-full right-0 mt-2 w-56 bg-white shadow-lg rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  <a href="#" className="block px-4 py-3 text-gray-700 hover:bg-[#BA9B70] hover:text-white transition-colors text-sm">{t.nav.oldTown}</a>
+                  <a href="#" className="block px-4 py-3 text-gray-700 hover:bg-[#BA9B70] hover:text-white transition-colors text-sm">{t.nav.crafts}</a>
+                  <a href="#" className="block px-4 py-3 text-gray-700 hover:bg-[#BA9B70] hover:text-white transition-colors text-sm">{t.nav.architecture}</a>
+                  <a href="#" className="block px-4 py-3 text-gray-700 hover:bg-[#BA9B70] hover:text-white transition-colors text-sm">{t.nav.ibrahimiMosque}</a>
+                </div>
+              </div>
+
+              <a href="#" className="text-gray-700 hover:text-[#BA9B70] transition-colors duration-200 font-medium text-sm">
+                {t.nav.achievements}
+              </a>
+              <a href="#" className="text-gray-700 hover:text-[#BA9B70] transition-colors duration-200 font-medium text-sm">
+                {t.nav.donations}
+              </a>
+              <a href="#" className="text-gray-700 hover:text-[#BA9B70] transition-colors duration-200 font-medium text-sm">
+                {t.nav.contact}
+              </a>
             </nav>
 
-            {/* Logo - Right on mobile and desktop */}
+            {/* Logo - Right */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -70,20 +91,20 @@ const Header = ({ language, setLanguage, t }) => {
                 <div className="font-semibold text-gray-800 whitespace-nowrap leading-tight">
                   {language === 'ar' ? (
                     <>
-                      <div className="text-[11px] lg:text-xs">الجمهورية العربية السورية</div>
-                      <div className="text-[9px] lg:text-[10px] opacity-80">SYRIAN ARAB REPUBLIC</div>
+                      <div className="text-[11px] lg:text-xs">لجنة إعمار الخليل</div>
+                      <div className="text-[9px] lg:text-[10px] opacity-80">HEBRON RECONSTRUCTION COMMITTEE</div>
                     </>
                   ) : (
                     <>
-                      <div className="text-xs">SYRIAN ARAB REPUBLIC</div>
-                      <div className="text-[10px] opacity-80">الجمهورية العربية السورية</div>
+                      <div className="text-xs">HEBRON RECONSTRUCTION COMMITTEE</div>
+                      <div className="text-[10px] opacity-80">لجنة إعمار الخليل</div>
                     </>
                   )}
                 </div>
               </div>
               <img
                 src="/syrian-eagle-official.png"
-                alt="Syrian Arab Republic"
+                alt="Hebron Reconstruction Committee"
                 className="h-12 w-12 lg:h-14 lg:w-14 flex-shrink-0 object-contain"
               />
             </motion.div>
@@ -94,7 +115,7 @@ const Header = ({ language, setLanguage, t }) => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
               onClick={() => setLanguage(language === 'ar' ? 'en' : 'ar')}
-              className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 hover:border-teal-700 hover:bg-teal-50 transition-all duration-200 order-1"
+              className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 hover:border-[#BA9B70] hover:bg-[#BA9B70] hover:text-white transition-all duration-200 order-1"
             >
               <Globe className="w-4 h-4" />
               <span className="text-sm font-medium">{language === 'ar' ? 'ENGLISH' : 'العربية'}</span>
@@ -113,7 +134,7 @@ const Header = ({ language, setLanguage, t }) => {
             transition={{ type: 'tween', duration: 0.3 }}
             className="fixed inset-0 z-[60] bg-black lg:hidden"
           >
-            <div className="p-6 h-full flex flex-col">
+            <div className="p-6 h-full flex flex-col overflow-y-auto">
               {/* Close button */}
               <button
                 onClick={() => setMobileMenuOpen(false)}
@@ -127,12 +148,12 @@ const Header = ({ language, setLanguage, t }) => {
               <div className="flex flex-col items-center mt-16 mb-10">
                 <img
                   src="/syrian-eagle-official.png"
-                  alt="Syrian Arab Republic"
+                  alt="Hebron Reconstruction Committee"
                   className="h-20 w-20 mb-5 object-contain"
                 />
                 <div className="text-center">
-                  <div className="text-base font-semibold mb-1 text-white">الجمهورية العربية السورية</div>
-                  <div className="text-xs text-white/70">SYRIAN ARAB REPUBLIC</div>
+                  <div className="text-base font-semibold mb-1 text-white">لجنة إعمار الخليل</div>
+                  <div className="text-xs text-white/70">HEBRON RECONSTRUCTION COMMITTEE</div>
                 </div>
               </div>
 
@@ -143,7 +164,7 @@ const Header = ({ language, setLanguage, t }) => {
                   setMobileMenuOpen(false);
                 }}
                 className="w-full py-4 mb-10 rounded-lg flex items-center justify-center gap-3 font-bold text-base tracking-wide"
-                style={{ backgroundColor: '#b9a779', color: '#ffffff' }}
+                style={{ backgroundColor: '#BA9B70', color: '#ffffff' }}
               >
                 <Globe className="w-5 h-5" />
                 <span>ENGLISH</span>
@@ -151,19 +172,86 @@ const Header = ({ language, setLanguage, t }) => {
 
               {/* Navigation Menu */}
               <nav className="flex flex-col gap-1 text-right">
-                {navItems.map((item, index) => (
-                  <motion.a
-                    key={item.label}
-                    href={item.href}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 * index }}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-white hover:text-amber-500 transition-colors duration-200 font-medium text-xl py-4 border-b border-white/10"
+                <a
+                  href="#"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-white hover:text-[#BA9B70] transition-colors duration-200 font-medium text-xl py-4 border-b border-white/10"
+                >
+                  {t.nav.home}
+                </a>
+
+                {/* About Us */}
+                <div>
+                  <button
+                    onClick={() => setAboutUsOpen(!aboutUsOpen)}
+                    className="w-full text-white hover:text-[#BA9B70] transition-colors duration-200 font-medium text-xl py-4 border-b border-white/10 flex items-center justify-between"
                   >
-                    {item.label}
-                  </motion.a>
-                ))}
+                    <span>{t.nav.aboutUs}</span>
+                    <ChevronDown className={`w-5 h-5 transition-transform ${aboutUsOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {aboutUsOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <a href="#" className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.aboutUsInfo}</a>
+                        <a href="#" className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.aboutUsGoals}</a>
+                        <a href="#" className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.team}</a>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Discover */}
+                <div>
+                  <button
+                    onClick={() => setDiscoverOpen(!discoverOpen)}
+                    className="w-full text-white hover:text-[#BA9B70] transition-colors duration-200 font-medium text-xl py-4 border-b border-white/10 flex items-center justify-between"
+                  >
+                    <span>{t.nav.discover}</span>
+                    <ChevronDown className={`w-5 h-5 transition-transform ${discoverOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {discoverOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <a href="#" className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.oldTown}</a>
+                        <a href="#" className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.crafts}</a>
+                        <a href="#" className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.architecture}</a>
+                        <a href="#" className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.ibrahimiMosque}</a>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                <a
+                  href="#"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-white hover:text-[#BA9B70] transition-colors duration-200 font-medium text-xl py-4 border-b border-white/10"
+                >
+                  {t.nav.achievements}
+                </a>
+                <a
+                  href="#"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-white hover:text-[#BA9B70] transition-colors duration-200 font-medium text-xl py-4 border-b border-white/10"
+                >
+                  {t.nav.donations}
+                </a>
+                <a
+                  href="#"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-white hover:text-[#BA9B70] transition-colors duration-200 font-medium text-xl py-4 border-b border-white/10"
+                >
+                  {t.nav.contact}
+                </a>
               </nav>
             </div>
           </motion.div>
