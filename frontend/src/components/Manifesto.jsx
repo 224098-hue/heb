@@ -11,7 +11,8 @@ const Manifesto = ({ language, t }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className={`text-3xl md:text-5xl font-bold leading-relaxed ${language === 'ar' ? 'text-right' : 'text-left'} text-gray-900`}
+            className={`text-3xl md:text-5xl font-bold leading-relaxed md:leading-loose ${language === 'ar' ? 'text-right' : 'text-left'} text-gray-900`}
+            style={{ lineHeight: '1.9' }}
           >
             {t.sections.manifesto}
           </motion.h2>
