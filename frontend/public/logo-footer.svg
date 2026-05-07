@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 130" width="650" height="130">
+  <!-- White/Light text for dark background -->
+  <text x="220" y="50" font-family="Arial, sans-serif" font-size="28" fill="#E5E5E5" text-anchor="middle" font-weight="300">لجنة إعمار الخليل</text>
+  
+  <!-- English Text -->
+  <text x="220" y="85" font-family="Arial, sans-serif" font-size="13" fill="#CCCCCC" text-anchor="middle" font-weight="300">Hebron Rehabilitation Committee</text>
+  
+  <!-- Separator Line -->
+  <line x1="430" y1="20" x2="430" y2="110" stroke="#666666" stroke-width="1.5"/>
+  
+  <!-- Logo Rectangle with gradient -->
+  <defs>
+    <linearGradient id="brownGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#6B4423;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#553B2E;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect x="480" y="10" width="150" height="110" rx="5" fill="url(#brownGrad)"/>
+  
+  <!-- Stylized Arabic Calligraphy (واو) -->
+  <g transform="translate(555, 65)" fill="white">
+    <!-- Main vertical stroke -->
+    <ellipse cx="0" cy="-15" rx="8" ry="25" fill="white"/>
+    
+    <!-- Top curve -->
+    <path d="M -8,-38 Q -15,-30 -18,-20 Q -15,-10 -8,-5" stroke="white" stroke-width="4" fill="none"/>
+    <path d="M 8,-38 Q 15,-30 18,-20 Q 15,-10 8,-5" stroke="white" stroke-width="4" fill="none"/>
+    
+    <!-- Bottom curves -->
+    <path d="M -5,10 Q -12,20 -18,28 Q -15,32 -10,30" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M 5,10 Q 12,20 18,28 Q 15,32 10,30" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
+    
+    <!-- Center detail -->
+    <circle cx="0" cy="-25" r="6" fill="white"/>
+    <circle cx="0" cy="0" r="5" fill="white"/>
+  </g>
+</svg>

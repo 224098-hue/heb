@@ -90,7 +90,7 @@ const Header = ({ language, setLanguage, t }) => {
               <img
                 src="/logo-original.jpg"
                 alt="لجنة إعمار الخليل - Hebron Reconstruction Committee"
-                className="h-16 lg:h-20 w-auto object-contain"
+                className="h-14 lg:h-16 w-auto object-contain"
               />
             </motion.div>
 

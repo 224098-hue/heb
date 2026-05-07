@@ -43,9 +43,9 @@ const Footer = ({ language, t }) => {
           >
             <div className="flex flex-col items-center gap-4">
               <img
-                src="/logo-original.jpg"
+                src="/logo-footer.svg"
                 alt="لجنة إعمار الخليل"
-                className="h-20 w-auto object-contain"
+                className="h-16 w-auto object-contain"
               />
               <p className="text-sm opacity-50">© 2025 {language === 'ar' ? 'جميع الحقوق محفوظة' : 'All Rights Reserved'}</p>
             </div>
