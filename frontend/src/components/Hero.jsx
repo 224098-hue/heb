@@ -9,17 +9,17 @@ const Hero = ({ language, t }) => {
       <div className="absolute inset-0 bg-white">
         {/* Pattern background - positioned on left, semi-transparent */}
         <div
-          className="absolute left-0 top-0 bottom-0 w-1/3 opacity-[0.15]"
+          className="absolute left-0 top-0 bottom-0 w-1/3 opacity-[0.12]"
           style={{
-            backgroundImage: `url('/pattern.jpg')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center left',
-            backgroundRepeat: 'no-repeat',
+            backgroundImage: `url('/pattern-islamic.svg')`,
+            backgroundSize: 'auto 100%',
+            backgroundPosition: 'left center',
+            backgroundRepeat: 'repeat-x',
           }}
         />
         
         {/* Subtle overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/80 to-white" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/70 to-white" />
       </div>
 
       {/* Large faint eagle watermark - REMOVED */}

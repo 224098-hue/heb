@@ -35,7 +35,7 @@ const Loader = ({ onLoadComplete }) => {
         >
           {/* Logo */}
           <motion.img
-            src="/logo-full.jpg"
+            src="/logo-hebron.svg"
             alt="لجنة إعمار الخليل"
             className="h-20 w-auto mx-auto mb-8 object-contain"
             animate={{ rotate: [0, 360] }}
