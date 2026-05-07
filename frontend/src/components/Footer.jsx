@@ -43,7 +43,7 @@ const Footer = ({ language, t }) => {
           >
             <div className="flex flex-col items-center gap-4">
               <img
-                src="/hebron-full-logo.svg"
+                src="/logo-full.jpg"
                 alt="لجنة إعمار الخليل"
                 className="h-20 w-auto object-contain"
               />

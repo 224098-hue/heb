@@ -5,21 +5,21 @@ import { ChevronDown } from 'lucide-react';
 const Hero = ({ language, t }) => {
   return (
     <section className="relative min-h-screen flex flex-col items-start justify-start overflow-hidden px-4 lg:px-12 pt-32 lg:pt-40">
-      {/* Background with pattern image */}
+      {/* Background with pattern image on left side */}
       <div className="absolute inset-0 bg-white">
-        {/* Pattern background */}
+        {/* Pattern background - positioned on left, semi-transparent */}
         <div
-          className="absolute inset-0 opacity-[0.08]"
+          className="absolute left-0 top-0 bottom-0 w-1/3 opacity-[0.15]"
           style={{
-            backgroundImage: `url('/pattern-bg.png')`,
-            backgroundSize: '400px 400px',
-            backgroundPosition: 'center center',
-            backgroundRepeat: 'repeat',
+            backgroundImage: `url('/pattern.jpg')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center left',
+            backgroundRepeat: 'no-repeat',
           }}
         />
         
         {/* Subtle overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/80 to-white" />
       </div>
 
       {/* Large faint eagle watermark - REMOVED */}
@@ -54,12 +54,12 @@ const Hero = ({ language, t }) => {
         </motion.h1>
       </div>
 
-      {/* Scroll indicator arrow - positioned above the eagle image */}
+      {/* Scroll indicator arrow - positioned at bottom */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 1.2 }}
-        className={`absolute bottom-[280px] md:bottom-[320px] lg:bottom-[380px] z-20 ${language === 'ar' ? 'left-1/2 -translate-x-1/2' : 'left-1/2 -translate-x-1/2'}`}
+        className="absolute bottom-8 lg:bottom-12 left-1/2 transform -translate-x-1/2 z-20"
       >
         <motion.div
           animate={{ y: [0, 12, 0] }}

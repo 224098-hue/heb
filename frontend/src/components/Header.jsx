@@ -88,7 +88,7 @@ const Header = ({ language, setLanguage, t }) => {
               className="flex items-center order-3"
             >
               <img
-                src="/hebron-full-logo.svg"
+                src="/logo-full.jpg"
                 alt="لجنة إعمار الخليل - Hebron Reconstruction Committee"
                 className="h-12 lg:h-16 w-auto object-contain"
               />
@@ -132,7 +132,7 @@ const Header = ({ language, setLanguage, t }) => {
               {/* Logo and Title */}
               <div className="flex flex-col items-center mt-16 mb-10">
                 <img
-                  src="/hebron-full-logo.svg"
+                  src="/logo-full.jpg"
                   alt="لجنة إعمار الخليل - Hebron Reconstruction Committee"
                   className="h-24 w-auto mb-5 object-contain"
                 />

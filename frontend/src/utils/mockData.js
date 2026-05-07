@@ -112,8 +112,8 @@ export const pressArticles = [
 ];
 
 export const sectionImages = {
-  brandStory: 'https://customer-assets.emergentagent.com/job_syrian-ui-replica/artifacts/tved29br_IMG_0005.HEIC.heif',
-  brandElements: 'https://customer-assets.emergentagent.com/job_syrian-ui-replica/artifacts/55nm3k4m_IMG_3213.HEIC.heif',
-  launchVideo: 'https://customer-assets.emergentagent.com/job_syrian-ui-replica/artifacts/kbsia4ip_IMG_9968.HEIC.heif',
-  uniteSection: 'https://customer-assets.emergentagent.com/job_syrian-ui-replica/artifacts/tved29br_IMG_0005.HEIC.heif',
+  brandStory: '/old-town.jpg',
+  brandElements: '/pattern.jpg',
+  launchVideo: '/logo-full.jpg',
+  uniteSection: '/old-town.jpg',
 };
