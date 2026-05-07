@@ -9,12 +9,12 @@ const Hero = ({ language, t }) => {
       <div className="absolute inset-0 bg-white">
         {/* Pattern background - positioned on left, semi-transparent */}
         <div
-          className="absolute left-0 top-0 bottom-0 w-1/3 opacity-[0.12]"
+          className="absolute left-0 top-0 bottom-0 w-1/3 opacity-[0.15]"
           style={{
-            backgroundImage: `url('/pattern-islamic.svg')`,
-            backgroundSize: 'auto 100%',
+            backgroundImage: `url('/pattern-original.jpg')`,
+            backgroundSize: 'cover',
             backgroundPosition: 'left center',
-            backgroundRepeat: 'repeat-x',
+            backgroundRepeat: 'repeat-y',
           }}
         />
         
