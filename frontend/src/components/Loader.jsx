@@ -35,8 +35,10 @@ const Loader = ({ onLoadComplete }) => {
         >
           {/* Logo */}
           <motion.img
-            src="/logo-original.jpg"
+            src="/logo-optimized.webp"
             alt="لجنة إعمار الخليل"
+            fetchpriority="high"
+            decoding="async"
             className="h-20 w-auto mx-auto mb-8 object-contain"
             animate={{ rotate: [0, 360] }}
             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}

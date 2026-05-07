@@ -42,11 +42,8 @@ const Footer = ({ language, t }) => {
             className="flex flex-col items-center gap-4"
           >
             <div className="flex flex-col items-center gap-4">
-              <img
-                src="/logo-footer-transparent.svg"
-                alt="لجنة إعمار الخليل"
-                className="h-16 w-auto object-contain"
-              />
+              
+              
               <p className="text-sm opacity-50">© 2026 {language === 'ar' ? 'جميع الحقوق محفوظة' : 'All Rights Reserved'}</p>
             </div>
           </motion.div>

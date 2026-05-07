@@ -88,8 +88,10 @@ const Header = ({ language, setLanguage, t }) => {
               className="flex items-center order-3"
             >
               <img
-                src="/logo-original.jpg"
+                src="/logo-optimized.webp"
                 alt="لجنة إعمار الخليل - Hebron Reconstruction Committee"
+                fetchpriority="high"
+                decoding="async"
                 className="h-14 lg:h-16 w-auto object-contain"
               />
             </motion.div>
@@ -119,7 +121,7 @@ const Header = ({ language, setLanguage, t }) => {
             transition={{ type: 'tween', duration: 0.3 }}
             className="fixed inset-0 z-[60] bg-black lg:hidden"
           >
-            <div className="p-6 h-full flex flex-col overflow-y-auto">
+            <div className="px-6 pt-16 pb-6 h-full flex flex-col overflow-y-auto">
               {/* Close button */}
               <button
                 onClick={() => setMobileMenuOpen(false)}
@@ -129,22 +131,13 @@ const Header = ({ language, setLanguage, t }) => {
                 <X className="w-7 h-7" strokeWidth={1.5} />
               </button>
 
-              {/* Logo and Title */}
-              <div className="flex flex-col items-center mt-16 mb-10">
-                <img
-                  src="/logo-original.jpg"
-                  alt="لجنة إعمار الخليل - Hebron Reconstruction Committee"
-                  className="h-28 w-auto mb-5 object-contain"
-                />
-              </div>
-
               {/* Language Switcher Button */}
               <button
                 onClick={() => {
                   setLanguage(language === 'ar' ? 'en' : 'ar');
                   setMobileMenuOpen(false);
                 }}
-                className="w-full py-4 mb-10 rounded-lg flex items-center justify-center gap-3 font-bold text-base tracking-wide"
+                className="w-full py-4 mb-6 rounded-lg flex items-center justify-center gap-3 font-bold text-base tracking-wide"
                 style={{ backgroundColor: '#BA9B70', color: '#ffffff' }}
               >
                 <Globe className="w-5 h-5" />
