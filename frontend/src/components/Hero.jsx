@@ -5,21 +5,27 @@ import { ChevronDown } from 'lucide-react';
 const Hero = ({ language, t }) => {
   return (
     <section className="relative min-h-screen flex flex-col items-start justify-start overflow-hidden px-4 lg:px-12 pt-32 lg:pt-40">
-      {/* Background with pattern image on left side */}
+      {/* Background with rotating circular pattern on left side */}
       <div className="absolute inset-0 bg-white">
-        {/* Pattern background - positioned on left, semi-transparent */}
-        <div
-          className="absolute left-0 top-0 bottom-0 w-1/3 opacity-[0.15]"
+        {/* Rotating circular pattern - positioned on left, covers from top to bottom */}
+        <motion.div
+          className="absolute left-[-200px] top-0 w-[600px] h-full opacity-[0.08]"
+          animate={{ rotate: 360 }}
+          transition={{
+            duration: 120,
+            repeat: Infinity,
+            ease: "linear"
+          }}
           style={{
             backgroundImage: `url('/pattern-original.jpg')`,
             backgroundSize: 'cover',
-            backgroundPosition: 'left center',
-            backgroundRepeat: 'repeat-y',
+            backgroundPosition: 'center',
+            borderRadius: '50%',
           }}
         />
         
         {/* Subtle overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/70 to-white" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/60 to-white" />
       </div>
 
       {/* Large faint eagle watermark - REMOVED */}
