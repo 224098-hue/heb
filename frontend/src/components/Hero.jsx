@@ -60,12 +60,12 @@ const Hero = ({ language, t }) => {
         </motion.h1>
       </div>
 
-      {/* Scroll indicator arrow - positioned at bottom */}
+      {/* Scroll indicator arrow - positioned above the image on mobile, at bottom on desktop */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 1.2 }}
-        className="absolute bottom-8 lg:bottom-12 left-1/2 transform -translate-x-1/2 z-20"
+        className="absolute bottom-[240px] lg:bottom-12 left-1/2 transform -translate-x-1/2 z-20"
       >
         <motion.div
           animate={{ y: [0, 12, 0] }}
