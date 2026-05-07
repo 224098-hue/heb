@@ -80,8 +80,8 @@ const Hero = ({ language, t }) => {
         <div className="w-full px-4 pb-4">
           <div className="relative rounded-t-2xl overflow-hidden shadow-2xl">
             <img
-              src="https://customer-assets.emergentagent.com/job_syrian-ui-replica/artifacts/tved29br_IMG_0005.HEIC.heif"
-              alt="Syrian Heritage"
+              src="/old-town.jpg"
+              alt="البلدة القديمة"
               className="w-full h-56 object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
