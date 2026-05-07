@@ -4,8 +4,7 @@ import { ArrowRight, ArrowLeft } from 'lucide-react';
 
 const Footer = ({ language, t }) => {
   return (
-    <footer className="bg-gradient-to-b from-gray-900 to-black text-white py-16 px-6">
-      <div className="max-w-7xl mx-auto">
+<footer className="bg-black text-white py-16 px-6">      <div className="max-w-7xl mx-auto">
         <div className={`text-center ${language === 'ar' ? 'rtl' : 'ltr'}`}>
           <div className="border-t border-b border-white/10 py-8 mb-12">
             <motion.h2

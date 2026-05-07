@@ -92,7 +92,7 @@ const Header = ({ language, setLanguage, t }) => {
                 alt="لجنة إعمار الخليل - Hebron Reconstruction Committee"
                 fetchpriority="high"
                 decoding="async"
-                className="h-14 lg:h-16 w-auto object-contain"
+                className="h-11 lg:h-16 w-auto object-contain"
               />
             </motion.div>
 
