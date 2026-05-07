@@ -103,9 +103,10 @@ const Header = ({ language, setLanguage, t }) => {
                 </div>
               </div>
               <img
-                src="/syrian-eagle-official.png"
+                src="/hebron-logo.png"
                 alt="Hebron Reconstruction Committee"
                 className="h-12 w-12 lg:h-14 lg:w-14 flex-shrink-0 object-contain"
+                style={{ filter: 'brightness(0) saturate(100%) invert(73%) sepia(16%) saturate(746%) hue-rotate(358deg) brightness(92%) contrast(88%)' }}
               />
             </motion.div>
 
@@ -147,9 +148,10 @@ const Header = ({ language, setLanguage, t }) => {
               {/* Logo and Title */}
               <div className="flex flex-col items-center mt-16 mb-10">
                 <img
-                  src="/syrian-eagle-official.png"
+                  src="/hebron-logo.png"
                   alt="Hebron Reconstruction Committee"
                   className="h-20 w-20 mb-5 object-contain"
+                  style={{ filter: 'brightness(0) saturate(100%) invert(73%) sepia(16%) saturate(746%) hue-rotate(358deg) brightness(92%) contrast(88%)' }}
                 />
                 <div className="text-center">
                   <div className="text-base font-semibold mb-1 text-white">لجنة إعمار الخليل</div>

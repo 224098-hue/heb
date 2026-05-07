@@ -35,9 +35,10 @@ const Loader = ({ onLoadComplete }) => {
         >
           {/* Logo */}
           <motion.img
-            src="/syrian-eagle-official.png"
-            alt="Syrian Arab Republic"
+            src="/hebron-logo.png"
+            alt="Hebron Reconstruction Committee"
             className="h-24 w-24 mx-auto mb-8 object-contain"
+            style={{ filter: 'brightness(0) saturate(100%) invert(73%) sepia(16%) saturate(746%) hue-rotate(358deg) brightness(92%) contrast(88%)' }}
             animate={{ rotate: [0, 360] }}
             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
           />

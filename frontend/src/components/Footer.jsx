@@ -43,9 +43,10 @@ const Footer = ({ language, t }) => {
           >
             <div className="flex items-center gap-3">
               <img
-                src="/syrian-eagle-official.png"
-                alt="Syrian Arab Republic"
-                className="h-16 w-16 object-contain opacity-80"
+                src="/hebron-logo.png"
+                alt="Hebron Reconstruction Committee"
+                className="h-16 w-16 object-contain"
+                style={{ filter: 'brightness(0) saturate(100%) invert(73%) sepia(16%) saturate(746%) hue-rotate(358deg) brightness(92%) contrast(88%)' }}
               />
               <div className={`text-sm ${language === 'ar' ? 'text-right' : 'text-left'}`}>
                 <div className="font-semibold text-gray-200">

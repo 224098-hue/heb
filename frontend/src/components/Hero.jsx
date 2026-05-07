@@ -5,30 +5,24 @@ import { ChevronDown } from 'lucide-react';
 const Hero = ({ language, t }) => {
   return (
     <section className="relative min-h-screen flex flex-col items-start justify-start overflow-hidden px-4 lg:px-12 pt-32 lg:pt-40">
-      {/* Background with large geometric pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-100">
-        {/* Islamic/Arabic pattern */}
+      {/* Background with pattern image */}
+      <div className="absolute inset-0 bg-white">
+        {/* Pattern background */}
         <div
-          className="absolute inset-0 opacity-[0.12]"
+          className="absolute inset-0 opacity-[0.08]"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='240' height='240' viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23BA9B70' stroke-width='2'%3E%3Cpath d='M120 40 L160 80 L120 120 L80 80 Z'/%3E%3Ccircle cx='120' cy='80' r='30'/%3E%3Cpath d='M120 160 L160 200 L120 240 L80 200 Z' transform='translate(0,-80)'/%3E%3Cpath d='M40 120 L80 160 L40 200 L0 160 Z'/%3E%3Cpath d='M200 120 L240 160 L200 200 L160 160 Z'/%3E%3Cpath d='M90 50 L130 90 L150 70'/%3E%3Cpath d='M150 90 L130 110 L110 90'/%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundSize: '300px 300px',
+            backgroundImage: `url('/pattern-bg.png')`,
+            backgroundSize: '400px 400px',
             backgroundPosition: 'center center',
+            backgroundRepeat: 'repeat',
           }}
         />
         
         {/* Subtle overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/60\" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/60" />
       </div>
 
-      {/* Large faint eagle watermark - positioned at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 flex items-end justify-center pb-0 opacity-[0.05] pointer-events-none">
-        <img
-          src="/syrian-eagle-official.png"
-          alt=""
-          className="w-full h-auto max-w-3xl object-contain"
-        />
-      </div>
+      {/* Large faint eagle watermark - REMOVED */}
 
       {/* Content - Aligned to right for Arabic, positioned higher */}
       <div className={`relative z-10 w-full max-w-7xl mx-auto ${language === 'ar' ? 'text-right' : 'text-left'}`}>
@@ -40,7 +34,7 @@ const Hero = ({ language, t }) => {
           style={{ fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif" }}
         >
           <motion.span 
-            className="block mb-2"
+            className="block mb-4 lg:mb-6"
             style={{ color: '#BA9B70' }}
             initial={{ opacity: 0, x: language === 'ar' ? 50 : -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -86,7 +80,7 @@ const Hero = ({ language, t }) => {
         <div className="w-full px-4 pb-4">
           <div className="relative rounded-t-2xl overflow-hidden shadow-2xl">
             <img
-              src="https://images.unsplash.com/photo-1700387340416-2e2ee7690191"
+              src="https://customer-assets.emergentagent.com/job_syrian-ui-replica/artifacts/tved29br_IMG_0005.HEIC.heif"
               alt="Syrian Heritage"
               className="w-full h-56 object-cover"
             />

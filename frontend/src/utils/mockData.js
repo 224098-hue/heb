@@ -112,8 +112,8 @@ export const pressArticles = [
 ];
 
 export const sectionImages = {
-  brandStory: 'https://images.unsplash.com/photo-1580310219243-dbad8c44e576',
-  brandElements: 'https://images.unsplash.com/photo-1562457141-8c1df886f92c',
-  launchVideo: 'https://images.unsplash.com/photo-1700387340416-2e2ee7690191',
-  uniteSection: 'https://images.unsplash.com/photo-1752745573673-cdae5e7b0f77',
+  brandStory: 'https://customer-assets.emergentagent.com/job_syrian-ui-replica/artifacts/tved29br_IMG_0005.HEIC.heif',
+  brandElements: 'https://customer-assets.emergentagent.com/job_syrian-ui-replica/artifacts/55nm3k4m_IMG_3213.HEIC.heif',
+  launchVideo: 'https://customer-assets.emergentagent.com/job_syrian-ui-replica/artifacts/kbsia4ip_IMG_9968.HEIC.heif',
+  uniteSection: 'https://customer-assets.emergentagent.com/job_syrian-ui-replica/artifacts/tved29br_IMG_0005.HEIC.heif',
 };
