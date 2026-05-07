@@ -85,28 +85,12 @@ const Header = ({ language, setLanguage, t }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="flex items-center gap-2 order-3"
+              className="flex items-center order-3"
             >
-              <div className={`text-xs lg:text-sm ${language === 'ar' ? 'text-right' : 'text-left'}`}>
-                <div className="font-semibold text-gray-800 whitespace-nowrap leading-tight">
-                  {language === 'ar' ? (
-                    <>
-                      <div className="text-[11px] lg:text-xs">لجنة إعمار الخليل</div>
-                      <div className="text-[9px] lg:text-[10px] opacity-80">HEBRON RECONSTRUCTION COMMITTEE</div>
-                    </>
-                  ) : (
-                    <>
-                      <div className="text-xs">HEBRON RECONSTRUCTION COMMITTEE</div>
-                      <div className="text-[10px] opacity-80">لجنة إعمار الخليل</div>
-                    </>
-                  )}
-                </div>
-              </div>
               <img
-                src="/hebron-logo.png"
-                alt="Hebron Reconstruction Committee"
-                className="h-12 w-12 lg:h-14 lg:w-14 flex-shrink-0 object-contain"
-                style={{ filter: 'brightness(0) saturate(100%) invert(73%) sepia(16%) saturate(746%) hue-rotate(358deg) brightness(92%) contrast(88%)' }}
+                src="/hebron-full-logo.svg"
+                alt="لجنة إعمار الخليل - Hebron Reconstruction Committee"
+                className="h-12 lg:h-16 w-auto object-contain"
               />
             </motion.div>
 
@@ -148,15 +132,10 @@ const Header = ({ language, setLanguage, t }) => {
               {/* Logo and Title */}
               <div className="flex flex-col items-center mt-16 mb-10">
                 <img
-                  src="/hebron-logo.png"
-                  alt="Hebron Reconstruction Committee"
-                  className="h-20 w-20 mb-5 object-contain"
-                  style={{ filter: 'brightness(0) saturate(100%) invert(73%) sepia(16%) saturate(746%) hue-rotate(358deg) brightness(92%) contrast(88%)' }}
+                  src="/hebron-full-logo.svg"
+                  alt="لجنة إعمار الخليل - Hebron Reconstruction Committee"
+                  className="h-24 w-auto mb-5 object-contain"
                 />
-                <div className="text-center">
-                  <div className="text-base font-semibold mb-1 text-white">لجنة إعمار الخليل</div>
-                  <div className="text-xs text-white/70">HEBRON RECONSTRUCTION COMMITTEE</div>
-                </div>
               </div>
 
               {/* Language Switcher Button */}

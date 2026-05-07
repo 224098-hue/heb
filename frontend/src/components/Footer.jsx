@@ -41,20 +41,14 @@ const Footer = ({ language, t }) => {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="flex flex-col items-center gap-4"
           >
-            <div className="flex items-center gap-3">
+            <div className="flex flex-col items-center gap-4">
               <img
-                src="/hebron-logo.png"
-                alt="Hebron Reconstruction Committee"
-                className="h-16 w-16 object-contain"
-                style={{ filter: 'brightness(0) saturate(100%) invert(73%) sepia(16%) saturate(746%) hue-rotate(358deg) brightness(92%) contrast(88%)' }}
+                src="/hebron-full-logo.svg"
+                alt="لجنة إعمار الخليل"
+                className="h-20 w-auto object-contain"
               />
-              <div className={`text-sm ${language === 'ar' ? 'text-right' : 'text-left'}`}>
-                <div className="font-semibold text-gray-200">
-                  {language === 'ar' ? 'الجمهورية العربية السورية' : 'SYRIAN ARAB REPUBLIC'}
-                </div>
-              </div>
+              <p className="text-sm opacity-50">© 2025 {language === 'ar' ? 'جميع الحقوق محفوظة' : 'All Rights Reserved'}</p>
             </div>
-            <p className="text-sm opacity-50">© 2025 {language === 'ar' ? 'جميع الحقوق محفوظة' : 'All Rights Reserved'}</p>
           </motion.div>
         </div>
       </div>
