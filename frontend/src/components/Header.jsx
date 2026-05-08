@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Menu, X, Globe, ChevronDown } from 'lucide-react';
 
 const Header = ({ language, setLanguage, t }) => {
@@ -38,9 +39,9 @@ const Header = ({ language, setLanguage, t }) => {
 
             {/* Desktop Navigation - Center */}
             <nav className="hidden lg:flex items-center gap-6 xl:gap-8 order-2 mx-auto">
-              <a href="#" className="text-gray-700 hover:text-[#BA9B70] transition-colors duration-200 font-medium text-sm">
+              <Link to="/" className="text-gray-700 hover:text-[#BA9B70] transition-colors duration-200 font-medium text-sm">
                 {t.nav.home}
-              </a>
+              </Link>
               
               {/* About Us Dropdown */}
               <div className="relative group">
@@ -49,7 +50,7 @@ const Header = ({ language, setLanguage, t }) => {
                   <ChevronDown className="w-4 h-4" />
                 </button>
                 <div className="absolute top-full right-0 mt-2 w-56 bg-white shadow-lg rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                  <a href="#" className="block px-4 py-3 text-gray-700 hover:bg-[#BA9B70] hover:text-white transition-colors text-sm">{t.nav.aboutUsInfo}</a>
+                  <Link to="/about" className="block px-4 py-3 text-gray-700 hover:bg-[#BA9B70] hover:text-white transition-colors text-sm">{t.nav.aboutUsInfo}</Link>
                   <a href="#" className="block px-4 py-3 text-gray-700 hover:bg-[#BA9B70] hover:text-white transition-colors text-sm">{t.nav.aboutUsGoals}</a>
                   <a href="#" className="block px-4 py-3 text-gray-700 hover:bg-[#BA9B70] hover:text-white transition-colors text-sm">{t.nav.team}</a>
                 </div>
@@ -87,13 +88,15 @@ const Header = ({ language, setLanguage, t }) => {
               transition={{ delay: 0.2 }}
               className="flex items-center order-3"
             >
-              <img
-                src="/logo-optimized.webp"
-                alt="لجنة إعمار الخليل - Hebron Reconstruction Committee"
-                fetchpriority="high"
-                decoding="async"
-                className="h-11 lg:h-16 w-auto object-contain"
-              />
+              <Link to="/">
+                <img
+                  src="/logo-optimized.webp"
+                  alt="لجنة إعمار الخليل - Hebron Reconstruction Committee"
+                  fetchpriority="high"
+                  decoding="async"
+                  className="h-11 lg:h-16 w-auto object-contain"
+                />
+              </Link>
             </motion.div>
 
             {/* Desktop Language Switcher */}
@@ -146,13 +149,13 @@ const Header = ({ language, setLanguage, t }) => {
 
               {/* Navigation Menu */}
               <nav className="flex flex-col gap-1 text-right">
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-white hover:text-[#BA9B70] transition-colors duration-200 font-medium text-xl py-4 border-b border-white/10"
                 >
                   {t.nav.home}
-                </a>
+                </Link>
 
                 {/* About Us */}
                 <div>
@@ -171,7 +174,7 @@ const Header = ({ language, setLanguage, t }) => {
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden"
                       >
-                        <a href="#" className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.aboutUsInfo}</a>
+                        <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.aboutUsInfo}</Link>
                         <a href="#" className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.aboutUsGoals}</a>
                         <a href="#" className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.team}</a>
                       </motion.div>
