@@ -4,7 +4,7 @@ import { sectionImages } from '../utils/mockData';
 
 const UniteSection = ({ language, t }) => {
   return (
-    <section className={`py-20 px-6 ${language === 'ar' ? 'rtl' : 'ltr'}`}>
+    <section className={`hidden md:block py-20 px-6 ${language === 'ar' ? 'rtl' : 'ltr'}`}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}

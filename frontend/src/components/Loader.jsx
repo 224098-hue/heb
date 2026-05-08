@@ -1,22 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const ASSETS = [
+  '/logo-optimized.webp',
+  '/old-town.jpg',
+  '/pattern-original.jpg',
+  '/pattern.jpg',
+  '/logo-full.jpg',
+];
+
 const Loader = ({ onLoadComplete }) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setTimeout(() => onLoadComplete(), 500);
-          return 100;
-        }
-        return prev + 2;
-      });
-    }, 30);
+    let loaded = 0;
+    const total = ASSETS.length;
 
-    return () => clearInterval(interval);
+    const preloadImage = (src) =>
+      new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => {
+          loaded++;
+          setProgress(Math.round((loaded / total) * 100));
+          resolve();
+        };
+        img.onerror = () => {
+          loaded++;
+          setProgress(Math.round((loaded / total) * 100));
+          resolve();
+        };
+        img.src = src;
+      });
+
+    Promise.all(ASSETS.map(preloadImage)).then(() => {
+      setTimeout(() => onLoadComplete(), 400);
+    });
   }, [onLoadComplete]);
 
   return (
@@ -31,50 +49,62 @@ const Loader = ({ onLoadComplete }) => {
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="text-center"
+          className="text-center flex flex-col items-center"
         >
-          {/* Logo */}
-          <motion.img
-            src="/logo-optimized.webp"
-            alt="لجنة إعمار الخليل"
-            fetchpriority="high"
-            decoding="async"
-            className="h-20 w-auto mx-auto mb-8 object-contain"
-            animate={{ rotate: [0, 360] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-          />
-          
-          {/* Loading Text */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-white text-2xl font-bold mb-4"
+          {/* الشعار بدائرة — مع crop للجزء البني فقط */}
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="
+              w-20 h-20
+              lg:w-28 lg:h-28
+              rounded-full
+              border border-white/10
+              bg-white/5
+              flex items-center justify-center
+              mb-6 lg:mb-8
+              overflow-hidden
+            "
           >
-            جاري التحميل
-          </motion.p>
-          
+            {/*
+              الصورة الأصلية فيها الشعار الكامل (كلام + حرف العين البني).
+              بنحرك الصورة لليمين عشان يظهر بس الجزء البني (حرف العين).
+              عدّلي object-position لو احتجت ضبط أدق.
+            */}
+            <img
+              src="/logo-optimized.webp"
+              alt="لجنة إعمار الخليل"
+              className="
+                h-full w-auto
+                object-cover object-right
+                scale-110
+              "
+            />
+          </motion.div>
+
+          {/* الاسم */}
+          <p className="text-white text-lg lg:text-2xl font-medium mb-1 lg:mb-2">
+            لجنة إعمار الخليل
+          </p>
+          <p className="text-white/40 text-sm lg:text-base mb-6 lg:mb-8">
+            Hebron Reconstruction Committee
+          </p>
+
           {/* Progress Bar */}
-          <div className="w-64 h-1 bg-white/20 rounded-full overflow-hidden">
+          <div className="w-44 lg:w-64 h-[2px] bg-white/10 rounded-full overflow-hidden mb-3">
             <motion.div
               className="h-full rounded-full"
-              style={{ 
+              style={{
                 width: `${progress}%`,
-                backgroundColor: '#b9a779'
+                backgroundColor: '#b9a779',
               }}
               transition={{ duration: 0.3 }}
             />
           </div>
-          
-          {/* Progress Number */}
-          <motion.p
-            className="text-white/60 text-lg mt-4"
-            key={progress}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
-            {progress}
-          </motion.p>
+
+          {/* النسبة */}
+          <p className="text-white/40 text-sm lg:text-base">{progress}%</p>
         </motion.div>
       </motion.div>
     </AnimatePresence>

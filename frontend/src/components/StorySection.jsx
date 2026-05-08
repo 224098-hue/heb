@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { useNavigate } from 'react-router-dom'; // ← أضف هذا
 
 const StorySection = ({ language, t }) => {
+  const navigate = useNavigate(); // ← أضف هذا
+
   return (
     <section id="story" className={`py-20 px-6 bg-gray-50 ${language === 'ar' ? 'rtl' : 'ltr'}`}>
       <div className="max-w-7xl mx-auto">
@@ -34,6 +37,7 @@ const StorySection = ({ language, t }) => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => navigate('/about')} // ← أضف هذا
               className="inline-flex items-center gap-2 px-6 py-3 bg-teal-700 text-white rounded-full hover:bg-teal-800 transition-colors duration-200 font-medium"
             >
               {t.sections.storyButton}

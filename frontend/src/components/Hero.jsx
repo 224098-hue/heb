@@ -9,7 +9,7 @@ const Hero = ({ language, t }) => {
       <div className="absolute inset-0 bg-white">
         {/* Rotating circular pattern - positioned on left, covers from top to bottom */}
         <motion.div
-          className="absolute left-[-200px] top-0 w-[600px] h-full opacity-[0.08]"
+          className="absolute left-[-200px] top-0 w-[600px] h-full opacity-[0.15]"
           animate={{ rotate: 360 }}
           transition={{
             duration: 120,
