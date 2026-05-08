@@ -17,7 +17,7 @@ const Hero = ({ language, t }) => {
             ease: "linear"
           }}
           style={{
-            backgroundImage: `url('/pattern-original.jpg')`,
+            backgroundImage: `url('/pattern-original.webp')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             borderRadius: '50%',
@@ -86,7 +86,7 @@ const Hero = ({ language, t }) => {
         <div className="w-full px-4 pb-4">
           <div className="relative rounded-t-2xl overflow-hidden shadow-2xl">
             <img
-              src="/old-town.jpg"
+              src="/old-town.webp"
               alt="البلدة القديمة"
               className="w-full h-56 object-cover"
             />

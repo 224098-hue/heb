@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const ASSETS = [
   '/logo-optimized.webp',
-  '/old-town.jpg',
-  '/pattern-original.jpg',
-  '/pattern.jpg',
-  '/logo-full.jpg',
+  '/old-town.webp',
+  '/pattern-original.webp',
+  '/pattern.webp',
+  '/logo-full.webp',
 ];
 
 const Loader = ({ onLoadComplete }) => {
@@ -67,11 +67,7 @@ const Loader = ({ onLoadComplete }) => {
               overflow-hidden
             "
           >
-            {/*
-              الصورة الأصلية فيها الشعار الكامل (كلام + حرف العين البني).
-              بنحرك الصورة لليمين عشان يظهر بس الجزء البني (حرف العين).
-              عدّلي object-position لو احتجت ضبط أدق.
-            */}
+            
             <img
               src="/logo-optimized.webp"
               alt="لجنة إعمار الخليل"

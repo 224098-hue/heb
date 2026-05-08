@@ -170,8 +170,8 @@ export const pressArticles = [
 ];
 
 export const sectionImages = {
-  brandStory: '/old-town.jpg',
-  brandElements: '/pattern.jpg',
-  launchVideo: '/logo-full.jpg',
-  uniteSection: '/old-town.jpg',
+  brandStory: '/old-town.webp',
+  brandElements: '/pattern.webp',
+  launchVideo: '/logo-full.webp',
+  uniteSection: '/old-town.webp',
 };
