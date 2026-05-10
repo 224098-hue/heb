@@ -43,7 +43,7 @@ const Contact = ({ language, setLanguage, t }) => {
 
       {/* SECTION 1: Contact info + Map */}
       <section
-        className="pt-32 lg:pt-40 pb-16 lg:pb-20 px-6 lg:px-12"
+        className="pt-24 lg:pt-28 pb-16 lg:pb-20 px-6 lg:px-12"
         data-testid="contact-info-section"
       >
         <div className="max-w-7xl mx-auto">
@@ -60,7 +60,7 @@ const Contact = ({ language, setLanguage, t }) => {
               className={`lg:col-span-7 ${isAr ? 'text-right' : 'text-left'}`}
             >
               <h1
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 lg:mb-10"
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 lg:mb-10"
                 style={{
                   color: '#553B2E',
                   fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
@@ -71,8 +71,8 @@ const Contact = ({ language, setLanguage, t }) => {
               </h1>
 
               <p
-                className="text-base lg:text-lg mb-12 max-w-2xl"
-                style={{ color: '#3a3a3a', lineHeight: '2.1' }}
+                className="text-sm lg:text-base mb-12 max-w-2xl"
+                style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
                 تواصل مع لجنة إعمار الخليل للحصول على المساعدة والمعلومات التي
                 تحتاجها حول مشاريع الترميم وأحياء البلدة القديمة. يمكنك الاتصال
@@ -230,7 +230,7 @@ const Contact = ({ language, setLanguage, t }) => {
 
       {/* SECTION 2: Leave message form */}
       <section
-        className="py-16 lg:py-24 px-6 lg:px-12"
+        className="py-10 lg:py-14 px-6 lg:px-12"
         style={{ backgroundColor: '#FAF6EE' }}
         data-testid="contact-form-section"
       >
@@ -248,7 +248,7 @@ const Contact = ({ language, setLanguage, t }) => {
               className={`lg:col-span-5 ${isAr ? 'text-right' : 'text-left'}`}
             >
               <h2
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8"
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8"
                 style={{
                   color: '#553B2E',
                   fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
@@ -258,16 +258,16 @@ const Contact = ({ language, setLanguage, t }) => {
                 اترك رســالتــك
               </h2>
               <p
-                className="text-base lg:text-lg mb-5"
-                style={{ color: '#3a3a3a', lineHeight: '2.1' }}
+                className="text-sm lg:text-base mb-5"
+                style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
                 استخدم النموذج أدناه للتواصل مع لجنة إعمار الخليل مباشرةً. سواء
                 كان لديك استفسار، ملاحظة، أو طلب مساعدة، نحن هنا لخدمتكم والرد
                 عليكم بأسرع وقت ممكن.
               </p>
               <p
-                className="text-base lg:text-lg"
-                style={{ color: '#3a3a3a', lineHeight: '2.1' }}
+                className="text-sm lg:text-base"
+                style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
                 ما عليك سوى تعبئة بياناتك وكتابة رسالتك ثم الضغط على "إرسال"،
                 وسنقوم بالرد عليكم في أقرب وقت

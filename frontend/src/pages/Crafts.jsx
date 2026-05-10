@@ -65,7 +65,7 @@ const Crafts = ({ language, setLanguage, t }) => {
       <Header language={language} setLanguage={setLanguage} t={t} />
 
       <section
-        className="pt-32 lg:pt-40 pb-10 px-6 lg:px-12"
+        className="pt-24 lg:pt-28 pb-10 px-6 lg:px-12"
         data-testid="crafts-hero"
       >
         <div className="max-w-7xl mx-auto">
@@ -75,12 +75,12 @@ const Crafts = ({ language, setLanguage, t }) => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={fadeUp}
-            className="relative rounded-3xl overflow-hidden shadow-xl mb-16 lg:mb-24"
+            className="relative rounded-3xl overflow-hidden shadow-xl mb-10 lg:mb-14"
           >
             <img
               src={crafts[0].image}
               alt="المهن والحرف في الخليل"
-              className="w-full h-[320px] sm:h-[420px] lg:h-[520px] object-cover"
+              className="w-full h-[240px] sm:h-[320px] lg:h-[400px] object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-l from-[#553B2E]/70 via-[#553B2E]/30 to-[#553B2E]/40 pointer-events-none" />
 
@@ -91,7 +91,7 @@ const Crafts = ({ language, setLanguage, t }) => {
               }`}
             >
               <h1
-                className={`text-4xl sm:text-5xl lg:text-7xl font-bold text-white drop-shadow-lg ${
+                className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-white drop-shadow-lg ${
                   isAr ? 'text-right' : 'text-left'
                 }`}
                 style={{
@@ -108,10 +108,10 @@ const Crafts = ({ language, setLanguage, t }) => {
       </section>
 
       {/* Section: Subtitle + intro paragraph + 4 preview cards */}
-      <section className="px-6 lg:px-12 mb-16 lg:mb-24" data-testid="crafts-intro-section">
+      <section className="px-6 lg:px-12 mb-10 lg:mb-14" data-testid="crafts-intro-section">
         <div className="max-w-7xl mx-auto">
           <div
-            className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-12 lg:mb-16 items-start"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-8 lg:mb-12 items-start"
             dir={isAr ? 'rtl' : 'ltr'}
           >
             {/* Right (RTL): Subtitle */}
@@ -123,7 +123,7 @@ const Crafts = ({ language, setLanguage, t }) => {
               className={`lg:col-span-5 ${isAr ? 'text-right' : 'text-left'}`}
             >
               <h2
-                className="text-2xl lg:text-4xl font-bold leading-tight"
+                className="text-base lg:text-lg font-bold leading-tight"
                 style={{
                   color: '#553B2E',
                   fontFamily:
@@ -148,8 +148,8 @@ const Crafts = ({ language, setLanguage, t }) => {
               {intro.map((p, i) => (
                 <p
                   key={i}
-                  className="text-base lg:text-lg mb-4"
-                  style={{ color: '#3a3a3a', lineHeight: '2.1' }}
+                  className="text-sm lg:text-base mb-4"
+                  style={{ color: '#3a3a3a', lineHeight: '1.85' }}
                 >
                   {p}
                 </p>
@@ -196,7 +196,7 @@ const Crafts = ({ language, setLanguage, t }) => {
       </section>
 
       {/* Section: Detailed crafts list */}
-      <section className="px-6 lg:px-12 pb-24 lg:pb-32" data-testid="crafts-detail-section">
+      <section className="px-6 lg:px-12 pb-14 lg:pb-20" data-testid="crafts-detail-section">
         <div className="max-w-6xl mx-auto">
           {crafts.map((c, i) => (
             <motion.div
@@ -206,7 +206,7 @@ const Crafts = ({ language, setLanguage, t }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.7 }}
-              className={`grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-start py-12 lg:py-16 ${
+              className={`grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-start py-10 lg:py-14 ${
                 i !== 0 ? 'border-t border-gray-200' : ''
               }`}
               dir={isAr ? 'rtl' : 'ltr'}
@@ -229,7 +229,7 @@ const Crafts = ({ language, setLanguage, t }) => {
                 className={`md:col-span-8 ${isAr ? 'text-right' : 'text-left'}`}
               >
                 <h3
-                  className="text-2xl lg:text-3xl font-bold mb-6"
+                  className="text-base lg:text-lg font-bold mb-6"
                   style={{
                     color: '#553B2E',
                     fontFamily:
@@ -241,8 +241,8 @@ const Crafts = ({ language, setLanguage, t }) => {
                 {c.text.map((para, k) => (
                   <p
                     key={k}
-                    className="text-base lg:text-lg mb-4"
-                    style={{ color: '#3a3a3a', lineHeight: '2.1' }}
+                    className="text-sm lg:text-base mb-4"
+                    style={{ color: '#3a3a3a', lineHeight: '1.85' }}
                   >
                     {para}
                   </p>

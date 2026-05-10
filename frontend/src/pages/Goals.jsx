@@ -46,18 +46,18 @@ const Goals = ({ language, setLanguage, t }) => {
       <Header language={language} setLanguage={setLanguage} t={t} />
 
       <section
-        className="pt-36 lg:pt-44 pb-24 lg:pb-32 px-6 lg:px-12"
+        className="pt-24 lg:pt-28 pb-14 lg:pb-20 px-6 lg:px-12"
         data-testid="goals-section"
       >
         <div className="max-w-7xl mx-auto">
           {/* العنوان والمقدمة */}
-          <div className={`mb-16 lg:mb-24 ${isAr ? 'text-right' : 'text-left'} flex flex-col ${isAr ? 'items-start' : 'items-start'}`} dir={isAr ? 'rtl' : 'ltr'}>
+          <div className={`mb-10 lg:mb-14 ${isAr ? 'text-right' : 'text-left'} flex flex-col ${isAr ? 'items-start' : 'items-start'}`} dir={isAr ? 'rtl' : 'ltr'}>
             <motion.h1
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeUp}
-              className="text-3xl lg:text-5xl font-bold mb-4"
+              className="text-base lg:text-lg font-bold mb-4"
               style={{
                 color: '#553B2E',
                 fontFamily:
@@ -83,10 +83,10 @@ const Goals = ({ language, setLanguage, t }) => {
               viewport={{ once: true }}
               variants={fadeUp}
               transition={{ delay: 0.15 }}
-              className="text-base lg:text-lg max-w-2xl"
+              className="text-sm lg:text-base max-w-2xl"
               style={{
                 color: '#3a3a3a',
-                lineHeight: '2.1',
+                lineHeight: '1.85',
               }}
             >
               {intro}
@@ -152,7 +152,7 @@ const Goals = ({ language, setLanguage, t }) => {
                 className="text-sm lg:text-base text-center px-2"
                 style={{
                   color: '#5a5a5a',
-                  lineHeight: '2',
+                  lineHeight: '1.85',
                 }}
                 data-testid={`goal-desc-${i}`}
               >

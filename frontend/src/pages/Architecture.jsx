@@ -65,7 +65,7 @@ const Architecture = ({ language, setLanguage, t }) => {
 
       {/* ─────────────── SECTION 1: Origin & Urban Formation ─────────────── */}
       <section
-        className="pt-32 lg:pt-40 pb-12 lg:pb-16 px-6 lg:px-12"
+        className="pt-24 lg:pt-28 pb-12 lg:pb-16 px-6 lg:px-12"
         data-testid="arch-origin-section"
       >
         <div className="max-w-7xl mx-auto">
@@ -82,7 +82,7 @@ const Architecture = ({ language, setLanguage, t }) => {
               className={`lg:col-span-7 ${isAr ? 'text-right' : 'text-left'}`}
             >
               <h1
-                className="text-3xl lg:text-5xl font-bold mb-4 leading-tight"
+                className="text-base lg:text-lg font-bold mb-4 leading-tight"
                 style={{
                   color: '#553B2E',
                   fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
@@ -97,8 +97,8 @@ const Architecture = ({ language, setLanguage, t }) => {
               />
 
               <p
-                className="text-base lg:text-lg mb-5"
-                style={{ color: '#3a3a3a', lineHeight: '2.1' }}
+                className="text-sm lg:text-base mb-5"
+                style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
                 تشكلت مدينة الخليل القديمة تدريجياً حول المسجد الإبراهيمي الشريف،
                 متأثرة بثلاثة عناصر رئيسية: موقعها الديني المميز، ووادي الخليل
@@ -106,8 +106,8 @@ const Architecture = ({ language, setLanguage, t }) => {
                 النواة الكنعانية الأولى للمدينة.
               </p>
               <p
-                className="text-base lg:text-lg mb-10"
-                style={{ color: '#3a3a3a', lineHeight: '2.1' }}
+                className="text-sm lg:text-base mb-10"
+                style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
                 مع مرور الزمن، توسعت المدينة من تل الرميدة نحو موقعها الحالي،
                 وازدهرت بشكل واضح بعد الفتح الإسلامي، وبلغت ذروة تطورها العمراني
@@ -150,7 +150,7 @@ const Architecture = ({ language, setLanguage, t }) => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeUp}
-            className="mt-16 lg:mt-20 rounded-3xl shadow-md overflow-hidden"
+            className="mt-10 lg:mt-12 rounded-3xl shadow-md overflow-hidden"
             style={{ backgroundColor: '#F1E9D6' }}
             data-testid="arch-stats"
           >
@@ -171,7 +171,7 @@ const Architecture = ({ language, setLanguage, t }) => {
                     strokeWidth={2.2}
                   />
                   <div
-                    className="text-2xl lg:text-3xl font-bold mb-1"
+                    className="text-base lg:text-lg font-bold mb-1"
                     style={{ color: '#553B2E' }}
                   >
                     {value}
@@ -191,7 +191,7 @@ const Architecture = ({ language, setLanguage, t }) => {
 
       {/* ─────────────── SECTION 2: Districts ─────────────── */}
       <section
-        className="px-6 lg:px-12 py-12 lg:py-16"
+        className="px-6 lg:px-12 py-10 lg:py-14"
         data-testid="arch-districts-section"
       >
         <div className="max-w-6xl mx-auto">
@@ -227,8 +227,8 @@ const Architecture = ({ language, setLanguage, t }) => {
                 className={`md:col-span-7 ${isAr ? 'text-right' : 'text-left'}`}
               >
                 <p
-                  className="text-base lg:text-lg mb-3"
-                  style={{ color: '#3a3a3a', lineHeight: '2' }}
+                  className="text-sm lg:text-base mb-3"
+                  style={{ color: '#3a3a3a', lineHeight: '1.85' }}
                 >
                   {districts.intro}
                 </p>
@@ -236,7 +236,7 @@ const Architecture = ({ language, setLanguage, t }) => {
                   {districts.list1.map((item) => (
                     <li
                       key={item}
-                      className="text-base lg:text-lg flex items-center gap-3"
+                      className="text-sm lg:text-base flex items-center gap-3"
                       style={{ color: '#3a3a3a' }}
                     >
                       <span
@@ -249,8 +249,8 @@ const Architecture = ({ language, setLanguage, t }) => {
                 </ul>
 
                 <p
-                  className="text-base lg:text-lg mb-3"
-                  style={{ color: '#3a3a3a', lineHeight: '2' }}
+                  className="text-sm lg:text-base mb-3"
+                  style={{ color: '#3a3a3a', lineHeight: '1.85' }}
                 >
                   {districts.intro2}
                 </p>
@@ -258,7 +258,7 @@ const Architecture = ({ language, setLanguage, t }) => {
                   {districts.list2.map((item) => (
                     <li
                       key={item}
-                      className="text-base lg:text-lg flex items-center gap-3"
+                      className="text-sm lg:text-base flex items-center gap-3"
                       style={{ color: '#3a3a3a' }}
                     >
                       <span
@@ -277,7 +277,7 @@ const Architecture = ({ language, setLanguage, t }) => {
 
       {/* ─────────────── SECTION 3: Markets ─────────────── */}
       <section
-        className="px-6 lg:px-12 py-12 lg:py-16"
+        className="px-6 lg:px-12 py-10 lg:py-14"
         data-testid="arch-markets-section"
       >
         <div className="max-w-6xl mx-auto">
@@ -313,8 +313,8 @@ const Architecture = ({ language, setLanguage, t }) => {
                 className={`md:col-span-7 ${isAr ? 'text-right' : 'text-left'}`}
               >
                 <p
-                  className="text-base lg:text-lg mb-3"
-                  style={{ color: '#3a3a3a', lineHeight: '2' }}
+                  className="text-sm lg:text-base mb-3"
+                  style={{ color: '#3a3a3a', lineHeight: '1.85' }}
                 >
                   {markets.intro}
                 </p>
@@ -322,7 +322,7 @@ const Architecture = ({ language, setLanguage, t }) => {
                   {markets.list.map((item) => (
                     <li
                       key={item}
-                      className="text-base lg:text-lg flex items-center gap-3"
+                      className="text-sm lg:text-base flex items-center gap-3"
                       style={{ color: '#3a3a3a' }}
                     >
                       <span
@@ -342,7 +342,7 @@ const Architecture = ({ language, setLanguage, t }) => {
       {/* ─────────────── SECTION 4: Challenges ─────────────── */}
       <section
         id="challenges"
-        className="px-6 lg:px-12 py-16 lg:py-20 mt-8"
+        className="px-6 lg:px-12 py-10 lg:py-14 mt-8"
         data-testid="arch-challenges-section"
       >
         <div className="max-w-7xl mx-auto">
@@ -352,7 +352,7 @@ const Architecture = ({ language, setLanguage, t }) => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={fadeUp}
-            className="rounded-3xl px-8 lg:px-12 py-10 lg:py-14 mb-12 lg:mb-16"
+            className="rounded-3xl px-8 lg:px-12 py-10 lg:py-14 mb-8 lg:mb-12"
             style={{ backgroundColor: '#E5DCC9' }}
           >
             <div
@@ -361,7 +361,7 @@ const Architecture = ({ language, setLanguage, t }) => {
             >
               {/* Title — Right in RTL */}
               <h2
-                className={`md:col-span-4 text-2xl lg:text-4xl font-bold leading-tight ${
+                className={`md:col-span-4 text-base lg:text-lg font-bold leading-tight ${
                   isAr ? 'text-right' : 'text-left'
                 }`}
                 style={{
@@ -375,10 +375,10 @@ const Architecture = ({ language, setLanguage, t }) => {
 
               {/* Paragraph — Left in RTL */}
               <p
-                className={`md:col-span-8 text-base lg:text-lg ${
+                className={`md:col-span-8 text-sm lg:text-base ${
                   isAr ? 'text-right' : 'text-left'
                 }`}
-                style={{ color: '#3a3a3a', lineHeight: '2.1' }}
+                style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
                 تعرضت البلدة القديمة عبر تاريخها للعديد من الكوارث والتغيرات،
                 منها الزلازل، والحروب، والقصف، إضافة إلى أعمال الهدم والتغيير
@@ -389,7 +389,7 @@ const Architecture = ({ language, setLanguage, t }) => {
           </motion.div>
 
           {/* 2 challenge images — staggered (left higher, right lower in RTL) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 mb-12 lg:mb-16 max-w-4xl mx-auto" dir={isAr ? 'rtl' : 'ltr'}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 mb-8 lg:mb-12 max-w-4xl mx-auto" dir={isAr ? 'rtl' : 'ltr'}>
             {[
               {
                 src: '/old-town.webp',
@@ -436,7 +436,7 @@ const Architecture = ({ language, setLanguage, t }) => {
               dir={isAr ? 'rtl' : 'ltr'}
             >
               <h2
-                className={`md:col-span-4 text-2xl lg:text-4xl font-bold leading-tight ${
+                className={`md:col-span-4 text-base lg:text-lg font-bold leading-tight ${
                   isAr ? 'text-right' : 'text-left'
                 }`}
                 style={{
@@ -449,10 +449,10 @@ const Architecture = ({ language, setLanguage, t }) => {
               </h2>
 
               <p
-                className={`md:col-span-8 text-base lg:text-lg ${
+                className={`md:col-span-8 text-sm lg:text-base ${
                   isAr ? 'text-right' : 'text-left'
                 }`}
-                style={{ color: '#3a3a3a', lineHeight: '2.1' }}
+                style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
                 شهدت البلدة القديمة تطوراً تدريجياً في الخدمات مثل شبكات المياه
                 والصرف الصحي والكهرباء والطرق المعبدة، خاصة منذ أواخر العهد

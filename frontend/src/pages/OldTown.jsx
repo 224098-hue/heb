@@ -40,7 +40,7 @@ const OldTown = ({ language, setLanguage, t }) => {
       <Header language={language} setLanguage={setLanguage} t={t} />
 
       <section
-        className="pt-32 lg:pt-40 pb-24 lg:pb-32 px-6 lg:px-12"
+        className="pt-24 lg:pt-28 pb-14 lg:pb-20 px-6 lg:px-12"
         data-testid="oldtown-section"
       >
         <div className="max-w-7xl mx-auto">
@@ -50,11 +50,11 @@ const OldTown = ({ language, setLanguage, t }) => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={fadeUp}
-            className="relative mb-12 lg:mb-20"
+            className="relative mb-8 lg:mb-12"
             data-testid="oldtown-banner"
           >
             <div
-              className="relative w-full h-[280px] sm:h-[400px] lg:h-[560px] overflow-hidden shadow-xl"
+              className="relative w-full h-[220px] sm:h-[300px] lg:h-[380px] overflow-hidden shadow-xl"
               style={{
                 borderRadius: '24px',
                 WebkitMaskImage:
@@ -98,7 +98,7 @@ const OldTown = ({ language, setLanguage, t }) => {
               className={`lg:col-span-6 ${isAr ? 'text-right' : 'text-left'}`}
             >
               <h1
-                className="text-3xl lg:text-5xl font-bold mb-4"
+                className="text-base lg:text-lg font-bold mb-4"
                 style={{
                   color: '#553B2E',
                   fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
@@ -114,8 +114,8 @@ const OldTown = ({ language, setLanguage, t }) => {
               {paragraphs.map((p, i) => (
                 <p
                   key={i}
-                  className="text-base lg:text-lg mb-5"
-                  style={{ color: '#3a3a3a', lineHeight: '2.1' }}
+                  className="text-sm lg:text-base mb-5"
+                  style={{ color: '#3a3a3a', lineHeight: '1.85' }}
                   data-testid={`oldtown-p-${i}`}
                 >
                   {p}

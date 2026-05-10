@@ -40,7 +40,7 @@ const BeforeAfter = ({ before, after, isAr }) => {
       <div className="flex flex-col items-center justify-between py-4 select-none">
         <button
           onClick={() => setShowAfter(false)}
-          className={`text-base lg:text-lg font-semibold transition-colors ${
+          className={`text-sm lg:text-base font-semibold transition-colors ${
             !showAfter ? '' : 'opacity-50'
           }`}
           style={{ color: '#553B2E' }}
@@ -53,7 +53,7 @@ const BeforeAfter = ({ before, after, isAr }) => {
         </div>
         <button
           onClick={() => setShowAfter(true)}
-          className={`text-base lg:text-lg font-semibold transition-colors ${
+          className={`text-sm lg:text-base font-semibold transition-colors ${
             showAfter ? '' : 'opacity-50'
           }`}
           style={{ color: '#553B2E' }}
@@ -209,14 +209,14 @@ const Achievements = ({ language, setLanguage, t }) => {
       <Header language={language} setLanguage={setLanguage} t={t} />
 
       {/* SECTION 1: Project hero */}
-      <section className="pt-32 lg:pt-40 pb-12 lg:pb-16 px-6 lg:px-12" data-testid="achievements-hero">
+      <section className="pt-24 lg:pt-28 pb-12 lg:pb-16 px-6 lg:px-12" data-testid="achievements-hero">
         <div className="max-w-7xl mx-auto">
           <motion.h1
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 lg:mb-8 ${isAr ? 'text-right' : 'text-left'}`}
+            className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 lg:mb-8 ${isAr ? 'text-right' : 'text-left'}`}
             style={{
               color: '#553B2E',
               fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
@@ -233,7 +233,7 @@ const Achievements = ({ language, setLanguage, t }) => {
             viewport={{ once: true }}
             variants={fadeUp}
             transition={{ delay: 0.1 }}
-            className={`text-xl lg:text-2xl mb-12 lg:mb-16 ${isAr ? 'text-right' : 'text-left'}`}
+            className={`text-base lg:text-lg mb-8 lg:mb-12 ${isAr ? 'text-right' : 'text-left'}`}
             style={{
               color: '#553B2E',
               fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
@@ -256,14 +256,14 @@ const Achievements = ({ language, setLanguage, t }) => {
       </section>
 
       {/* SECTION 2: Awards & Carousel */}
-      <section className="pt-12 lg:pt-16 pb-24 lg:pb-32 px-6 lg:px-12" data-testid="achievements-gallery">
+      <section className="pt-12 lg:pt-16 pb-14 lg:pb-20 px-6 lg:px-12" data-testid="achievements-gallery">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 ${isAr ? 'text-right' : 'text-left'}`}
+            className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 ${isAr ? 'text-right' : 'text-left'}`}
             style={{
               color: '#553B2E',
               fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
@@ -278,8 +278,8 @@ const Achievements = ({ language, setLanguage, t }) => {
             viewport={{ once: true }}
             variants={fadeUp}
             transition={{ delay: 0.1 }}
-            className={`text-base lg:text-lg mb-12 lg:mb-16 ${isAr ? 'text-right' : 'text-left'}`}
-            style={{ color: '#5a5249', lineHeight: '2' }}
+            className={`text-sm lg:text-base mb-8 lg:mb-12 ${isAr ? 'text-right' : 'text-left'}`}
+            style={{ color: '#5a5249', lineHeight: '1.85' }}
           >
             تراث الخليل... أمانة تُبنى للمستقبل.
           </motion.p>

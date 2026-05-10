@@ -43,7 +43,7 @@ const Donations = ({ language, setLanguage, t }) => {
       <Header language={language} setLanguage={setLanguage} t={t} />
 
       {/* SECTION 1: Why Donate */}
-      <section className="pt-32 lg:pt-40 pb-16 lg:pb-20 px-6 lg:px-12" data-testid="donations-why">
+      <section className="pt-24 lg:pt-28 pb-16 lg:pb-20 px-6 lg:px-12" data-testid="donations-why">
         <div className="max-w-7xl mx-auto">
           <div
             className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center"
@@ -76,7 +76,7 @@ const Donations = ({ language, setLanguage, t }) => {
               className={`lg:col-span-7 order-1 lg:order-2 ${isAr ? 'text-right' : 'text-left'}`}
             >
               <h1
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 lg:mb-10 leading-tight"
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 lg:mb-10 leading-tight"
                 style={{
                   color: '#553B2E',
                   fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
@@ -87,8 +87,8 @@ const Donations = ({ language, setLanguage, t }) => {
               </h1>
 
               <p
-                className="text-base lg:text-lg mb-6"
-                style={{ color: '#3a3a3a', lineHeight: '2.1' }}
+                className="text-sm lg:text-base mb-6"
+                style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
                 يساهم التبرع في تطوير البلدة القديمة في دعم المجتمع المحلي عبر
                 ترميم المرافق التاريخية وتحسين البيئة العمرانية، مما يؤدي إلى
@@ -96,8 +96,8 @@ const Donations = ({ language, setLanguage, t }) => {
               </p>
 
               <p
-                className="text-base lg:text-lg mb-10"
-                style={{ color: '#3a3a3a', lineHeight: '2.1' }}
+                className="text-sm lg:text-base mb-10"
+                style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
                 تبرعك الآن... فرصة تحدث فرقاً حقيقياً لأهل و مستقبل البلدة
                 القديمة.
@@ -119,7 +119,7 @@ const Donations = ({ language, setLanguage, t }) => {
       {/* SECTION 2: Donate Form */}
       <section
         id="donate-form"
-        className="py-16 lg:py-20 px-6 lg:px-12"
+        className="py-10 lg:py-14 px-6 lg:px-12"
         data-testid="donations-form-section"
       >
         <div className="max-w-7xl mx-auto">
@@ -136,7 +136,7 @@ const Donations = ({ language, setLanguage, t }) => {
               className={`lg:col-span-5 ${isAr ? 'text-right' : 'text-left'}`}
             >
               <h2
-                className="text-3xl lg:text-5xl font-bold mb-6"
+                className="text-base lg:text-lg font-bold mb-6"
                 style={{
                   color: '#553B2E',
                   fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
@@ -145,14 +145,14 @@ const Donations = ({ language, setLanguage, t }) => {
                 بادر ... وتبرع
               </h2>
               <p
-                className="text-base lg:text-lg mb-3"
-                style={{ color: '#3a3a3a', lineHeight: '2.1' }}
+                className="text-sm lg:text-base mb-3"
+                style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
                 إما أن نبقى نشاهد التاريخ ينهار... أو نكون نحن من يعيده للحياة.
               </p>
               <p
-                className="text-base lg:text-lg"
-                style={{ color: '#3a3a3a', lineHeight: '2.1' }}
+                className="text-sm lg:text-base"
+                style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
                 بدعمك، البلدة القديمة ستنهض من جديد.
               </p>
@@ -232,7 +232,7 @@ const Donations = ({ language, setLanguage, t }) => {
       </section>
 
       {/* SECTION 3: Feedback Form */}
-      <section className="py-16 lg:py-24 px-6 lg:px-12" data-testid="feedback-section">
+      <section className="py-10 lg:py-14 px-6 lg:px-12" data-testid="feedback-section">
         <div className="max-w-7xl mx-auto">
           <div
             className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start"
@@ -254,7 +254,7 @@ const Donations = ({ language, setLanguage, t }) => {
               </p>
               <div className="h-[2px] w-32 mb-6" style={{ backgroundColor: '#BA9B70' }} />
               <h2
-                className="text-3xl lg:text-5xl font-bold mb-6"
+                className="text-base lg:text-lg font-bold mb-6"
                 style={{
                   color: '#553B2E',
                   fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
@@ -263,8 +263,8 @@ const Donations = ({ language, setLanguage, t }) => {
                 رأيكَ يهمنا
               </h2>
               <p
-                className="text-base lg:text-lg"
-                style={{ color: '#3a3a3a', lineHeight: '2.1' }}
+                className="text-sm lg:text-base"
+                style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
                 نقدر مساهمتك للبلدة القديمة، ونأخذ بعين الاعتبار ملاحظاتك
                 واقتراحاتك لمساعدتنا على جعل البلدة القديمة مكاناً أفضل وتراثاً

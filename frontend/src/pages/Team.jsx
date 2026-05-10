@@ -84,13 +84,13 @@ const Team = ({ language, setLanguage, t }) => {
       <Header language={language} setLanguage={setLanguage} t={t} />
 
       <section
-        className="pt-36 lg:pt-44 pb-24 lg:pb-32 px-6 lg:px-12"
+        className="pt-24 lg:pt-28 pb-14 lg:pb-20 px-6 lg:px-12"
         data-testid="team-section"
       >
         <div className="max-w-7xl mx-auto">
           {/* العنوان والمقدمة */}
           <div
-            className={`mb-16 lg:mb-24 ${isAr ? 'text-right' : 'text-left'}`}
+            className={`mb-10 lg:mb-14 ${isAr ? 'text-right' : 'text-left'}`}
           >
             <div className="max-w-3xl me-auto">
               <motion.h1
@@ -98,7 +98,7 @@ const Team = ({ language, setLanguage, t }) => {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
-                className="text-3xl lg:text-5xl font-bold mb-4"
+                className="text-base lg:text-lg font-bold mb-4"
                 style={{
                   color: '#553B2E',
                   fontFamily:
@@ -127,10 +127,10 @@ const Team = ({ language, setLanguage, t }) => {
                 viewport={{ once: true }}
                 variants={fadeUp}
                 transition={{ delay: 0.15 }}
-                className="text-base lg:text-lg max-w-2xl"
+                className="text-sm lg:text-base max-w-2xl"
                 style={{
                   color: '#3a3a3a',
-                  lineHeight: '2.1',
+                  lineHeight: '1.85',
                 }}
               >
                 {intro}
@@ -274,7 +274,7 @@ const Team = ({ language, setLanguage, t }) => {
                     {current.name}
                   </h2>
                   <p
-                    className="text-base lg:text-lg"
+                    className="text-sm lg:text-base"
                     style={{ color: '#7a7a7a' }}
                     data-testid="team-role"
                   >

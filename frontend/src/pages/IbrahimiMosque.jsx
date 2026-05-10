@@ -216,7 +216,7 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
 
       {/* ───────────── HERO BANNER + TITLE ───────────── */}
       <section
-        className="pt-32 lg:pt-40 px-6 lg:px-12 pb-12 lg:pb-16"
+        className="pt-24 lg:pt-28 px-6 lg:px-12 pb-12 lg:pb-16"
         data-testid="haram-hero"
       >
         <div className="max-w-7xl mx-auto">
@@ -230,7 +230,7 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
             <img
               src="https://images.unsplash.com/photo-1591456983933-0d680b2dca0d?w=1600&q=80"
               alt="الحرم الإبراهيمي"
-              className="w-full h-[300px] sm:h-[420px] lg:h-[560px] object-cover"
+              className="w-full h-[220px] sm:h-[320px] lg:h-[400px] object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-l from-[#553B2E]/70 via-[#553B2E]/30 to-[#553B2E]/40 pointer-events-none" />
             <div
@@ -239,7 +239,7 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
               }`}
             >
               <h1
-                className={`text-3xl sm:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg ${
+                className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-white drop-shadow-lg ${
                   isAr ? 'text-right' : 'text-left'
                 }`}
                 style={{
@@ -257,7 +257,7 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
 
       {/* ───────────── EXPLORE SECTION ───────────── */}
       <section
-        className="px-6 lg:px-12 py-12 lg:py-16"
+        className="px-6 lg:px-12 py-10 lg:py-14"
         data-testid="haram-explore"
       >
         <div className="max-w-7xl mx-auto">
@@ -274,7 +274,7 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
               className={`lg:col-span-5 ${isAr ? 'text-right' : 'text-left'}`}
             >
               <h2
-                className="text-2xl lg:text-4xl font-bold leading-tight"
+                className="text-base lg:text-lg font-bold leading-tight"
                 style={{
                   color: '#553B2E',
                   fontFamily:
@@ -303,8 +303,8 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
                 نبذة تاريخية
               </p>
               <p
-                className="text-base lg:text-lg mb-4"
-                style={{ color: '#3a3a3a', lineHeight: '2.1' }}
+                className="text-sm lg:text-base mb-4"
+                style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
                 يُعتبر الحرم الإبراهيمي من أقدم الأماكن المقدسة في العالم التي
                 ما زالت مستخدمة حتى اليوم دون انقطاع تقريباً. وترتبط قدسيته
@@ -312,8 +312,8 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
                 إلى النبيين إسحاق ويعقوب وزوجتيهما.
               </p>
               <p
-                className="text-base lg:text-lg"
-                style={{ color: '#3a3a3a', lineHeight: '2.1' }}
+                className="text-sm lg:text-base"
+                style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
                 وقد شكَّل الحرم عبر التاريخ مركزاً دينياً وحضارياً مهماً، وأسهم
                 في شهرة مدينة الخليل عالمياً، حتى أن اسم "Hebron" أُطلق على مدن
@@ -351,7 +351,7 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
 
       {/* ───────────── 3 INFO BANNER SECTIONS ───────────── */}
       <section
-        className="px-6 lg:px-12 py-8 lg:py-12"
+        className="px-6 lg:px-12 py-6 lg:py-10"
         data-testid="haram-info-section"
       >
         <div className="max-w-7xl mx-auto space-y-10 lg:space-y-14">
@@ -363,7 +363,7 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
               viewport={{ once: true, amount: 0.2 }}
               variants={fadeUp}
               transition={{ delay: i * 0.05 }}
-              className="rounded-3xl px-8 lg:px-16 py-12 lg:py-20"
+              className="rounded-3xl px-8 lg:px-16 py-10 lg:py-14"
               style={{ backgroundColor: '#F5EFE3' }}
               data-testid={`haram-info-${i}`}
             >
@@ -373,7 +373,7 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
                 }`}
               >
                 <h3
-                  className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 lg:mb-10 leading-[1.2]"
+                  className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 lg:mb-10 leading-[1.2]"
                   style={{
                     color: '#553B2E',
                     fontFamily:
@@ -383,8 +383,8 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
                   {section.title}
                 </h3>
                 <div
-                  className="text-base lg:text-lg"
-                  style={{ color: '#5a5249', lineHeight: '2.1' }}
+                  className="text-sm lg:text-base"
+                  style={{ color: '#5a5249', lineHeight: '1.85' }}
                 >
                   {section.content}
                 </div>
@@ -396,18 +396,18 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
 
       {/* ───────────── الصمود عبر التاريخ ─────────────  */}
       <section
-        className="px-6 lg:px-12 py-12 lg:py-20"
+        className="px-6 lg:px-12 py-10 lg:py-14"
         data-testid="haram-resilience-section"
       >
         <div className="max-w-7xl mx-auto">
-          <div className="border-t border-gray-200 pt-12 lg:pt-16 mb-12 lg:mb-16" />
+          <div className="border-t border-gray-200 pt-12 lg:pt-16 mb-8 lg:mb-12" />
 
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={fadeUp}
-            className="rounded-3xl px-8 lg:px-16 py-12 lg:py-20 mb-12 lg:mb-16"
+            className="rounded-3xl px-8 lg:px-16 py-10 lg:py-14 mb-8 lg:mb-12"
             style={{ backgroundColor: '#F5EFE3' }}
           >
             <div
@@ -416,7 +416,7 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
               }`}
             >
               <h3
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 lg:mb-10 leading-[1.2]"
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 lg:mb-10 leading-[1.2]"
                 style={{
                   color: '#553B2E',
                   fontFamily:
@@ -426,8 +426,8 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
                 الصمود عبر التاريخ
               </h3>
               <p
-                className="text-base lg:text-lg"
-                style={{ color: '#5a5249', lineHeight: '2.1' }}
+                className="text-sm lg:text-base"
+                style={{ color: '#5a5249', lineHeight: '1.85' }}
               >
                 رغم مرور أكثر من ألفي عام على بناء الحرم، وتعرض مدينة الخليل
                 للعديد من الزلازل والحروب، حافظ المبنى على متانته وطابعه

@@ -78,7 +78,7 @@ const About = ({ language, setLanguage, t }) => {
             className={`order-1 lg:order-2 ${isAr ? 'text-right' : 'text-left'}`}
           >
             <h1
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6"
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6"
               style={{
                 color: '#553B2E',
                 fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
@@ -92,7 +92,7 @@ const About = ({ language, setLanguage, t }) => {
             />
             <p
               className="text-lg lg:text-xl leading-loose mb-10"
-              style={{ color: '#3a3a3a', lineHeight: '2.1' }}
+              style={{ color: '#3a3a3a', lineHeight: '1.85' }}
             >
               {a.heroParagraph}
             </p>
@@ -113,7 +113,7 @@ const About = ({ language, setLanguage, t }) => {
       {/* SECTION 2 — VISION & MISSION */}
       <section
         id="vision"
-        className="py-20 lg:py-28 px-6 lg:px-12"
+        className="py-10 lg:py-14 px-6 lg:px-12"
         style={{ backgroundColor: '#FAF6EE' }}
       >
         <div className="max-w-7xl mx-auto">
@@ -125,7 +125,7 @@ const About = ({ language, setLanguage, t }) => {
             className="text-center mb-16"
           >
             <h2
-              className="text-3xl lg:text-5xl font-bold mb-4"
+              className="text-base lg:text-lg font-bold mb-4"
               style={{
                 color: '#553B2E',
                 fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
@@ -157,7 +157,7 @@ const About = ({ language, setLanguage, t }) => {
                   {title}
                 </h3>
                 <div className="h-[2px] w-12 mx-auto mb-5" style={{ backgroundColor: '#BA9B70' }} />
-                <p className="text-base leading-loose" style={{ color: '#5a5a5a', lineHeight: '2' }}>
+                <p className="text-base leading-loose" style={{ color: '#5a5a5a', lineHeight: '1.85' }}>
                   {text}
                 </p>
               </motion.div>
@@ -167,7 +167,7 @@ const About = ({ language, setLanguage, t }) => {
       </section>
 
       {/* SECTION 3 — ABOUT + TIMELINE */}
-      <section className="py-20 lg:py-28 px-6 lg:px-12 bg-white">
+      <section className="py-10 lg:py-14 px-6 lg:px-12 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           <motion.div
             initial="hidden"
@@ -243,7 +243,7 @@ const About = ({ language, setLanguage, t }) => {
             className={`lg:col-span-4 order-1 lg:order-3 ${isAr ? 'text-right' : 'text-left'}`}
           >
             <h2
-              className="text-3xl lg:text-5xl font-bold mb-4"
+              className="text-base lg:text-lg font-bold mb-4"
               style={{
                 color: '#553B2E',
                 fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
@@ -252,10 +252,10 @@ const About = ({ language, setLanguage, t }) => {
               {a.aboutTitle}
             </h2>
             <div className="h-[2px] w-24 mb-8" style={{ backgroundColor: '#BA9B70' }} />
-            <p className="text-base lg:text-lg leading-loose mb-5" style={{ color: '#3a3a3a', lineHeight: '2.1' }}>
+            <p className="text-sm lg:text-base leading-loose mb-5" style={{ color: '#3a3a3a', lineHeight: '1.85' }}>
               {a.aboutText1}
             </p>
-            <p className="text-base lg:text-lg leading-loose mb-10" style={{ color: '#3a3a3a', lineHeight: '2.1' }}>
+            <p className="text-sm lg:text-base leading-loose mb-10" style={{ color: '#3a3a3a', lineHeight: '1.85' }}>
               {a.aboutText2}
             </p>
             <Link
