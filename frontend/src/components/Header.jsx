@@ -66,7 +66,7 @@ const Header = ({ language, setLanguage, t }) => {
                   <Link to="/old-town" className="block px-4 py-3 text-gray-700 hover:bg-[#BA9B70] hover:text-white transition-colors text-sm">{t.nav.oldTown}</Link>
                   <Link to="/crafts" className="block px-4 py-3 text-gray-700 hover:bg-[#BA9B70] hover:text-white transition-colors text-sm">{t.nav.crafts}</Link>
                   <Link to="/architecture" className="block px-4 py-3 text-gray-700 hover:bg-[#BA9B70] hover:text-white transition-colors text-sm">{t.nav.architecture}</Link>
-                  <a href="#" className="block px-4 py-3 text-gray-700 hover:bg-[#BA9B70] hover:text-white transition-colors text-sm">{t.nav.ibrahimiMosque}</a>
+                  <Link to="/ibrahimi-mosque" className="block px-4 py-3 text-gray-700 hover:bg-[#BA9B70] hover:text-white transition-colors text-sm">{t.nav.ibrahimiMosque}</Link>
                 </div>
               </div>
 
@@ -202,7 +202,7 @@ const Header = ({ language, setLanguage, t }) => {
                         <Link to="/old-town" onClick={() => setMobileMenuOpen(false)} className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.oldTown}</Link>
                         <Link to="/crafts" onClick={() => setMobileMenuOpen(false)} className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.crafts}</Link>
                         <Link to="/architecture" onClick={() => setMobileMenuOpen(false)} className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.architecture}</Link>
-                        <a href="#" className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.ibrahimiMosque}</a>
+                        <Link to="/ibrahimi-mosque" onClick={() => setMobileMenuOpen(false)} className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.ibrahimiMosque}</Link>
                       </motion.div>
                     )}
                   </AnimatePresence>

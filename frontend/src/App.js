@@ -9,6 +9,7 @@ import Team from './pages/Team';
 import OldTown from './pages/OldTown';
 import Crafts from './pages/Crafts';
 import Architecture from './pages/Architecture';
+import IbrahimiMosque from './pages/IbrahimiMosque';
 import { translations } from './utils/mockData';
 
 const ScrollToTop = () => {
@@ -78,6 +79,12 @@ function App() {
             path="/architecture"
             element={
               <Architecture language={language} setLanguage={setLanguage} t={t} />
+            }
+          />
+          <Route
+            path="/ibrahimi-mosque"
+            element={
+              <IbrahimiMosque language={language} setLanguage={setLanguage} t={t} />
             }
           />
         </Routes>
