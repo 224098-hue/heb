@@ -5,6 +5,10 @@ import Loader from './components/Loader';
 import Home from './pages/Home';
 import About from './pages/About';
 import Goals from './pages/Goals';
+import Team from './pages/Team';
+import OldTown from './pages/OldTown';
+import Crafts from './pages/Crafts';
+import Architecture from './pages/Architecture';
 import { translations } from './utils/mockData';
 
 const ScrollToTop = () => {
@@ -50,6 +54,30 @@ function App() {
             path="/goals"
             element={
               <Goals language={language} setLanguage={setLanguage} t={t} />
+            }
+          />
+          <Route
+            path="/team"
+            element={
+              <Team language={language} setLanguage={setLanguage} t={t} />
+            }
+          />
+          <Route
+            path="/old-town"
+            element={
+              <OldTown language={language} setLanguage={setLanguage} t={t} />
+            }
+          />
+          <Route
+            path="/crafts"
+            element={
+              <Crafts language={language} setLanguage={setLanguage} t={t} />
+            }
+          />
+          <Route
+            path="/architecture"
+            element={
+              <Architecture language={language} setLanguage={setLanguage} t={t} />
             }
           />
         </Routes>

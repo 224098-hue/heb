@@ -21,7 +21,7 @@ const Goals = ({ language, setLanguage, t }) => {
       text:
         'حماية وصيانة المباني التاريخية والمعالم الأثرية بما يحفظ الهوية المعمارية والثقافية للبلدة القديمة.',
       image:
-        'https://images.unsplash.com/photo-1591456983933-0d680b2dca0d?w=900&q=80',
+        'https://images.unsplash.com/photo-1562457141-8c1df886f92c?w=900&q=80',
       alt: 'الحفاظ على التراث',
     },
     {
@@ -36,7 +36,7 @@ const Goals = ({ language, setLanguage, t }) => {
       text:
         'تحقيق تنمية متوازنة تحافظ على الطابع التاريخي والثقافي للمدينة للأجيال القادمة.',
       image:
-        'https://images.unsplash.com/photo-1564769662533-4f00a87b4056?w=900&q=80',
+        'https://images.unsplash.com/photo-1633788229431-a9683c7388dd?w=900&q=80',
       alt: 'تطوير البنية التحتية',
     },
   ];
@@ -51,7 +51,7 @@ const Goals = ({ language, setLanguage, t }) => {
       >
         <div className="max-w-7xl mx-auto">
           {/* العنوان والمقدمة */}
-          <div className={`mb-16 lg:mb-24 ${isAr ? 'text-right' : 'text-left'}`}>
+          <div className={`mb-16 lg:mb-24 ${isAr ? 'text-right' : 'text-left'} flex flex-col ${isAr ? 'items-start' : 'items-start'}`} dir={isAr ? 'rtl' : 'ltr'}>
             <motion.h1
               initial="hidden"
               whileInView="visible"
@@ -73,7 +73,7 @@ const Goals = ({ language, setLanguage, t }) => {
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className={`h-[2px] w-32 mb-10 origin-${isAr ? 'right' : 'left'}`}
+              className="h-[2px] w-32 mb-10"
               style={{ backgroundColor: '#BA9B70', transformOrigin: isAr ? 'right' : 'left' }}
             />
 
@@ -87,7 +87,6 @@ const Goals = ({ language, setLanguage, t }) => {
               style={{
                 color: '#3a3a3a',
                 lineHeight: '2.1',
-                marginInlineStart: 'auto',
               }}
             >
               {intro}
