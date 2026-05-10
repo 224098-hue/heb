@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import {
-  ShoppingBag,
-  Users,
+  User,
+  HandHeart,
   CheckCircle2,
   Building2,
   LayoutGrid,
@@ -17,8 +17,8 @@ const fadeUp = {
 };
 
 const stats = [
-  { value: '+10', label: 'أسواق', Icon: ShoppingBag },
-  { value: '+1500', label: 'وحدة سكنية تراثية', Icon: Users },
+  { value: '+10', label: 'أسواق', Icon: User },
+  { value: '+1500', label: 'وحدة سكنية تراثية', Icon: HandHeart },
   { value: '+1000', label: 'مبنى تاريخي', Icon: CheckCircle2 },
   { value: '+3', label: 'أحياء', Icon: Building2 },
   { value: '+11', label: 'حارة أساسية', Icon: LayoutGrid },
@@ -166,9 +166,9 @@ const Architecture = ({ language, setLanguage, t }) => {
                   data-testid={`arch-stat-${i}`}
                 >
                   <Icon
-                    className="w-7 h-7 lg:w-8 lg:h-8 mb-3"
-                    style={{ color: '#553B2E' }}
-                    strokeWidth={2}
+                    className="w-10 h-10 lg:w-12 lg:h-12 mb-4"
+                    style={{ color: '#1a1a1a' }}
+                    strokeWidth={2.2}
                   />
                   <div
                     className="text-2xl lg:text-3xl font-bold mb-1"
@@ -388,16 +388,18 @@ const Architecture = ({ language, setLanguage, t }) => {
             </div>
           </motion.div>
 
-          {/* 2 challenge images */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-12 lg:mb-16 max-w-4xl mx-auto">
+          {/* 2 challenge images — staggered (left higher, right lower in RTL) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 mb-12 lg:mb-16 max-w-4xl mx-auto" dir={isAr ? 'rtl' : 'ltr'}>
             {[
               {
                 src: '/old-town.webp',
                 alt: 'مخاطر داخل البلدة',
+                offset: 'md:mt-12 lg:mt-16',
               },
               {
                 src: 'https://images.unsplash.com/photo-1580310219243-dbad8c44e576?w=900&q=80',
                 alt: 'تحديات العمران',
+                offset: 'md:mt-0',
               },
             ].map((img, i) => (
               <motion.div
@@ -406,7 +408,7 @@ const Architecture = ({ language, setLanguage, t }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, delay: i * 0.12 }}
-                className="rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-100"
+                className={`rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-100 ${img.offset}`}
                 data-testid={`arch-challenge-img-${i}`}
               >
                 <img
