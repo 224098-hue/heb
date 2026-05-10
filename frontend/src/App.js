@@ -10,6 +10,10 @@ import OldTown from './pages/OldTown';
 import Crafts from './pages/Crafts';
 import Architecture from './pages/Architecture';
 import IbrahimiMosque from './pages/IbrahimiMosque';
+import Achievements from './pages/Achievements';
+import Donations from './pages/Donations';
+import Contact from './pages/Contact';
+import { Toaster } from './components/ui/sonner';
 import { translations } from './utils/mockData';
 
 const ScrollToTop = () => {
@@ -87,7 +91,26 @@ function App() {
               <IbrahimiMosque language={language} setLanguage={setLanguage} t={t} />
             }
           />
+          <Route
+            path="/achievements"
+            element={
+              <Achievements language={language} setLanguage={setLanguage} t={t} />
+            }
+          />
+          <Route
+            path="/donations"
+            element={
+              <Donations language={language} setLanguage={setLanguage} t={t} />
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <Contact language={language} setLanguage={setLanguage} t={t} />
+            }
+          />
         </Routes>
+        <Toaster position="top-center" richColors closeButton />
       </div>
     </BrowserRouter>
   );

@@ -70,15 +70,15 @@ const Header = ({ language, setLanguage, t }) => {
                 </div>
               </div>
 
-              <a href="#" className="text-gray-700 hover:text-[#BA9B70] transition-colors duration-200 font-medium text-sm">
+              <Link to="/achievements" className="text-gray-700 hover:text-[#BA9B70] transition-colors duration-200 font-medium text-sm">
                 {t.nav.achievements}
-              </a>
-              <a href="#" className="text-gray-700 hover:text-[#BA9B70] transition-colors duration-200 font-medium text-sm">
+              </Link>
+              <Link to="/donations" className="text-gray-700 hover:text-[#BA9B70] transition-colors duration-200 font-medium text-sm">
                 {t.nav.donations}
-              </a>
-              <a href="#" className="text-gray-700 hover:text-[#BA9B70] transition-colors duration-200 font-medium text-sm">
+              </Link>
+              <Link to="/contact" className="text-gray-700 hover:text-[#BA9B70] transition-colors duration-200 font-medium text-sm">
                 {t.nav.contact}
-              </a>
+              </Link>
             </nav>
 
             {/* Logo - Right */}
@@ -208,27 +208,27 @@ const Header = ({ language, setLanguage, t }) => {
                   </AnimatePresence>
                 </div>
 
-                <a
-                  href="#"
+                <Link
+                  to="/achievements"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-white hover:text-[#BA9B70] transition-colors duration-200 font-medium text-xl py-4 border-b border-white/10"
                 >
                   {t.nav.achievements}
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  to="/donations"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-white hover:text-[#BA9B70] transition-colors duration-200 font-medium text-xl py-4 border-b border-white/10"
                 >
                   {t.nav.donations}
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  to="/contact"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-white hover:text-[#BA9B70] transition-colors duration-200 font-medium text-xl py-4 border-b border-white/10"
                 >
                   {t.nav.contact}
-                </a>
+                </Link>
               </nav>
             </div>
           </motion.div>
