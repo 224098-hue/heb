@@ -354,7 +354,7 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
         className="px-6 lg:px-12 py-8 lg:py-12"
         data-testid="haram-info-section"
       >
-        <div className="max-w-7xl mx-auto space-y-8 lg:space-y-10">
+        <div className="max-w-7xl mx-auto space-y-10 lg:space-y-14">
           {sections.map((section, i) => (
             <motion.div
               key={section.title}
@@ -363,32 +363,28 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
               viewport={{ once: true, amount: 0.2 }}
               variants={fadeUp}
               transition={{ delay: i * 0.05 }}
-              className="rounded-3xl px-8 lg:px-12 py-10 lg:py-14"
-              style={{ backgroundColor: '#E5DCC9' }}
+              className="rounded-3xl px-8 lg:px-16 py-12 lg:py-20"
+              style={{ backgroundColor: '#F5EFE3' }}
               data-testid={`haram-info-${i}`}
             >
               <div
-                className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 items-start"
-                dir={isAr ? 'rtl' : 'ltr'}
+                className={`max-w-3xl ${
+                  isAr ? 'mr-0 ml-auto text-right' : 'ml-0 mr-auto text-left'
+                }`}
               >
                 <h3
-                  className={`md:col-span-4 text-2xl lg:text-3xl font-bold leading-tight ${
-                    isAr ? 'text-right' : 'text-left'
-                  }`}
+                  className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 lg:mb-10 leading-[1.2]"
                   style={{
                     color: '#553B2E',
                     fontFamily:
                       "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
-                    letterSpacing: '0.5px',
                   }}
                 >
                   {section.title}
                 </h3>
                 <div
-                  className={`md:col-span-8 text-base lg:text-lg ${
-                    isAr ? 'text-right' : 'text-left'
-                  }`}
-                  style={{ color: '#3a3a3a', lineHeight: '2.1' }}
+                  className="text-base lg:text-lg"
+                  style={{ color: '#5a5249', lineHeight: '2.1' }}
                 >
                   {section.content}
                 </div>
@@ -411,17 +407,16 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={fadeUp}
-            className="rounded-3xl px-8 lg:px-12 py-10 lg:py-14 mb-12 lg:mb-16"
-            style={{ backgroundColor: '#E5DCC9' }}
+            className="rounded-3xl px-8 lg:px-16 py-12 lg:py-20 mb-12 lg:mb-16"
+            style={{ backgroundColor: '#F5EFE3' }}
           >
             <div
-              className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 items-start"
-              dir={isAr ? 'rtl' : 'ltr'}
+              className={`max-w-3xl ${
+                isAr ? 'mr-0 ml-auto text-right' : 'ml-0 mr-auto text-left'
+              }`}
             >
               <h3
-                className={`md:col-span-4 text-2xl lg:text-3xl font-bold leading-tight ${
-                  isAr ? 'text-right' : 'text-left'
-                }`}
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 lg:mb-10 leading-[1.2]"
                 style={{
                   color: '#553B2E',
                   fontFamily:
@@ -431,10 +426,8 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
                 الصمود عبر التاريخ
               </h3>
               <p
-                className={`md:col-span-8 text-base lg:text-lg ${
-                  isAr ? 'text-right' : 'text-left'
-                }`}
-                style={{ color: '#3a3a3a', lineHeight: '2.1' }}
+                className="text-base lg:text-lg"
+                style={{ color: '#5a5249', lineHeight: '2.1' }}
               >
                 رغم مرور أكثر من ألفي عام على بناء الحرم، وتعرض مدينة الخليل
                 للعديد من الزلازل والحروب، حافظ المبنى على متانته وطابعه
