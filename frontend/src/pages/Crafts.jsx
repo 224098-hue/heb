@@ -69,25 +69,7 @@ const Crafts = ({ language, setLanguage, t }) => {
         data-testid="crafts-hero"
       >
         <div className="max-w-7xl mx-auto">
-          {/* Top heading */}
-          <motion.h1
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className={`text-4xl lg:text-6xl font-bold mb-8 lg:mb-10 ${
-              isAr ? 'text-right' : 'text-left'
-            }`}
-            style={{
-              color: '#553B2E',
-              fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
-            }}
-            data-testid="crafts-title"
-          >
-            المهن و الحرف
-          </motion.h1>
-
-          {/* Banner image */}
+          {/* Banner image with overlaid title */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -98,9 +80,29 @@ const Crafts = ({ language, setLanguage, t }) => {
             <img
               src={crafts[0].image}
               alt="المهن والحرف في الخليل"
-              className="w-full h-[280px] sm:h-[380px] lg:h-[480px] object-cover"
+              className="w-full h-[320px] sm:h-[420px] lg:h-[520px] object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#553B2E]/40 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-l from-[#553B2E]/70 via-[#553B2E]/30 to-[#553B2E]/40 pointer-events-none" />
+
+            {/* Overlaid title */}
+            <div
+              className={`absolute inset-0 flex items-center ${
+                isAr ? 'justify-end pr-8 lg:pr-16' : 'justify-start pl-8 lg:pl-16'
+              }`}
+            >
+              <h1
+                className={`text-4xl sm:text-5xl lg:text-7xl font-bold text-white drop-shadow-lg ${
+                  isAr ? 'text-right' : 'text-left'
+                }`}
+                style={{
+                  fontFamily:
+                    "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
+                }}
+                data-testid="crafts-title"
+              >
+                المهن و الحرف
+              </h1>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -210,7 +212,19 @@ const Crafts = ({ language, setLanguage, t }) => {
               dir={isAr ? 'rtl' : 'ltr'}
               data-testid={`craft-detail-${i}`}
             >
-              {/* Text — Right in RTL */}
+              {/* Image — Right in RTL (placed first in DOM) */}
+              <div className="md:col-span-4">
+                <div className="relative rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-100">
+                  <img
+                    src={c.image}
+                    alt={c.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+
+              {/* Text — Left in RTL */}
               <div
                 className={`md:col-span-8 ${isAr ? 'text-right' : 'text-left'}`}
               >
@@ -233,18 +247,6 @@ const Crafts = ({ language, setLanguage, t }) => {
                     {para}
                   </p>
                 ))}
-              </div>
-
-              {/* Image — Left in RTL */}
-              <div className="md:col-span-4">
-                <div className="relative rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-100">
-                  <img
-                    src={c.image}
-                    alt={c.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
               </div>
             </motion.div>
           ))}

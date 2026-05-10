@@ -44,21 +44,44 @@ const OldTown = ({ language, setLanguage, t }) => {
         data-testid="oldtown-section"
       >
         <div className="max-w-7xl mx-auto">
-          {/* Banner Image */}
+          {/* Banner Image with notch + protruding circle (mobile-style) */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={fadeUp}
-            className="relative rounded-3xl overflow-hidden shadow-xl mb-12 lg:mb-20"
+            className="relative mb-12 lg:mb-20"
             data-testid="oldtown-banner"
           >
-            <img
-              src="/old-town.webp"
-              alt="البلدة القديمة - الخليل"
-              className="w-full h-[280px] sm:h-[400px] lg:h-[560px] object-cover"
+            <div
+              className="relative w-full h-[280px] sm:h-[400px] lg:h-[560px] overflow-hidden shadow-xl"
+              style={{
+                borderRadius: '24px',
+                WebkitMaskImage:
+                  'radial-gradient(circle 42px at 50% 100%, transparent 41px, #000 42px)',
+                maskImage:
+                  'radial-gradient(circle 42px at 50% 100%, transparent 41px, #000 42px)',
+              }}
+            >
+              <img
+                src="/old-town.webp"
+                alt="البلدة القديمة - الخليل"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#553B2E]/30 via-transparent to-transparent pointer-events-none" />
+            </div>
+
+            {/* Protruding circle — sits half inside the notch, half below */}
+            <div
+              className="absolute left-1/2 -translate-x-1/2 rounded-full shadow-md"
+              style={{
+                bottom: '-22px',
+                width: '60px',
+                height: '60px',
+                backgroundColor: '#D9D9D9',
+              }}
+              data-testid="oldtown-notch-circle"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#553B2E]/30 via-transparent to-transparent pointer-events-none" />
           </motion.div>
 
           {/* Bottom: 2 sub-cards (left) + title/text (right) */}
