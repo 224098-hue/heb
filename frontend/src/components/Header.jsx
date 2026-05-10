@@ -51,7 +51,7 @@ const Header = ({ language, setLanguage, t }) => {
                 </button>
                 <div className="absolute top-full right-0 mt-2 w-56 bg-white shadow-lg rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                   <Link to="/about" className="block px-4 py-3 text-gray-700 hover:bg-[#BA9B70] hover:text-white transition-colors text-sm">{t.nav.aboutUsInfo}</Link>
-                  <a href="#" className="block px-4 py-3 text-gray-700 hover:bg-[#BA9B70] hover:text-white transition-colors text-sm">{t.nav.aboutUsGoals}</a>
+                  <Link to="/goals" className="block px-4 py-3 text-gray-700 hover:bg-[#BA9B70] hover:text-white transition-colors text-sm">{t.nav.aboutUsGoals}</Link>
                   <a href="#" className="block px-4 py-3 text-gray-700 hover:bg-[#BA9B70] hover:text-white transition-colors text-sm">{t.nav.team}</a>
                 </div>
               </div>
@@ -175,7 +175,7 @@ const Header = ({ language, setLanguage, t }) => {
                         className="overflow-hidden"
                       >
                         <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.aboutUsInfo}</Link>
-                        <a href="#" className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.aboutUsGoals}</a>
+                        <Link to="/goals" onClick={() => setMobileMenuOpen(false)} className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.aboutUsGoals}</Link>
                         <a href="#" className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.team}</a>
                       </motion.div>
                     )}

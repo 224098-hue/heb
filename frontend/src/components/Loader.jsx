@@ -14,7 +14,14 @@ const Loader = ({ onLoadComplete }) => {
 
   useEffect(() => {
     let loaded = 0;
+    let finished = false;
     const total = ASSETS.length;
+
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      onLoadComplete();
+    };
 
     const preloadImage = (src) =>
       new Promise((resolve) => {
@@ -33,8 +40,16 @@ const Loader = ({ onLoadComplete }) => {
       });
 
     Promise.all(ASSETS.map(preloadImage)).then(() => {
-      setTimeout(() => onLoadComplete(), 400);
+      setTimeout(finish, 300);
     });
+
+    // Hard cap so the loader never blocks longer than 1.8s
+    const failsafe = setTimeout(() => {
+      setProgress(100);
+      finish();
+    }, 1800);
+
+    return () => clearTimeout(failsafe);
   }, [onLoadComplete]);
 
   return (

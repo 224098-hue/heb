@@ -4,6 +4,7 @@ import './App.css';
 import Loader from './components/Loader';
 import Home from './pages/Home';
 import About from './pages/About';
+import Goals from './pages/Goals';
 import { translations } from './utils/mockData';
 
 const ScrollToTop = () => {
@@ -43,6 +44,12 @@ function App() {
             path="/about"
             element={
               <About language={language} setLanguage={setLanguage} t={t} />
+            }
+          />
+          <Route
+            path="/goals"
+            element={
+              <Goals language={language} setLanguage={setLanguage} t={t} />
             }
           />
         </Routes>
