@@ -11,35 +11,60 @@ const fadeUp = {
 const Goals = ({ language, setLanguage, t }) => {
   const isAr = language === 'ar';
 
-  // النصوص حسب الصورة المرفقة
-  const intro =
-    'نسعى إلى حماية الهوية التاريخية والعمرانية لمدينة الخليل من خلال مشاريع تنموية وترميمية مستدامة تُعيد الحياة إلى البلدة القديمة وتحافظ على روحها الأصيلة.';
+  const content = {
+    ar: {
+      title: 'أهداف لجنة إعمار الخليل',
+      intro:
+        'نسعى إلى حماية الهوية التاريخية والعمرانية لمدينة الخليل من خلال مشاريع تنموية وترميمية مستدامة تُعيد الحياة إلى البلدة القديمة وتحافظ على روحها الأصيلة.',
+      goals: [
+        {
+          title: 'الحفاظ على التراث',
+          text: 'حماية وصيانة المباني التاريخية والمعالم الأثرية بما يحفظ الهوية المعمارية والثقافية للبلدة القديمة.',
+          image: '/hrc-frames.webp',
+          alt: 'الحفاظ على التراث',
+        },
+        {
+          title: 'إعمار وتأهيل البلدة القديمة',
+          text: 'تنفيذ مشاريع ترميم وإعادة تأهيل للمباني والأسواق والأحياء التاريخية وفق معايير هندسية متخصصة.',
+          image: '/old-town.webp',
+          alt: 'إعمار وتأهيل البلدة القديمة',
+        },
+        {
+          title: 'تطوير البنية التحتية',
+          text: 'تحقيق تنمية متوازنة تحافظ على الطابع التاريخي والثقافي للمدينة للأجيال القادمة.',
+          image: '/hrc-plaque.webp',
+          alt: 'تطوير البنية التحتية',
+        },
+      ],
+    },
+    en: {
+      title: 'Hebron Reconstruction Committee Goals',
+      intro:
+        'We seek to protect the historic and architectural identity of Hebron through sustainable development and restoration projects that bring life back to the Old Town while preserving its authentic spirit.',
+      goals: [
+        {
+          title: 'Heritage Preservation',
+          text: 'Protecting and maintaining historic buildings and archaeological landmarks to preserve the architectural and cultural identity of the Old Town.',
+          image: '/hrc-frames.webp',
+          alt: 'Heritage Preservation',
+        },
+        {
+          title: 'Old Town Restoration & Rehabilitation',
+          text: 'Carrying out restoration and rehabilitation projects for historic buildings, markets, and neighborhoods according to specialized engineering standards.',
+          image: '/old-town.webp',
+          alt: 'Old Town Restoration',
+        },
+        {
+          title: 'Infrastructure Development',
+          text: 'Achieving balanced development that preserves the historic and cultural character of the city for future generations.',
+          image: '/hrc-plaque.webp',
+          alt: 'Infrastructure Development',
+        },
+      ],
+    },
+  }[language];
 
-  const goals = [
-    {
-      title: 'الحفاظ على التراث',
-      text:
-        'حماية وصيانة المباني التاريخية والمعالم الأثرية بما يحفظ الهوية المعمارية والثقافية للبلدة القديمة.',
-      image:
-        'https://images.unsplash.com/photo-1562457141-8c1df886f92c?w=900&q=80',
-      alt: 'الحفاظ على التراث',
-    },
-    {
-      title: 'إعمار وتأهيل البلدة القديمة',
-      text:
-        'تنفيذ مشاريع ترميم وإعادة تأهيل للمباني والأسواق والأحياء التاريخية وفق معايير هندسية متخصصة.',
-      image: '/old-town.webp',
-      alt: 'إعمار وتأهيل البلدة القديمة',
-    },
-    {
-      title: 'تطوير البنية التحتية',
-      text:
-        'تحقيق تنمية متوازنة تحافظ على الطابع التاريخي والثقافي للمدينة للأجيال القادمة.',
-      image:
-        'https://images.unsplash.com/photo-1633788229431-a9683c7388dd?w=900&q=80',
-      alt: 'تطوير البنية التحتية',
-    },
-  ];
+  const { title, intro, goals } = content;
 
   return (
     <div className={`bg-white ${isAr ? 'rtl' : 'ltr'}`} data-testid="goals-page">
@@ -50,14 +75,14 @@ const Goals = ({ language, setLanguage, t }) => {
         data-testid="goals-section"
       >
         <div className="max-w-7xl mx-auto">
-          {/* العنوان والمقدمة */}
-          <div className={`mb-10 lg:mb-14 ${isAr ? 'text-right' : 'text-left'} flex flex-col ${isAr ? 'items-start' : 'items-start'}`} dir={isAr ? 'rtl' : 'ltr'}>
+          {/* العنوان والمقدمة - CENTERED */}
+          <div className="mb-10 lg:mb-14 flex flex-col items-center text-center" dir={isAr ? 'rtl' : 'ltr'}>
             <motion.h1
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeUp}
-              className="text-base lg:text-lg font-bold mb-4"
+              className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4"
               style={{
                 color: '#553B2E',
                 fontFamily:
@@ -65,7 +90,7 @@ const Goals = ({ language, setLanguage, t }) => {
               }}
               data-testid="goals-title"
             >
-              أهداف لجنة إعمار الخليل
+              {title}
             </motion.h1>
 
             <motion.div
@@ -73,8 +98,8 @@ const Goals = ({ language, setLanguage, t }) => {
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="h-[2px] w-32 mb-10"
-              style={{ backgroundColor: '#BA9B70', transformOrigin: isAr ? 'right' : 'left' }}
+              className="h-[3px] w-24 mb-8"
+              style={{ backgroundColor: '#BA9B70' }}
             />
 
             <motion.p
@@ -93,9 +118,9 @@ const Goals = ({ language, setLanguage, t }) => {
             </motion.p>
           </div>
 
-          {/* الكروت الثلاثة */}
+          {/* الكروت الثلاثة — image + desc ينظمو سويا على الموبايل */}
           <div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 mb-12"
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10"
             dir={isAr ? 'rtl' : 'ltr'}
           >
             {goals.map((g, i) => (
@@ -106,58 +131,46 @@ const Goals = ({ language, setLanguage, t }) => {
                 viewport={{ once: true, amount: 0.2 }}
                 variants={fadeUp}
                 transition={{ delay: i * 0.12 }}
-                className="bg-white rounded-3xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col"
+                className="flex flex-col"
                 data-testid={`goal-card-${i}`}
               >
-                {/* صورة بطول البطاقة */}
-                <div className="relative w-full aspect-[3/4] overflow-hidden bg-gray-100">
-                  <img
-                    src={g.image}
-                    alt={g.alt}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#553B2E]/15 to-transparent pointer-events-none" />
+                {/* صورة */}
+                <div className="bg-white rounded-3xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden mb-5">
+                  <div className="relative w-full aspect-[3/4] overflow-hidden bg-gray-100">
+                    <img
+                      src={g.image}
+                      alt={g.alt}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#553B2E]/15 to-transparent pointer-events-none" />
+                  </div>
+                  <div className="px-6 py-5 text-center">
+                    <h3
+                      className="text-base lg:text-lg font-bold"
+                      style={{
+                        color: '#553B2E',
+                        fontFamily:
+                          "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
+                      }}
+                    >
+                      {g.title}
+                    </h3>
+                  </div>
                 </div>
 
-                {/* العنوان أسفل الكرت */}
-                <div className="px-6 py-6 text-center">
-                  <h3
-                    className="text-lg lg:text-xl font-bold"
-                    style={{
-                      color: '#553B2E',
-                      fontFamily:
-                        "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
-                    }}
-                  >
-                    {g.title}
-                  </h3>
-                </div>
+                {/* النص الوصفي مباشرة تحت الصورة */}
+                <p
+                  className="text-sm lg:text-base text-center px-2"
+                  style={{
+                    color: '#5a5a5a',
+                    lineHeight: '1.85',
+                  }}
+                  data-testid={`goal-desc-${i}`}
+                >
+                  {g.text}
+                </p>
               </motion.div>
-            ))}
-          </div>
-
-          {/* النصوص الوصفية تحت كل كرت */}
-          <div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10"
-            dir={isAr ? 'rtl' : 'ltr'}
-          >
-            {goals.map((g, i) => (
-              <motion.p
-                key={`desc-${g.title}`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="text-sm lg:text-base text-center px-2"
-                style={{
-                  color: '#5a5a5a',
-                  lineHeight: '1.85',
-                }}
-                data-testid={`goal-desc-${i}`}
-              >
-                {g.text}
-              </motion.p>
             ))}
           </div>
         </div>

@@ -13,8 +13,56 @@ const fadeUp = {
 const MAP_URL =
   'https://yellowpages.com.ps/companies/30072?utm_source=chatgpt.com';
 
+const CONTACT_DATA = {
+  ar: {
+    title: 'تواصل معنا',
+    intro: 'تواصل مع لجنة إعمار الخليل للحصول على المساعدة والمعلومات التي تحتاجها حول مشاريع الترميم وأحياء البلدة القديمة. يمكنك الاتصال بنا مباشرة عبر الهاتف أو مراسلتنا عبر البريد الإلكتروني، كما يسعدنا استقبالكم في مقرنا أو زيارتنا عبر تحديد موقعنا على الخريطة.',
+    contactUs: 'تواصل معنا',
+    emailLabel: 'البريد الالكتروني',
+    location: 'الموقع',
+    address: 'راس سوق سكافية البلدة القديمة الخليل فلسطين',
+    social: 'مواقع التواصل الاجتماعي',
+    discover: 'اكتشف موقعنا عن الخريطة',
+    showMap: 'اعرض الخريطة',
+    formTitle: 'اترك رســالتــك',
+    formIntro1: 'استخدم النموذج أدناه للتواصل مع لجنة إعمار الخليل مباشرةً. سواء كان لديك استفسار، ملاحظة، أو طلب مساعدة، نحن هنا لخدمتكم والرد عليكم بأسرع وقت ممكن.',
+    formIntro2: 'ما عليك سوى تعبئة بياناتك وكتابة رسالتك ثم الضغط على "إرسال"، وسنقوم بالرد عليكم في أقرب وقت',
+    subject: 'الموضوع',
+    fullName: 'الاسم كامل',
+    org: 'المؤسسة',
+    email: 'البريد الإلكتروني',
+    phone: 'رقم الهاتف',
+    msg: 'رسالتك:',
+    send: 'إرسال',
+    toastOk: 'تم إرسال رسالتك بنجاح، سنرد عليكم بأقرب وقت.',
+  },
+  en: {
+    title: 'Contact Us',
+    intro: 'Get in touch with the Hebron Rehabilitation Committee for assistance and information about restoration projects and Old Town neighborhoods. You can call us directly, email us, visit our office, or locate us on the map.',
+    contactUs: 'Contact',
+    emailLabel: 'Email',
+    location: 'Location',
+    address: 'Ras Souk Iskafiyya, Old Town, Hebron, Palestine',
+    social: 'Social Media',
+    discover: 'Find our location on the map',
+    showMap: 'Show Map',
+    formTitle: 'Leave a Message',
+    formIntro1: 'Use the form below to contact the Hebron Rehabilitation Committee directly. Whether you have a question, comment, or request for help, we are here to serve you and reply as quickly as possible.',
+    formIntro2: 'Simply fill in your details, write your message, then click "Send" — we will reply as soon as possible.',
+    subject: 'Subject',
+    fullName: 'Full Name',
+    org: 'Organization',
+    email: 'Email',
+    phone: 'Phone',
+    msg: 'Your message:',
+    send: 'Send',
+    toastOk: 'Your message was sent successfully. We will reply soon.',
+  },
+};
+
 const Contact = ({ language, setLanguage, t }) => {
   const isAr = language === 'ar';
+  const d = CONTACT_DATA[language];
 
   const [form, setForm] = useState({
     subject: '',
@@ -27,7 +75,7 @@ const Contact = ({ language, setLanguage, t }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    toast.success('تم إرسال رسالتك بنجاح، سنرد عليكم بأقرب وقت.');
+    toast.success(d.toastOk);
     setForm({ subject: '', name: '', org: '', email: '', phone: '', message: '' });
   };
 
@@ -60,25 +108,25 @@ const Contact = ({ language, setLanguage, t }) => {
               className={`lg:col-span-7 order-2 lg:order-2 ${isAr ? 'text-right' : 'text-left'}`}
             >
               <h1
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 lg:mb-10"
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 lg:mb-8"
                 style={{
                   color: '#553B2E',
                   fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
                 }}
                 data-testid="contact-title"
               >
-                تواصل معنا
+                {d.title}
               </h1>
+              <div
+                className="h-[3px] w-24 mb-8"
+                style={{ backgroundColor: '#BA9B70' }}
+              />
 
               <p
                 className="text-sm lg:text-base mb-12 max-w-2xl"
                 style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
-                تواصل مع لجنة إعمار الخليل للحصول على المساعدة والمعلومات التي
-                تحتاجها حول مشاريع الترميم وأحياء البلدة القديمة. يمكنك الاتصال
-                بنا مباشرة عبر الهاتف أو مراسلتنا عبر البريد الإلكتروني، كما
-                يسعدنا استقبالكم في مقرنا أو زيارتنا عبر تحديد موقعنا على
-                الخريطة.
+                {d.intro}
               </p>
 
               {/* Info grid */}
@@ -92,7 +140,7 @@ const Contact = ({ language, setLanguage, t }) => {
                   </div>
                   <div>
                     <p className="font-bold mb-1" style={{ color: '#553B2E' }}>
-                      تواصل معنا
+                      {d.contactUs}
                     </p>
                     <a
                       href="tel:022226993"
@@ -114,7 +162,7 @@ const Contact = ({ language, setLanguage, t }) => {
                   </div>
                   <div>
                     <p className="font-bold mb-1" style={{ color: '#553B2E' }}>
-                      البريد الالكتروني
+                      {d.emailLabel}
                     </p>
                     <a
                       href="mailto:hebronhrc@gmail.com"
@@ -136,13 +184,13 @@ const Contact = ({ language, setLanguage, t }) => {
                   </div>
                   <div>
                     <p className="font-bold mb-1" style={{ color: '#553B2E' }}>
-                      الموقع
+                      {d.location}
                     </p>
                     <p
                       className="text-base"
                       style={{ color: '#5a5249', lineHeight: '1.8' }}
                     >
-                      راس سوق سكافية البلدة القديمة الخليل فلسطين
+                      {d.address}
                     </p>
                   </div>
                 </div>
@@ -156,7 +204,7 @@ const Contact = ({ language, setLanguage, t }) => {
                   </div>
                   <div>
                     <p className="font-bold mb-1" style={{ color: '#553B2E' }}>
-                      مواقع التواصل الاجتماعي
+                      {d.social}
                     </p>
                     <a
                       href="https://www.facebook.com"
@@ -184,7 +232,7 @@ const Contact = ({ language, setLanguage, t }) => {
                   className="text-base self-center"
                   style={{ color: '#5a5249' }}
                 >
-                  اكتشف موقعنا عن الخريطة
+                  {d.discover}
                 </p>
               </div>
 
@@ -196,7 +244,7 @@ const Contact = ({ language, setLanguage, t }) => {
                 style={{ borderColor: '#553B2E', color: '#553B2E' }}
                 data-testid="contact-show-map-btn"
               >
-                اعرض الخريطة
+                {d.showMap}
               </a>
             </motion.div>
 
@@ -255,22 +303,19 @@ const Contact = ({ language, setLanguage, t }) => {
                   letterSpacing: '0.05em',
                 }}
               >
-                اترك رســالتــك
+                {d.formTitle}
               </h2>
               <p
                 className="text-sm lg:text-base mb-5"
                 style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
-                استخدم النموذج أدناه للتواصل مع لجنة إعمار الخليل مباشرةً. سواء
-                كان لديك استفسار، ملاحظة، أو طلب مساعدة، نحن هنا لخدمتكم والرد
-                عليكم بأسرع وقت ممكن.
+                {d.formIntro1}
               </p>
               <p
                 className="text-sm lg:text-base"
                 style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
-                ما عليك سوى تعبئة بياناتك وكتابة رسالتك ثم الضغط على "إرسال"،
-                وسنقوم بالرد عليكم في أقرب وقت
+                {d.formIntro2}
               </p>
             </motion.div>
 
@@ -287,7 +332,7 @@ const Contact = ({ language, setLanguage, t }) => {
             >
               <div>
                 <label className={labelClass} style={labelStyle}>
-                  الموضوع
+                  {d.subject}
                 </label>
                 <input
                   type="text"
@@ -303,7 +348,7 @@ const Contact = ({ language, setLanguage, t }) => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label className={labelClass} style={labelStyle}>
-                    الاسم كامل
+                    {d.fullName}
                   </label>
                   <input
                     type="text"
@@ -317,7 +362,7 @@ const Contact = ({ language, setLanguage, t }) => {
                 </div>
                 <div>
                   <label className={labelClass} style={labelStyle}>
-                    المؤسسة
+                    {d.org}
                   </label>
                   <input
                     type="text"
@@ -333,7 +378,7 @@ const Contact = ({ language, setLanguage, t }) => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label className={labelClass} style={labelStyle}>
-                    البريد الإلكتروني
+                    {d.email}
                   </label>
                   <input
                     type="email"
@@ -347,7 +392,7 @@ const Contact = ({ language, setLanguage, t }) => {
                 </div>
                 <div>
                   <label className={labelClass} style={labelStyle}>
-                    رقم الهاتف
+                    {d.phone}
                   </label>
                   <input
                     type="tel"
@@ -362,7 +407,7 @@ const Contact = ({ language, setLanguage, t }) => {
 
               <div>
                 <label className={labelClass} style={labelStyle}>
-                  رسالتك:
+                  {d.msg}
                 </label>
                 <textarea
                   rows={6}
@@ -382,7 +427,7 @@ const Contact = ({ language, setLanguage, t }) => {
                   style={{ backgroundColor: '#553B2E', color: '#fff' }}
                   data-testid="contact-submit-btn"
                 >
-                  إرسال
+                  {d.send}
                 </button>
               </div>
             </motion.form>

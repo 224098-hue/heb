@@ -17,12 +17,12 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
 };
 
-const stats = [
-  { numericValue: 10,   label: 'أسواق',             Icon: User },
-  { numericValue: 1500, label: 'وحدة سكنية تراثية', Icon: HandHeart },
-  { numericValue: 1000, label: 'مبنى تاريخي',       Icon: CheckCircle2 },
-  { numericValue: 3,    label: 'أحياء',             Icon: Building2 },
-  { numericValue: 11,   label: 'حارة أساسية',       Icon: LayoutGrid },
+const STATS_BASE = [
+  { numericValue: 10,   Icon: User },
+  { numericValue: 1500, Icon: HandHeart },
+  { numericValue: 1000, Icon: CheckCircle2 },
+  { numericValue: 3,    Icon: Building2 },
+  { numericValue: 11,   Icon: LayoutGrid },
 ];
 
 const districts = {
@@ -57,8 +57,40 @@ const markets = {
   ],
 };
 
+const ARCH_DATA = {
+  ar: {
+    title: 'مدينة الخليل القديمة: النشأة والعمران',
+    p1: 'تشكلت مدينة الخليل القديمة تدريجياً حول المسجد الإبراهيمي الشريف، متأثرة بثلاثة عناصر رئيسية: موقعها الديني المميز، ووادي الخليل الغني بالمياه والأشجار والطرق التجارية، وتل الرميدة الذي يُعد النواة الكنعانية الأولى للمدينة.',
+    p2: 'مع مرور الزمن، توسعت المدينة من تل الرميدة نحو موقعها الحالي، وازدهرت بشكل واضح بعد الفتح الإسلامي، وبلغت ذروة تطورها العمراني في العصر المملوكي، ثم استمر تطورها في العهد العثماني.',
+    learnMore: 'اعرف المزيد',
+    statsLabels: ['أسواق', 'وحدة سكنية تراثية', 'مبنى تاريخي', 'أحياء', 'حارة أساسية'],
+    districtsIntro: 'تضم البلدة القديمة عدداً من الحارات التاريخية مثل:',
+    districtsIntro2: 'كما ظهرت أحياء خارج النسيج التقليدي مثل:',
+    marketsIntro: 'من أشهر الأسواق التاريخية في البلدة القديمة في الخليل:',
+    challengesTitle: 'التحديات التي واجهت العمران',
+    challengesText: 'تعرضت البلدة القديمة عبر تاريخها للعديد من الكوارث والتغيرات، منها الزلازل، والحروب، والقصف، إضافة إلى أعمال الهدم والتغيير التي أثرت على المباني التاريخية وأدت إلى هجرة عدد من السكان من الحارات القديمة.',
+    servicesTitle: 'الخدمات العامة والتطوير',
+    servicesText: 'شهدت البلدة القديمة تطوراً تدريجياً في الخدمات مثل شبكات المياه والصرف الصحي والكهرباء والطرق المعبدة، خاصة منذ أواخر العهد العثماني وحتى اليوم، حيث تستمر مشاريع الترميم وإعادة الإعمار للحفاظ على الهوية التاريخية للمدينة.',
+  },
+  en: {
+    title: 'The Old City of Hebron: Origin & Urbanism',
+    p1: 'The Old City of Hebron gradually formed around the Ibrahimi Mosque, influenced by three main elements: its distinctive religious location, the Hebron valley rich in water, trees, and trade routes, and Tell Rumeida — considered the first Canaanite nucleus of the city.',
+    p2: 'Over time, the city expanded from Tell Rumeida toward its current location, flourishing notably after the Islamic conquest, reaching its urban peak in the Mamluk era, and continuing to develop during the Ottoman period.',
+    learnMore: 'Learn More',
+    statsLabels: ['Markets', 'Heritage Housing Units', 'Historic Buildings', 'Districts', 'Main Quarters'],
+    districtsIntro: 'The Old Town includes several historic quarters such as:',
+    districtsIntro2: 'And neighborhoods beyond the traditional fabric also emerged, such as:',
+    marketsIntro: 'Among the most famous historic markets in the Old City of Hebron:',
+    challengesTitle: 'Challenges Facing Urbanism',
+    challengesText: 'Throughout its history, the Old Town has faced many disasters and changes, including earthquakes, wars, and bombardment, as well as demolition and alteration that affected historic buildings and led to migration of residents from the old quarters.',
+    servicesTitle: 'Public Services & Development',
+    servicesText: 'The Old Town has seen gradual development in services such as water and sewage networks, electricity, and paved roads, especially since the late Ottoman period, with ongoing restoration and reconstruction projects to preserve the city\'s historic identity.',
+  },
+};
+
 const Architecture = ({ language, setLanguage, t }) => {
   const isAr = language === 'ar';
+  const c = ARCH_DATA[language];
 
   return (
     <div className={`bg-white ${isAr ? 'rtl' : 'ltr'}`} data-testid="architecture-page">
@@ -83,14 +115,14 @@ const Architecture = ({ language, setLanguage, t }) => {
               className={`lg:col-span-7 ${isAr ? 'text-right' : 'text-left'}`}
             >
               <h1
-                className="text-base lg:text-lg font-bold mb-4 leading-tight"
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight"
                 style={{
                   color: '#553B2E',
                   fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
                 }}
                 data-testid="arch-title"
               >
-                مدينة الخليل القديمة: النشأة والعمران
+                {c.title}
               </h1>
               <div className="h-[2px] w-32 mb-8" style={{ backgroundColor: '#BA9B70' }} />
 
@@ -98,18 +130,13 @@ const Architecture = ({ language, setLanguage, t }) => {
                 className="text-sm lg:text-base mb-5"
                 style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
-                تشكلت مدينة الخليل القديمة تدريجياً حول المسجد الإبراهيمي الشريف،
-                متأثرة بثلاثة عناصر رئيسية: موقعها الديني المميز، ووادي الخليل
-                الغني بالمياه والأشجار والطرق التجارية، وتل الرميدة الذي يُعد
-                النواة الكنعانية الأولى للمدينة.
+                {c.p1}
               </p>
               <p
                 className="text-sm lg:text-base mb-10"
                 style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
-                مع مرور الزمن، توسعت المدينة من تل الرميدة نحو موقعها الحالي،
-                وازدهرت بشكل واضح بعد الفتح الإسلامي، وبلغت ذروة تطورها العمراني
-                في العصر المملوكي، ثم استمر تطورها في العهد العثماني.
+                {c.p2}
               </p>
 
               <button
@@ -118,7 +145,7 @@ const Architecture = ({ language, setLanguage, t }) => {
                 style={{ borderColor: '#553B2E', color: '#553B2E' }}
                 data-testid="arch-cta"
               >
-                <span>اعرف المزيد</span>
+                <span>{c.learnMore}</span>
                 <ArrowLeft className={`w-4 h-4 ${isAr ? '' : 'rotate-180'}`} />
               </button>
             </motion.div>
@@ -154,9 +181,9 @@ const Architecture = ({ language, setLanguage, t }) => {
             data-testid="arch-stats"
           >
             <div className="flex flex-wrap justify-around items-center gap-y-8 gap-x-6">
-              {stats.map(({ numericValue, label, Icon }, i) => (
+              {STATS_BASE.map(({ numericValue, Icon }, i) => (
                 <motion.div
-                  key={label}
+                  key={i}
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.4 }}
@@ -179,7 +206,7 @@ const Architecture = ({ language, setLanguage, t }) => {
                     className="text-xs lg:text-sm font-medium"
                     style={{ color: '#7a6248' }}
                   >
-                    {label}
+                    {c.statsLabels[i]}
                   </div>
                 </motion.div>
               ))}
@@ -224,7 +251,7 @@ const Architecture = ({ language, setLanguage, t }) => {
                 className={`md:col-span-7 ${isAr ? 'text-right' : 'text-left'}`}
               >
                 <p className="text-sm lg:text-base mb-3" style={{ color: '#3a3a3a', lineHeight: '1.85' }}>
-                  {districts.intro}
+                  {c.districtsIntro}
                 </p>
                 <ul className="mb-6 space-y-1.5">
                   {districts.list1.map((item) => (
@@ -235,7 +262,7 @@ const Architecture = ({ language, setLanguage, t }) => {
                   ))}
                 </ul>
                 <p className="text-sm lg:text-base mb-3" style={{ color: '#3a3a3a', lineHeight: '1.85' }}>
-                  {districts.intro2}
+                  {c.districtsIntro2}
                 </p>
                 <ul className="space-y-1.5">
                   {districts.list2.map((item) => (
@@ -287,7 +314,7 @@ const Architecture = ({ language, setLanguage, t }) => {
                 className={`md:col-span-7 ${isAr ? 'text-right' : 'text-left'}`}
               >
                 <p className="text-sm lg:text-base mb-3" style={{ color: '#3a3a3a', lineHeight: '1.85' }}>
-                  {markets.intro}
+                  {c.marketsIntro}
                 </p>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5">
                   {markets.list.map((item) => (
@@ -329,16 +356,13 @@ const Architecture = ({ language, setLanguage, t }) => {
                   fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
                 }}
               >
-                التحديات التي واجهت العمران
+                {c.challengesTitle}
               </h2>
               <p
                 className={`md:col-span-8 text-sm lg:text-base ${isAr ? 'text-right' : 'text-left'}`}
                 style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
-                تعرضت البلدة القديمة عبر تاريخها للعديد من الكوارث والتغيرات،
-                منها الزلازل، والحروب، والقصف، إضافة إلى أعمال الهدم والتغيير
-                التي أثرت على المباني التاريخية وأدت إلى هجرة عدد من السكان من
-                الحارات القديمة.
+                {c.challengesText}
               </p>
             </div>
           </motion.div>
@@ -385,16 +409,13 @@ const Architecture = ({ language, setLanguage, t }) => {
                   fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
                 }}
               >
-                الخدمات العامة والتطوير
+                {c.servicesTitle}
               </h2>
               <p
                 className={`md:col-span-8 text-sm lg:text-base ${isAr ? 'text-right' : 'text-left'}`}
                 style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
-                شهدت البلدة القديمة تطوراً تدريجياً في الخدمات مثل شبكات المياه
-                والصرف الصحي والكهرباء والطرق المعبدة، خاصة منذ أواخر العهد
-                العثماني وحتى اليوم، حيث تستمر مشاريع الترميم وإعادة الإعمار
-                للحفاظ على الهوية التاريخية للمدينة.
+                {c.servicesText}
               </p>
             </div>
           </motion.div>

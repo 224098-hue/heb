@@ -99,7 +99,7 @@ const BeforeAfter = ({ before, after, isAr }) => {
 };
 
 // ───────── Auto-scroll carousel (re-used) ─────────
-const AutoCarousel = ({ images, isAr }) => {
+const AutoCarousel = ({ images, isAr, language }) => {
   const trackRef = React.useRef(null);
   const x = useMotionValue(0);
   const [direction, setDirection] = useState(isAr ? 1 : -1);
@@ -205,16 +205,38 @@ const AutoCarousel = ({ images, isAr }) => {
           style={{ borderColor: '#553B2E', color: '#553B2E' }}
           data-testid="achievements-contact-btn"
         >
-          تواصل معنا
+          {language === 'en' ? 'Contact Us' : 'تواصل معنا'}
         </Link>
       </div>
     </div>
   );
 };
 
+const ACH_DATA = {
+  ar: {
+    title: 'انجــازات اللجنــة',
+    projectLabel: 'مشروع',
+    projectName: 'إعادة ترميم جانب من منزل إبراهيم الرجبي',
+    projectDesc: 'ضمن جهود لجنة إعمار الخليل للحفاظ على البلدة القديمة، تم ترميم جانب من منزل عائلة الرجبي بأسلوب هندسي يحترم الطابع التاريخي للحيّ ويعيد الحياة إلى تفاصيله الأصلية.',
+    awardsTitle: 'بعض الجوائز والانجــازات',
+    awardsSub: 'تراث الخليل... أمانة تُبنى للمستقبل.',
+    contactCta: 'تواصل معنا',
+  },
+  en: {
+    title: 'Committee Achievements',
+    projectLabel: 'PROJECT',
+    projectName: 'Restoration of part of Ibrahim Al-Rajabi\'s house',
+    projectDesc: 'As part of the Hebron Rehabilitation Committee\'s efforts to preserve the Old Town, a section of the Al-Rajabi family home was restored using an engineering approach that respects the historic character of the quarter and brings life back to its original details.',
+    awardsTitle: 'Some Awards & Achievements',
+    awardsSub: 'Hebron\'s heritage... a trust built for the future.',
+    contactCta: 'Contact Us',
+  },
+};
+
 const Achievements = ({ language, setLanguage, t }) => {
   const isAr = language === 'ar';
   const project = projectImages[0];
+  const d = ACH_DATA[language];
 
   return (
     <div className={`bg-white ${isAr ? 'rtl' : 'ltr'}`} data-testid="achievements-page">
@@ -228,7 +250,7 @@ const Achievements = ({ language, setLanguage, t }) => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 lg:mb-10 ${isAr ? 'text-right' : 'text-left'}`}
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 text-center"
             style={{
               color: '#553B2E',
               fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
@@ -236,8 +258,17 @@ const Achievements = ({ language, setLanguage, t }) => {
             }}
             data-testid="achievements-title"
           >
-            انجــازات اللجنــة
+            {d.title}
           </motion.h1>
+
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="h-[3px] w-24 mx-auto mb-8 lg:mb-10"
+            style={{ backgroundColor: '#BA9B70' }}
+          />
 
           {/* 2-column layout: project info on LEFT, slider on RIGHT (RTL) */}
           <div
@@ -268,7 +299,7 @@ const Achievements = ({ language, setLanguage, t }) => {
                 className="text-xs font-medium mb-2"
                 style={{ color: '#7a6248', letterSpacing: '0.1em' }}
               >
-                مشروع
+                {d.projectLabel}
               </p>
               <div className="h-[2px] w-16 mb-6" style={{ backgroundColor: '#BA9B70' }} />
               <h2
@@ -278,15 +309,13 @@ const Achievements = ({ language, setLanguage, t }) => {
                   fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
                 }}
               >
-                {project.title}
+                {d.projectName}
               </h2>
               <p
                 className="text-sm lg:text-base"
                 style={{ color: '#5a5249', lineHeight: '1.9' }}
               >
-                ضمن جهود لجنة إعمار الخليل للحفاظ على البلدة القديمة، تم ترميم
-                جانب من منزل عائلة الرجبي بأسلوب هندسي يحترم الطابع التاريخي
-                للحيّ ويعيد الحياة إلى تفاصيله الأصلية.
+                {d.projectDesc}
               </p>
             </motion.div>
           </div>
@@ -307,7 +336,7 @@ const Achievements = ({ language, setLanguage, t }) => {
               fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
             }}
           >
-            بعض الجوائز والانجــازات
+            {d.awardsTitle}
           </motion.h2>
 
           <motion.p
@@ -319,10 +348,10 @@ const Achievements = ({ language, setLanguage, t }) => {
             className={`text-sm lg:text-base mb-8 lg:mb-12 ${isAr ? 'text-right' : 'text-left'}`}
             style={{ color: '#5a5249', lineHeight: '1.85' }}
           >
-            تراث الخليل... أمانة تُبنى للمستقبل.
+            {d.awardsSub}
           </motion.p>
 
-          <AutoCarousel images={galleryImages} isAr={isAr} />
+          <AutoCarousel images={galleryImages} isAr={isAr} language={language} />
         </div>
       </section>
 

@@ -9,8 +9,58 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
 };
 
+const DONATIONS_DATA = {
+  ar: {
+    whyTitle: 'لماذا تتبرع؟',
+    whyP1: 'يساهم التبرع في تطوير البلدة القديمة في دعم المجتمع المحلي عبر ترميم المرافق التاريخية وتحسين البيئة العمرانية، مما يؤدي إلى تعزيز الاقتصاد المحلي والحفاظ على هوية المكان.',
+    whyP2: 'تبرعك الآن... فرصة تحدث فرقاً حقيقياً لأهل و مستقبل البلدة القديمة.',
+    whyCta: 'اصنع فرقاً',
+    donateTitle: 'بادر ... وتبرع',
+    donateLead: 'إما أن نبقى نشاهد التاريخ ينهار... أو نكون نحن من يعيده للحياة.',
+    donateSub: 'بدعمك، البلدة القديمة ستنهض من جديد.',
+    fullName: 'الاسم كاملاً',
+    email: 'البريد الإلكتروني',
+    phone: 'رقم الهاتف',
+    donateBtn: 'تبرع الآن',
+    feedbackPre: 'الملاحظات والاقتراحات',
+    feedbackTitle: 'رأيكَ يهمنا',
+    feedbackIntro: 'نقدر مساهمتك للبلدة القديمة، ونأخذ بعين الاعتبار ملاحظاتك واقتراحاتك لمساعدتنا على جعل البلدة القديمة مكاناً أفضل وتراثاً محفوظاً. نأمل مشاركة آراءك معنا من خلال إكمال النموذج أدناه.',
+    residentQ: 'هل أنت مقيم حالياً في البلدة القديمة؟',
+    yes: 'نعم',
+    no: 'لا',
+    msgLabel: 'أدخل نص الرسالة هنا',
+    sendBtn: 'إرسال',
+    donateToast: 'شكراً لك! سنتواصل معك قريباً لإتمام التبرع.',
+    feedbackToast: 'تم إرسال ملاحظاتك بنجاح، شكراً لك.',
+  },
+  en: {
+    whyTitle: 'Why Donate?',
+    whyP1: 'Donations contribute to the development of the Old Town and support the local community by restoring historic facilities and improving the urban environment — boosting the local economy and preserving the identity of the place.',
+    whyP2: 'Your donation now is an opportunity to make a real difference for the people and future of the Old Town.',
+    whyCta: 'Make a Difference',
+    donateTitle: 'Take Action... Donate',
+    donateLead: 'Either we keep watching history fall apart... or we become the ones who bring it back to life.',
+    donateSub: 'With your support, the Old Town will rise again.',
+    fullName: 'Full Name',
+    email: 'Email',
+    phone: 'Phone Number',
+    donateBtn: 'Donate Now',
+    feedbackPre: 'Feedback & Suggestions',
+    feedbackTitle: 'Your Opinion Matters',
+    feedbackIntro: 'We appreciate your contribution to the Old Town, and we value your feedback and suggestions to help us make the Old Town a better place and preserve its heritage. Please share your views by filling out the form below.',
+    residentQ: 'Are you currently a resident of the Old Town?',
+    yes: 'Yes',
+    no: 'No',
+    msgLabel: 'Enter your message here',
+    sendBtn: 'Send',
+    donateToast: 'Thank you! We will contact you soon to complete the donation.',
+    feedbackToast: 'Your feedback was sent successfully. Thank you.',
+  },
+};
+
 const Donations = ({ language, setLanguage, t }) => {
   const isAr = language === 'ar';
+  const d = DONATIONS_DATA[language];
 
   const [donateForm, setDonateForm] = useState({ name: '', email: '', phone: '' });
   const [feedbackForm, setFeedbackForm] = useState({
@@ -22,13 +72,13 @@ const Donations = ({ language, setLanguage, t }) => {
 
   const handleDonateSubmit = (e) => {
     e.preventDefault();
-    toast.success('شكراً لك! سنتواصل معك قريباً لإتمام التبرع.');
+    toast.success(d.donateToast);
     setDonateForm({ name: '', email: '', phone: '' });
   };
 
   const handleFeedbackSubmit = (e) => {
     e.preventDefault();
-    toast.success('تم إرسال ملاحظاتك بنجاح، شكراً لك.');
+    toast.success(d.feedbackToast);
     setFeedbackForm({ isResident: '', name: '', email: '', message: '' });
   };
 
@@ -76,31 +126,32 @@ const Donations = ({ language, setLanguage, t }) => {
               className={`lg:col-span-7 order-1 lg:order-2 ${isAr ? 'text-right' : 'text-left'}`}
             >
               <h1
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 lg:mb-10 leading-tight"
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 lg:mb-8 leading-tight"
                 style={{
                   color: '#553B2E',
                   fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
                 }}
                 data-testid="donations-title"
               >
-                لماذا تتبرع؟
+                {d.whyTitle}
               </h1>
+              <div
+                className="h-[3px] w-24 mb-8"
+                style={{ backgroundColor: '#BA9B70' }}
+              />
 
               <p
                 className="text-sm lg:text-base mb-6"
                 style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
-                يساهم التبرع في تطوير البلدة القديمة في دعم المجتمع المحلي عبر
-                ترميم المرافق التاريخية وتحسين البيئة العمرانية، مما يؤدي إلى
-                تعزيز الاقتصاد المحلي والحفاظ على هوية المكان.
+                {d.whyP1}
               </p>
 
               <p
                 className="text-sm lg:text-base mb-10"
                 style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
-                تبرعك الآن... فرصة تحدث فرقاً حقيقياً لأهل و مستقبل البلدة
-                القديمة.
+                {d.whyP2}
               </p>
 
               <a
@@ -109,7 +160,7 @@ const Donations = ({ language, setLanguage, t }) => {
                 style={{ borderColor: '#553B2E', color: '#553B2E' }}
                 data-testid="donations-make-difference-btn"
               >
-                اصنع فرقاً
+                {d.whyCta}
               </a>
             </motion.div>
           </div>
@@ -142,19 +193,19 @@ const Donations = ({ language, setLanguage, t }) => {
                   fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
                 }}
               >
-                بادر ... وتبرع
+                {d.donateTitle}
               </h2>
               <p
                 className="text-sm lg:text-base mb-3"
                 style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
-                إما أن نبقى نشاهد التاريخ ينهار... أو نكون نحن من يعيده للحياة.
+                {d.donateLead}
               </p>
               <p
                 className="text-sm lg:text-base"
                 style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
-                بدعمك، البلدة القديمة ستنهض من جديد.
+                {d.donateSub}
               </p>
             </motion.div>
 
@@ -171,14 +222,14 @@ const Donations = ({ language, setLanguage, t }) => {
             >
               <div>
                 <label className={labelClass} style={labelStyle}>
-                  الاسم كاملاً
+                  {d.fullName}
                 </label>
                 <input
                   type="text"
                   required
                   value={donateForm.name}
                   onChange={(e) => setDonateForm({ ...donateForm, name: e.target.value })}
-                  placeholder="الاسم كاملاً"
+                  placeholder={d.fullName}
                   className={inputClass}
                   style={inputStyle}
                   data-testid="donate-name"
@@ -188,7 +239,7 @@ const Donations = ({ language, setLanguage, t }) => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label className={labelClass} style={labelStyle}>
-                    البريد الإلكتروني
+                    {d.email}
                   </label>
                   <input
                     type="email"
@@ -202,7 +253,7 @@ const Donations = ({ language, setLanguage, t }) => {
                 </div>
                 <div>
                   <label className={labelClass} style={labelStyle}>
-                    رقم الهاتف
+                    {d.phone}
                   </label>
                   <input
                     type="tel"
@@ -223,7 +274,7 @@ const Donations = ({ language, setLanguage, t }) => {
                   style={{ backgroundColor: '#553B2E', color: '#fff' }}
                   data-testid="donate-submit-btn"
                 >
-                  تبرع الآن
+                  {d.donateBtn}
                 </button>
               </div>
             </motion.form>
@@ -250,7 +301,7 @@ const Donations = ({ language, setLanguage, t }) => {
                 className="text-sm font-medium mb-2"
                 style={{ color: '#7a6248' }}
               >
-                الملاحظات والاقتراحات
+                {d.feedbackPre}
               </p>
               <div className="h-[2px] w-32 mb-6" style={{ backgroundColor: '#BA9B70' }} />
               <h2
@@ -260,15 +311,13 @@ const Donations = ({ language, setLanguage, t }) => {
                   fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
                 }}
               >
-                رأيكَ يهمنا
+                {d.feedbackTitle}
               </h2>
               <p
                 className="text-sm lg:text-base"
                 style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
-                نقدر مساهمتك للبلدة القديمة، ونأخذ بعين الاعتبار ملاحظاتك
-                واقتراحاتك لمساعدتنا على جعل البلدة القديمة مكاناً أفضل وتراثاً
-                محفوظاً. نأمل مشاركة آراءك معنا من خلال إكمال النموذج أدناه.
+                {d.feedbackIntro}
               </p>
             </motion.div>
 
@@ -285,43 +334,43 @@ const Donations = ({ language, setLanguage, t }) => {
             >
               <div>
                 <label className={labelClass} style={labelStyle}>
-                  هل أنت مقيم حالياً في البلدة القديمة؟
+                  {d.residentQ}
                 </label>
                 <div className="flex gap-6">
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input
                       type="radio"
                       name="resident"
-                      value="نعم"
-                      checked={feedbackForm.isResident === 'نعم'}
+                      value="yes"
+                      checked={feedbackForm.isResident === 'yes'}
                       onChange={(e) =>
                         setFeedbackForm({ ...feedbackForm, isResident: e.target.value })
                       }
                       className="w-4 h-4 accent-[#553B2E]"
                       data-testid="feedback-resident-yes"
                     />
-                    <span style={{ color: '#3a3a3a' }}>نعم</span>
+                    <span style={{ color: '#3a3a3a' }}>{d.yes}</span>
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input
                       type="radio"
                       name="resident"
-                      value="لا"
-                      checked={feedbackForm.isResident === 'لا'}
+                      value="no"
+                      checked={feedbackForm.isResident === 'no'}
                       onChange={(e) =>
                         setFeedbackForm({ ...feedbackForm, isResident: e.target.value })
                       }
                       className="w-4 h-4 accent-[#553B2E]"
                       data-testid="feedback-resident-no"
                     />
-                    <span style={{ color: '#3a3a3a' }}>لا</span>
+                    <span style={{ color: '#3a3a3a' }}>{d.no}</span>
                   </label>
                 </div>
               </div>
 
               <div>
                 <label className={labelClass} style={labelStyle}>
-                  الاسم كاملاً
+                  {d.fullName}
                 </label>
                 <input
                   type="text"
@@ -336,7 +385,7 @@ const Donations = ({ language, setLanguage, t }) => {
 
               <div>
                 <label className={labelClass} style={labelStyle}>
-                  البريد الإلكتروني
+                  {d.email}
                 </label>
                 <input
                   type="email"
@@ -351,7 +400,7 @@ const Donations = ({ language, setLanguage, t }) => {
 
               <div>
                 <label className={labelClass} style={labelStyle}>
-                  أدخل نص الرسالة هنا
+                  {d.msgLabel}
                 </label>
                 <textarea
                   rows={5}
@@ -373,7 +422,7 @@ const Donations = ({ language, setLanguage, t }) => {
                   style={{ backgroundColor: '#553B2E', color: '#fff' }}
                   data-testid="feedback-submit-btn"
                 >
-                  إرسال
+                  {d.sendBtn}
                 </button>
               </div>
             </motion.form>

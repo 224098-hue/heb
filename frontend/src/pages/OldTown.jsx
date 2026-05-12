@@ -9,30 +9,40 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
 };
 
+const OLDTOWN_DATA = {
+  ar: {
+    title: 'البلدة القديمة',
+    paragraphs: [
+      'تقع البلدة القديمة في قلب مدينة الخليل، وتُعد من أقدم المناطق التاريخية في فلسطين، حيث تمتد جذورها لآلاف السنين وتحمل بين أزقتها ذاكرة حضارية وثقافية غنية.',
+      'تتميز البلدة بطابعها المعماري الأصيل، وأسواقها التراثية، ومبانيها الحجرية القديمة التي تعكس تاريخ المدينة وهويتها العربية والإسلامية.',
+      'وتضم البلدة القديمة العديد من المعالم الدينية والأثرية والأسواق التقليدية التي ما زالت تنبض بالحياة حتى اليوم، مما يجعلها شاهدًا حيًا على تعاقب الحضارات عبر الزمن.',
+    ],
+    cards: [
+      { title: 'الطبيعة المعمارية', alt: 'الطبيعة المعمارية' },
+      { title: 'المهن والحرف', alt: 'المهن والحرف' },
+    ],
+  },
+  en: {
+    title: 'The Old Town',
+    paragraphs: [
+      'The Old Town lies at the heart of Hebron and is considered one of the oldest historic areas in Palestine. Its roots stretch back thousands of years, and its alleys hold rich cultural and civilizational memories.',
+      'The town is distinguished by its authentic architectural character, heritage markets, and ancient stone buildings that reflect the city\'s Arab and Islamic identity.',
+      'The Old Town hosts many religious and archaeological landmarks as well as traditional markets that remain alive today, making it a living witness to the succession of civilizations through time.',
+    ],
+    cards: [
+      { title: 'Architecture', alt: 'Architecture' },
+      { title: 'Crafts & Trades', alt: 'Crafts & Trades' },
+    ],
+  },
+};
+
 const OldTown = ({ language, setLanguage, t }) => {
   const isAr = language === 'ar';
-
-  const paragraphs = [
-    'تقع البلدة القديمة في قلب مدينة الخليل، وتُعد من أقدم المناطق التاريخية في فلسطين، حيث تمتد جذورها لآلاف السنين وتحمل بين أزقتها ذاكرة حضارية وثقافية غنية.',
-    'تتميز البلدة بطابعها المعماري الأصيل، وأسواقها التراثية، ومبانيها الحجرية القديمة التي تعكس تاريخ المدينة وهويتها العربية والإسلامية.',
-    'وتضم البلدة القديمة العديد من المعالم الدينية والأثرية والأسواق التقليدية التي ما زالت تنبض بالحياة حتى اليوم، مما يجعلها شاهدًا حيًا على تعاقب الحضارات عبر الزمن.',
-  ];
-
+  const c = OLDTOWN_DATA[language];
+  const { paragraphs } = c;
   const cards = [
-    {
-      title: 'الطبيعة المعمارية',
-      to: '/architecture',
-      image:
-        'https://images.unsplash.com/photo-1633788229431-a9683c7388dd?w=900&q=80',
-      alt: 'الطبيعة المعمارية',
-    },
-    {
-      title: 'المهن والحرف',
-      to: '/crafts',
-      image:
-        'https://images.unsplash.com/photo-1562457141-8c1df886f92c?w=900&q=80',
-      alt: 'المهن والحرف',
-    },
+    { ...c.cards[0], to: '/architecture', image: 'https://images.unsplash.com/photo-1633788229431-a9683c7388dd?w=900&q=80' },
+    { ...c.cards[1], to: '/crafts', image: 'https://images.unsplash.com/photo-1562457141-8c1df886f92c?w=900&q=80' },
   ];
 
   return (
@@ -105,7 +115,7 @@ const OldTown = ({ language, setLanguage, t }) => {
                 }}
                 data-testid="oldtown-title"
               >
-                البلدة القديمة
+                {c.title}
               </h1>
               <div
                 className="h-[2px] w-32 mb-8"

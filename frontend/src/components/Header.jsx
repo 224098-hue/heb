@@ -47,10 +47,10 @@ const Header = ({ language, setLanguage, t }) => {
         <div className="w-full px-4 py-4 lg:max-w-7xl lg:mx-auto lg:px-6 lg:py-5">
           <div className="flex items-center justify-between">
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button — على اليسار في RTL */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 -ml-2 text-gray-800 order-1"
+              className="lg:hidden p-2 text-gray-800 order-3"
               aria-label="Menu"
             >
               <Menu className="w-6 h-6" strokeWidth={1.5} />
@@ -110,12 +110,12 @@ const Header = ({ language, setLanguage, t }) => {
 
             </nav>
 
-            {/* Logo */}
+            {/* Logo — على اليمين في RTL */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="flex items-center order-3"
+              className="flex items-center order-1"
             >
               <Link to="/">
                 <img
@@ -128,13 +128,14 @@ const Header = ({ language, setLanguage, t }) => {
               </Link>
             </motion.div>
 
-            {/* Language Switcher */}
+            {/* Language Switcher — على اليسار في RTL */}
             <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
               onClick={() => setLanguage(language === 'ar' ? 'en' : 'ar')}
-              className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 hover:border-[#BA9B70] hover:bg-[#BA9B70] hover:text-white transition-all duration-200 order-1"
+              className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 hover:border-[#BA9B70] hover:bg-[#BA9B70] hover:text-white transition-all duration-200 order-3"
+              data-testid="lang-toggle-desktop"
             >
               <Globe className="w-4 h-4" />
               <span className="text-sm font-medium">{language === 'ar' ? 'ENGLISH' : 'العربية'}</span>

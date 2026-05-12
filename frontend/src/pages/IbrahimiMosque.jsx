@@ -153,38 +153,75 @@ const AutoCarousel = ({ images, isAr }) => {
   );
 };
 
+const HARAM_DATA = {
+  ar: {
+    pageTitle: 'الحرم الإبراهيمي',
+    exploreTitle: 'استكشف الحرم الإبراهيمي\nالشريف',
+    historyLabel: 'نبذة تاريخية',
+    p1: 'يُعتبر الحرم الإبراهيمي من أقدم الأماكن المقدسة في العالم التي ما زالت مستخدمة حتى اليوم دون انقطاع تقريباً. وترتبط قدسيته باحتوائه على مقامات النبي إبراهيم عليه السلام وزوجته سارة، إضافة إلى النبيين إسحاق ويعقوب وزوجتيهما.',
+    p2: 'وقد شكَّل الحرم عبر التاريخ مركزاً دينياً وحضارياً مهماً، وأسهم في شهرة مدينة الخليل عالمياً، حتى أن اسم "Hebron" أُطلق على مدن ومناطق أخرى حول العالم.',
+    s1Title: 'الأهمية الدينية',
+    s1Text: 'يحمل الحرم مكانة روحية كبيرة لدى المسلمين، ويُعد من أبرز المعالم الإسلامية والتاريخية في فلسطين. كما ارتبط اسم مدينة الخليل بالنبي إبراهيم عليه السلام المعروف بـ "خليل الرحمن".',
+    s2Title: 'العمارة والتصميم',
+    s2Lead: 'يتكوّن الحرم من سور حجري ضخم أُقيم فوق مغارة مزدوجة، ويتميّز بطراز معماري هيرودياني يعتمد على استخدام الحجارة الضخمة والمتقنة.',
+    s2SubTitle: 'أبرز المواصفات المعمارية:',
+    s2Specs: [
+      'طول المبنى: حوالي 59 متر',
+      'العرض: حوالي 34 متر',
+      'الارتفاع: 16 متر',
+      'سماكة الجدران: نحو 2.6 متر',
+      'عدد الدعامات الحجرية: 48 دعامة',
+    ],
+    s2Outro: 'وقد بُنيت بعض الحجارة بأحجام ضخمة يصل طول بعضها إلى أكثر من 7 أمتار.',
+    s3Title: 'موقع الحرم في المدينة',
+    s3Text: 'يقع الحرم الإبراهيمي في قلب البلدة القديمة بمدينة الخليل، وكان نقطة محورية في تشكل النسيج العمراني والأسواق والحارات المحيطة به، حيث امتدت الأزقة والطرق القديمة باتجاهه.',
+    resilTitle: 'الصمود عبر التاريخ',
+    resilText: 'رغم مرور أكثر من ألفي عام على بناء الحرم، وتعرض مدينة الخليل للعديد من الزلازل والحروب، حافظ المبنى على متانته وطابعه المعماري الفريد، ولم يتعرض لأضرار كبيرة تستدعي إعادة بنائه.',
+  },
+  en: {
+    pageTitle: 'The Ibrahimi Mosque',
+    exploreTitle: 'Explore the Holy\nIbrahimi Mosque',
+    historyLabel: 'Historical Overview',
+    p1: 'The Ibrahimi Mosque is considered one of the oldest holy sites in the world that has remained in continuous use until today. Its sanctity is linked to housing the tombs of Prophet Abraham (peace be upon him) and his wife Sarah, as well as Prophets Isaac and Jacob and their wives.',
+    p2: 'Throughout history, the mosque has served as an important religious and civilizational center, contributing to Hebron\'s global fame — the name "Hebron" has been given to cities and regions around the world.',
+    s1Title: 'Religious Significance',
+    s1Text: 'The mosque holds great spiritual importance for Muslims, and is one of the most prominent Islamic and historic landmarks in Palestine. The name of Hebron is associated with the Prophet Abraham, known as "Khalil al-Rahman" (Friend of the Most Merciful).',
+    s2Title: 'Architecture & Design',
+    s2Lead: 'The mosque consists of a massive stone wall built over a double cave, and is distinguished by Herodian-style architecture relying on huge, finely crafted stones.',
+    s2SubTitle: 'Key Architectural Specifications:',
+    s2Specs: [
+      'Building length: approx. 59 meters',
+      'Width: approx. 34 meters',
+      'Height: 16 meters',
+      'Wall thickness: approx. 2.6 meters',
+      'Number of stone piers: 48',
+    ],
+    s2Outro: 'Some stones were built at massive sizes, with some reaching over 7 meters in length.',
+    s3Title: 'Location in the City',
+    s3Text: 'The Ibrahimi Mosque lies in the heart of Hebron\'s Old Town and was a pivotal point in shaping the urban fabric, markets, and surrounding quarters — old alleys and roads extended toward it.',
+    resilTitle: 'Resilience Through History',
+    resilText: 'Despite more than two thousand years since the mosque was built, and Hebron\'s exposure to many earthquakes and wars, the building has maintained its strength and unique architectural character, sustaining no major damage requiring rebuilding.',
+  },
+};
+
 const IbrahimiMosque = ({ language, setLanguage, t }) => {
   const isAr = language === 'ar';
+  const d = HARAM_DATA[language];
 
   const sections = [
     {
-      title: 'الأهمية الدينية',
-      content: (
-        <>
-          يحمل الحرم مكانة روحية كبيرة لدى المسلمين، ويُعد من أبرز المعالم
-          الإسلامية والتاريخية في فلسطين. كما ارتبط اسم مدينة الخليل بالنبي
-          إبراهيم عليه السلام المعروف بـ "خليل الرحمن".
-        </>
-      ),
+      title: d.s1Title,
+      content: <>{d.s1Text}</>,
     },
     {
-      title: 'العمارة والتصميم',
+      title: d.s2Title,
       content: (
         <>
-          يتكوّن الحرم من سور حجري ضخم أُقيم فوق مغارة مزدوجة، ويتميّز بطراز
-          معماري هيرودياني يعتمد على استخدام الحجارة الضخمة والمتقنة.
+          {d.s2Lead}
           <br />
-          <span className="font-semibold block mt-3 mb-2">
-            أبرز المواصفات المعمارية:
-          </span>
+          <span className="font-semibold block mt-3 mb-2">{d.s2SubTitle}</span>
           <ul className="space-y-1.5 mb-3">
-            {[
-              'طول المبنى: حوالي 59 متر',
-              'العرض: حوالي 34 متر',
-              'الارتفاع: 16 متر',
-              'سماكة الجدران: نحو 2.6 متر',
-              'عدد الدعامات الحجرية: 48 دعامة',
-            ].map((item) => (
+            {d.s2Specs.map((item) => (
               <li key={item} className="flex items-center gap-3">
                 <span
                   className="w-1.5 h-1.5 rounded-full flex-shrink-0"
@@ -194,19 +231,13 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
               </li>
             ))}
           </ul>
-          وقد بُنيت بعض الحجارة بأحجام ضخمة يصل طول بعضها إلى أكثر من 7 أمتار.
+          {d.s2Outro}
         </>
       ),
     },
     {
-      title: 'موقع الحرم في المدينة',
-      content: (
-        <>
-          يقع الحرم الإبراهيمي في قلب البلدة القديمة بمدينة الخليل، وكان نقطة
-          محورية في تشكل النسيج العمراني والأسواق والحارات المحيطة به، حيث امتدت
-          الأزقة والطرق القديمة باتجاهه.
-        </>
-      ),
+      title: d.s3Title,
+      content: <>{d.s3Text}</>,
     },
   ];
 
@@ -248,7 +279,7 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
                 }}
                 data-testid="haram-title"
               >
-                الحرم الإبراهيمي
+                {d.pageTitle}
               </h1>
             </div>
           </motion.div>
@@ -281,9 +312,7 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
                     "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
                 }}
               >
-                استكشف الحرم الإبراهيمي
-                <br />
-                الشريف
+                {d.exploreTitle}
               </h2>
             </motion.div>
 
@@ -300,24 +329,19 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
                 className="text-sm font-medium mb-3"
                 style={{ color: '#7a6248' }}
               >
-                نبذة تاريخية
+                {d.historyLabel}
               </p>
               <p
                 className="text-sm lg:text-base mb-4"
                 style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
-                يُعتبر الحرم الإبراهيمي من أقدم الأماكن المقدسة في العالم التي
-                ما زالت مستخدمة حتى اليوم دون انقطاع تقريباً. وترتبط قدسيته
-                باحتوائه على مقامات النبي إبراهيم عليه السلام وزوجته سارة، إضافة
-                إلى النبيين إسحاق ويعقوب وزوجتيهما.
+                {d.p1}
               </p>
               <p
                 className="text-sm lg:text-base"
                 style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
-                وقد شكَّل الحرم عبر التاريخ مركزاً دينياً وحضارياً مهماً، وأسهم
-                في شهرة مدينة الخليل عالمياً، حتى أن اسم "Hebron" أُطلق على مدن
-                ومناطق أخرى حول العالم.
+                {d.p2}
               </p>
             </motion.div>
           </div>
@@ -423,15 +447,13 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
                     "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
                 }}
               >
-                الصمود عبر التاريخ
+                {d.resilTitle}
               </h3>
               <p
                 className="text-sm lg:text-base"
                 style={{ color: '#5a5249', lineHeight: '1.85' }}
               >
-                رغم مرور أكثر من ألفي عام على بناء الحرم، وتعرض مدينة الخليل
-                للعديد من الزلازل والحروب، حافظ المبنى على متانته وطابعه
-                المعماري الفريد، ولم يتعرض لأضرار كبيرة تستدعي إعادة بنائه.
+                {d.resilText}
               </p>
             </div>
           </motion.div>

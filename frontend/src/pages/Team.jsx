@@ -4,40 +4,38 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-// أعضاء الفريق - بيانات افتراضية
-const teamMembers = [
-  {
-    name: 'عبير إسماعيل المناصرة',
-    role: 'مديرة شؤون الموظفين',
-    department: 'الإدارة',
-    image:
-      'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=900&q=80',
+// Team data — bilingual
+const TEAM_DATA = {
+  ar: {
+    title: 'فريق العمل',
+    intro:
+      'يُشكِّل موظفو لجنة إعمار البلدة القديمة الركيزة الأساسية في عملية التطوير والإحياء المستمر، حيث يعملون بتفانٍ ومسؤولية على تنفيذ مشاريع الترميم، وتنسيق الجهود الميدانية، ومتابعة احتياجات المنطقة. إن جهودهم اليومية تسهم بشكل مباشر في الحفاظ على هوية البلدة القديمة وتعزيز استدامتها.',
+    members: [
+      { name: 'عبير إسماعيل المناصرة', role: 'مديرة شؤون الموظفين', department: 'الإدارة' },
+      { name: 'أحمد محمود السلايمة', role: 'مدير المشاريع', department: 'المشاريع الهندسية' },
+      { name: 'سامي عبد الرحمن الجعبري', role: 'منسق ميداني', department: 'الترميم' },
+      { name: 'فاطمة يوسف القاضي', role: 'مهندسة معمارية', department: 'الهندسة المعمارية' },
+    ],
   },
-  {
-    name: 'أحمد محمود السلايمة',
-    role: 'مدير المشاريع',
-    department: 'المشاريع الهندسية',
-    image:
-      'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=900&q=80',
+  en: {
+    title: 'Our Team',
+    intro:
+      'The staff of the Hebron Rehabilitation Committee form the cornerstone of the ongoing development and revival process. They work with dedication and responsibility to execute restoration projects, coordinate field efforts, and address the needs of the area. Their daily work directly contributes to preserving the identity of the Old Town and supporting its sustainability.',
+    members: [
+      { name: 'Abeer Ismail Al-Manasrah', role: 'HR Manager', department: 'Administration' },
+      { name: 'Ahmad Mahmoud Al-Salaymeh', role: 'Project Manager', department: 'Engineering Projects' },
+      { name: 'Sami Abdulrahman Al-Jabari', role: 'Field Coordinator', department: 'Restoration' },
+      { name: 'Fatima Yousef Al-Qadi', role: 'Architect', department: 'Architectural Engineering' },
+    ],
   },
-  {
-    name: 'سامي عبد الرحمن الجعبري',
-    role: 'منسق ميداني',
-    department: 'الترميم',
-    image:
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=80',
-  },
-  {
-    name: 'فاطمة يوسف القاضي',
-    role: 'مهندسة معمارية',
-    department: 'الهندسة المعمارية',
-    image:
-      'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=900&q=80',
-  },
-];
+};
 
-const intro =
-  'يُشكِّل موظفو لجنة إعمار البلدة القديمة الركيزة الأساسية في عملية التطوير والإحياء المستمر، حيث يعملون بتفانٍ ومسؤولية على تنفيذ مشاريع الترميم، وتنسيق الجهود الميدانية، ومتابعة احتياجات المنطقة. إن جهودهم اليومية تسهم بشكل مباشر في الحفاظ على هوية البلدة القديمة وتعزيز استدامتها.';
+const MEMBER_IMAGES = [
+  'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=900&q=80',
+  'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=900&q=80',
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=80',
+  'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=900&q=80',
+];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -46,6 +44,9 @@ const fadeUp = {
 
 const Team = ({ language, setLanguage, t }) => {
   const isAr = language === 'ar';
+  const data = TEAM_DATA[language];
+  const { title, intro } = data;
+  const teamMembers = data.members.map((m, i) => ({ ...m, image: MEMBER_IMAGES[i] }));
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(1);
 
@@ -88,54 +89,47 @@ const Team = ({ language, setLanguage, t }) => {
         data-testid="team-section"
       >
         <div className="max-w-7xl mx-auto">
-          {/* العنوان والمقدمة */}
-          <div
-            className={`mb-10 lg:mb-14 ${isAr ? 'text-right' : 'text-left'}`}
-          >
-            <div className="max-w-3xl me-auto">
-              <motion.h1
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                className="text-base lg:text-lg font-bold mb-4"
-                style={{
-                  color: '#553B2E',
-                  fontFamily:
-                    "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
-                }}
-                data-testid="team-title"
-              >
-                فريق العمل
-              </motion.h1>
+          {/* العنوان والمقدمة - CENTERED */}
+          <div className="mb-10 lg:mb-14 flex flex-col items-center text-center">
+            <motion.h1
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4"
+              style={{
+                color: '#553B2E',
+                fontFamily:
+                  "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
+              }}
+              data-testid="team-title"
+            >
+              {title}
+            </motion.h1>
 
-              <motion.div
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="h-[2px] w-32 mb-10"
-                style={{
-                  backgroundColor: '#BA9B70',
-                  transformOrigin: isAr ? 'right' : 'left',
-                }}
-              />
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="h-[3px] w-24 mb-8"
+              style={{ backgroundColor: '#BA9B70' }}
+            />
 
-              <motion.p
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                transition={{ delay: 0.15 }}
-                className="text-sm lg:text-base max-w-2xl"
-                style={{
-                  color: '#3a3a3a',
-                  lineHeight: '1.85',
-                }}
-              >
-                {intro}
-              </motion.p>
-            </div>
+            <motion.p
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              transition={{ delay: 0.15 }}
+              className="text-sm lg:text-base max-w-2xl"
+              style={{
+                color: '#3a3a3a',
+                lineHeight: '1.85',
+              }}
+            >
+              {intro}
+            </motion.p>
           </div>
 
           {/* قسم السلايدر */}

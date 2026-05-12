@@ -8,52 +8,105 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
 };
 
-const crafts = [
-  {
-    title: 'صناعة الزجاج',
-    text: [
-      'في الخليل تتركز تاريخياً في حارة القزازين داخل البلدة القديمة، واعتمدت على صهر رمل بريّة الخليل داخل أفران تصل حرارتها إلى 1500 درجة مئوية لتشكيل الزجاج.',
-      'في بداية القرن العشرين أصبحت المهنة مرتبطة بعائلة النتشة وتوارثتها عبر الأجيال، ومع الوقت حدثت تغييرات في المواد حيث استُخدم الزجاج المكسّر بدل الرمل.',
-      'انتقلت بعض المصانع إلى مدخل المدينة، وتحوّلت المنتجات من الاستخدام اليومي قديماً إلى أغراض الزينة حالياً، مع تنويع أساليب الزخرفة باستخدام الألوان والمواد المختلفة.',
+const CRAFTS_DATA = {
+  ar: {
+    pageTitle: 'المهن و الحرف',
+    sectionTitle: 'استكشف الإمكانيات المهنية\nداخل البلدة القديمة',
+    intro: [
+      'لطالما شكَّلت الحرف والمهن التقليدية جزءًا أصيلًا من هوية البلدة القديمة في الخليل، حيث توارثها الحرفيون جيلًا بعد جيل، محافظين على تفاصيلها اليدوية وروحها التراثية.',
+      'تعكس هذه المهن تاريخ المدينة وثقافتها، وتروي حكاية الإنسان الذي صنع من الحجارة والخشب والزجاج والنحاس فنًا يعبّر عن أصالة المكان.',
     ],
-    image: '/old-town.webp',
-  },
-  {
-    title: 'صناعة الخزف',
-    text: [
-      'في الخليل ظهرت في النصف الثاني من القرن العشرين، وبدأت مرتبطة بالفخار حيث كانت الأدوات تُطلى بالطين الأبيض وتُحرق ثم تُزجَّج وتُزيَّن.',
-      'تطورت لاحقاً لتقوم على استيراد مادة الطين الخام وتشكيلها بقوالب جبسية، ثم حرقها في أفران بدرجات حرارة عالية، يليها الرسم والتزجيج وإعادة الحرق.',
-      'تُنتَج أدوات مثل الصحون والكاسات والجاطات، ويتم بيعها محلياً وتصدير جزءاً كبيراً منها إلى أوروبا وأمريكا اللاتينية.',
+    crafts: [
+      {
+        title: 'صناعة الزجاج',
+        text: [
+          'في الخليل تتركز تاريخياً في حارة القزازين داخل البلدة القديمة، واعتمدت على صهر رمل بريّة الخليل داخل أفران تصل حرارتها إلى 1500 درجة مئوية لتشكيل الزجاج.',
+          'في بداية القرن العشرين أصبحت المهنة مرتبطة بعائلة النتشة وتوارثتها عبر الأجيال، ومع الوقت حدثت تغييرات في المواد حيث استُخدم الزجاج المكسّر بدل الرمل.',
+          'انتقلت بعض المصانع إلى مدخل المدينة، وتحوّلت المنتجات من الاستخدام اليومي قديماً إلى أغراض الزينة حالياً، مع تنويع أساليب الزخرفة باستخدام الألوان والمواد المختلفة.',
+        ],
+      },
+      {
+        title: 'صناعة الخزف',
+        text: [
+          'في الخليل ظهرت في النصف الثاني من القرن العشرين، وبدأت مرتبطة بالفخار حيث كانت الأدوات تُطلى بالطين الأبيض وتُحرق ثم تُزجَّج وتُزيَّن.',
+          'تطورت لاحقاً لتقوم على استيراد مادة الطين الخام وتشكيلها بقوالب جبسية، ثم حرقها في أفران بدرجات حرارة عالية، يليها الرسم والتزجيج وإعادة الحرق.',
+          'تُنتَج أدوات مثل الصحون والكاسات والجاطات، ويتم بيعها محلياً وتصدير جزءاً كبيراً منها إلى أوروبا وأمريكا اللاتينية.',
+        ],
+      },
+      {
+        title: 'صناعة الفخار',
+        text: [
+          'في الخليل من أقدم الحرف في البلدة القديمة، وارتبطت بعائلات مثل عائلة الفأخوري التي ورثت المهنة جيلاً بعد جيل.',
+          'انتشرت في عدة مناطق داخل البلدة القديمة، وكانت تعتمد على الطين المحلي لصناعة أدوات منزلية مثل الصحون والجرار والزبادي، باستخدام الدولاب ثم تزيينها وحرقها في الأفران.',
+          'كانت تُباع منتجاتها في الأسواق المحلية، وشكَّلت جزءاً مهماً من الحياة اليومية في المدينة.',
+        ],
+      },
+      {
+        title: 'معاصر زيت الزيتون',
+        text: [
+          'في الخليل، أو ما يُعرف بـ"بد الزيت"، كانت منتشرة في المدينة ومحيطها وتعتمد على نظام تقليدي لهرس الزيتون باستخدام الحجر ثم عصره لاستخراج الزيت.',
+          'توزعت هذه المعاصر في أحياء البلدة القديمة بأسماء وعائلات مختلفة، وكانت من أهم وسائل إنتاج زيت الزيتون محلياً.',
+          'ومع تطور الزمن في النصف الثاني من القرن العشرين، تراجعت هذه المعاصر التقليدية أو أهملت واستُبدلت بالآلات الحديثة.',
+        ],
+      },
     ],
-    image: '/old-town.webp',
   },
-  {
-    title: 'صناعة الفخار',
-    text: [
-      'في الخليل من أقدم الحرف في البلدة القديمة، وارتبطت بعائلات مثل عائلة الفأخوري التي ورثت المهنة جيلاً بعد جيل.',
-      'انتشرت في عدة مناطق داخل البلدة القديمة، وكانت تعتمد على الطين المحلي لصناعة أدوات منزلية مثل الصحون والجرار والزبادي، باستخدام الدولاب ثم تزيينها وحرقها في الأفران.',
-      'كانت تُباع منتجاتها في الأسواق المحلية، وشكَّلت جزءاً مهماً من الحياة اليومية في المدينة.',
+  en: {
+    pageTitle: 'Crafts & Trades',
+    sectionTitle: 'Explore the Professional Heritage\nof the Old Town',
+    intro: [
+      'Traditional crafts and trades have long been an authentic part of the Old Town\'s identity in Hebron, passed down by artisans generation after generation, preserving their handmade details and heritage spirit.',
+      'These crafts reflect the city\'s history and culture, telling the story of those who turned stone, wood, glass, and copper into art expressing the place\'s authenticity.',
     ],
-    image: '/pattern-original.webp',
-  },
-  {
-    title: 'معاصر زيت الزيتون',
-    text: [
-      'في الخليل، أو ما يُعرف بـ"بد الزيت"، كانت منتشرة في المدينة ومحيطها وتعتمد على نظام تقليدي لهرس الزيتون باستخدام الحجر ثم عصره لاستخراج الزيت.',
-      'توزعت هذه المعاصر في أحياء البلدة القديمة بأسماء وعائلات مختلفة، وكانت من أهم وسائل إنتاج زيت الزيتون محلياً.',
-      'ومع تطور الزمن في النصف الثاني من القرن العشرين، تراجعت هذه المعاصر التقليدية أو أهملت واستُبدلت بالآلات الحديثة.',
+    crafts: [
+      {
+        title: 'Glassmaking',
+        text: [
+          'In Hebron, glassmaking has historically been concentrated in the Glassmakers\' Quarter within the Old Town. It relied on melting Hebron sand in furnaces reaching 1500°C to shape the glass.',
+          'In the early 20th century, the craft became linked to the Natshe family and was inherited across generations. Over time, materials changed and broken glass replaced sand.',
+          'Some workshops moved to the city entrance, and products evolved from daily-use items to decorative pieces, with diversified decoration techniques using various colors and materials.',
+        ],
+      },
+      {
+        title: 'Ceramics',
+        text: [
+          'Ceramics in Hebron emerged in the second half of the 20th century, starting linked to pottery — tools were coated in white clay, fired, then glazed and decorated.',
+          'Later it developed to rely on imported raw clay shaped in plaster molds, then fired in high-temperature kilns, followed by painting, glazing, and re-firing.',
+          'Products such as plates, cups, and bowls are made and sold locally, with a large portion exported to Europe and Latin America.',
+        ],
+      },
+      {
+        title: 'Pottery',
+        text: [
+          'Pottery in Hebron is one of the oldest crafts in the Old Town, associated with families like the Fakhouri family who inherited the craft generation after generation.',
+          'It spread across several areas inside the Old Town, relying on local clay to produce household items such as plates, jars, and yogurt pots, using the wheel, then decorating and firing them.',
+          'Their products were sold in local markets and formed an important part of daily life in the city.',
+        ],
+      },
+      {
+        title: 'Olive Oil Presses',
+        text: [
+          'Olive oil presses in Hebron, known as "Bid Al-Zayt", were widespread in and around the city, relying on a traditional stone system for crushing olives and pressing them to extract the oil.',
+          'These presses were distributed across the Old Town neighborhoods under different names and families, and were among the most important means of producing olive oil locally.',
+          'With the development of time in the second half of the 20th century, these traditional presses declined or were abandoned and replaced by modern machines.',
+        ],
+      },
     ],
-    image: '/pattern-original.webp',
   },
-];
+};
 
-const intro = [
-  'لطالما شكَّلت الحرف والمهن التقليدية جزءًا أصيلًا من هوية البلدة القديمة في الخليل، حيث توارثها الحرفيون جيلًا بعد جيل، محافظين على تفاصيلها اليدوية وروحها التراثية.',
-  'تعكس هذه المهن تاريخ المدينة وثقافتها، وتروي حكاية الإنسان الذي صنع من الحجارة والخشب والزجاج والنحاس فنًا يعبّر عن أصالة المكان.',
+const CRAFT_IMAGES = [
+  '/old-town.webp',
+  '/old-town.webp',
+  '/pattern-original.webp',
+  '/pattern-original.webp',
 ];
 
 const Crafts = ({ language, setLanguage, t }) => {
   const isAr = language === 'ar';
+  const c = CRAFTS_DATA[language];
+  const intro = c.intro;
+  const crafts = c.crafts.map((cr, i) => ({ ...cr, image: CRAFT_IMAGES[i] }));
 
   return (
     <div className={`bg-white ${isAr ? 'rtl' : 'ltr'}`} data-testid="crafts-page">
@@ -92,7 +145,7 @@ const Crafts = ({ language, setLanguage, t }) => {
             style={{ fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif" }}
             data-testid="crafts-title"
           >
-            المهن والحرف
+            {c.pageTitle}
           </h1>
         </motion.div>
       </div>
@@ -112,15 +165,13 @@ const Crafts = ({ language, setLanguage, t }) => {
               className={`flex items-center ${isAr ? 'justify-end text-right' : 'justify-start text-left'}`}
             >
               <h2
-                className="text-2xl lg:text-3xl font-bold leading-relaxed"
+                className="text-2xl lg:text-3xl font-bold leading-relaxed whitespace-pre-line"
                 style={{
                   color: '#553B2E',
                   fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
                 }}
               >
-                استكشف الإمكانيات المهنية
-                <br />
-                داخل البلدة القديمة
+                {c.sectionTitle}
               </h2>
             </motion.div>
 
