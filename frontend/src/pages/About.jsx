@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import CountUp from '../components/CountUp';
 import {
   ArrowLeft,
   Target,
@@ -56,8 +57,8 @@ const About = ({ language, setLanguage, t }) => {
           >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/5] lg:aspect-square">
               <img
-                src="/old-town.webp"
-                alt="البلدة القديمة - الخليل"
+                src="/hrc-courtyard.webp"
+                alt="مبنى لجنة إعمار الخليل - الفناء"
                 className="w-full h-full object-cover"
                 loading="eager"
                 fetchpriority="high"
@@ -178,8 +179,8 @@ const About = ({ language, setLanguage, t }) => {
           >
             <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[3/4]">
               <img
-                src="/committee-building.webp"
-                alt="مبنى لجنة إعمار الخليل"
+                src="/hrc-archstairs.webp"
+                alt="مدخل مبنى لجنة إعمار الخليل"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
@@ -271,40 +272,42 @@ const About = ({ language, setLanguage, t }) => {
       </section>
 
       {/* SECTION 4 — STATISTICS */}
-      <section className="py-16 px-4 lg:px-12" style={{ backgroundColor: '#FAF6EE' }}>
+      <section className="py-12 lg:py-16 px-4 lg:px-12" style={{ backgroundColor: '#FAF6EE' }}>
         <div className="max-w-7xl mx-auto">
-          <div
-            className="rounded-3xl bg-white shadow-lg overflow-hidden grid grid-cols-3 lg:grid-cols-5 divide-x divide-y lg:divide-y-0"
-
-            style={{ borderColor: '#E8DEC8' }}
-          >
-            {a.stats.map((stat, i) => {
-              const Icon = statIcons[i] || Handshake;
-              return (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className="flex flex-col items-center justify-center text-center px-4 py-8"
-                  style={{ borderColor: '#F0E7D3' }}
-                >
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center mb-4"
-                    style={{ backgroundColor: '#FAF1E0' }}
+          <div className="rounded-3xl bg-white shadow-lg overflow-hidden px-6 py-10 lg:px-10 lg:py-12">
+            <div className="flex flex-wrap justify-around items-center gap-y-8 gap-x-6">
+              {a.stats.map((stat, i) => {
+                const Icon = statIcons[i] || Handshake;
+                return (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.4 }}
+                    transition={{ duration: 0.5, delay: i * 0.08 }}
+                    className="flex flex-col items-center text-center px-3 min-w-[120px]"
                   >
-                    <Icon className="w-6 h-6" style={{ color: '#553B2E' }} strokeWidth={2} />
-                  </div>
-                  <div className="text-3xl lg:text-4xl font-bold mb-1" style={{ color: '#553B2E' }}>
-                    {stat.value}
-                  </div>
-                  <div className="text-sm font-medium" style={{ color: '#7a7a7a' }}>
-                    {stat.label}
-                  </div>
-                </motion.div>
-              );
-            })}
+                    <div
+                      className="w-11 h-11 rounded-full flex items-center justify-center mb-3"
+                      style={{ backgroundColor: '#FAF1E0' }}
+                    >
+                      <Icon className="w-5 h-5" style={{ color: '#553B2E' }} strokeWidth={2} />
+                    </div>
+                    <div className="text-2xl lg:text-3xl font-bold mb-1" style={{ color: '#553B2E' }}>
+                      <CountUp
+                        to={parseFloat(stat.value.replace(/[^0-9.]/g, ''))}
+                        prefix={stat.value.includes('+') ? '+' : ''}
+                        suffix={stat.value.includes('%') ? '%' : ''}
+                        duration={2}
+                      />
+                    </div>
+                    <div className="text-xs font-medium" style={{ color: '#7a7a7a' }}>
+                      {stat.label}
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>

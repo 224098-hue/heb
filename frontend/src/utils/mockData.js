@@ -172,6 +172,6 @@ export const pressArticles = [
 export const sectionImages = {
   brandStory: '/old-town.webp',
   brandElements: '/pattern.webp',
-  launchVideo: '/logo-full.webp',
-  uniteSection: '/old-town.webp',
+  launchVideo: '/hrc-building.webp',
+  uniteSection: '/hrc-interior.webp',
 };

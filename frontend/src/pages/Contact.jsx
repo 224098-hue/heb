@@ -57,7 +57,7 @@ const Contact = ({ language, setLanguage, t }) => {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeUp}
-              className={`lg:col-span-7 ${isAr ? 'text-right' : 'text-left'}`}
+              className={`lg:col-span-7 order-2 lg:order-2 ${isAr ? 'text-right' : 'text-left'}`}
             >
               <h1
                 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 lg:mb-10"
@@ -207,7 +207,7 @@ const Contact = ({ language, setLanguage, t }) => {
               viewport={{ once: true, amount: 0.2 }}
               variants={fadeUp}
               transition={{ delay: 0.1 }}
-              className="lg:col-span-5"
+              className="lg:col-span-5 order-1 lg:order-1"
             >
               <a
                 href={MAP_URL}

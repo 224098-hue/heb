@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, useMotionValue, animate, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
@@ -32,40 +32,40 @@ const galleryImages = [
 ];
 
 // ───────── Before/After Toggle ─────────
+// ───────── Auto Before/After Slider ─────────
 const BeforeAfter = ({ before, after, isAr }) => {
   const [showAfter, setShowAfter] = useState(false);
-  return (
-    <div className="flex items-center gap-5" dir={isAr ? 'rtl' : 'ltr'}>
-      {/* Labels column */}
-      <div className="flex flex-col items-center justify-between py-4 select-none">
-        <button
-          onClick={() => setShowAfter(false)}
-          className={`text-sm lg:text-base font-semibold transition-colors ${
-            !showAfter ? '' : 'opacity-50'
-          }`}
-          style={{ color: '#553B2E' }}
-          data-testid="achievements-before-btn"
-        >
-          قبل
-        </button>
-        <div className="my-3 flex flex-col items-center text-2xl" style={{ color: '#553B2E' }}>
-          <ArrowLeft className="w-6 h-6" strokeWidth={2} />
-        </div>
-        <button
-          onClick={() => setShowAfter(true)}
-          className={`text-sm lg:text-base font-semibold transition-colors ${
-            showAfter ? '' : 'opacity-50'
-          }`}
-          style={{ color: '#553B2E' }}
-          data-testid="achievements-after-btn"
-        >
-          بعد
-        </button>
-      </div>
 
-      {/* Image */}
+  // Auto-toggle every 3 seconds
+  useEffect(() => {
+    const id = setInterval(() => {
+      setShowAfter((p) => !p);
+    }, 3000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div className="relative w-full max-w-[420px] mx-auto" dir="ltr">
+      {/* Back card (slightly offset) */}
+      <motion.div
+        animate={{
+          x: showAfter ? -12 : 12,
+          y: showAfter ? -8 : 8,
+          rotate: showAfter ? -2 : 2,
+        }}
+        transition={{ duration: 0.7, ease: 'easeInOut' }}
+        className="absolute inset-0 rounded-3xl overflow-hidden shadow-md bg-gray-100"
+      >
+        <img
+          src={showAfter ? before : after}
+          alt={showAfter ? 'قبل' : 'بعد'}
+          className="w-full h-full object-cover opacity-70"
+        />
+      </motion.div>
+
+      {/* Front card */}
       <div
-        className="relative flex-1 max-w-[420px] aspect-[4/5] rounded-3xl overflow-hidden shadow-md bg-gray-100 cursor-pointer"
+        className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl bg-gray-100 cursor-pointer"
         onClick={() => setShowAfter((p) => !p)}
         data-testid="achievements-ba-image"
       >
@@ -74,13 +74,25 @@ const BeforeAfter = ({ before, after, isAr }) => {
             key={showAfter ? 'after' : 'before'}
             src={showAfter ? after : before}
             alt={showAfter ? 'بعد' : 'قبل'}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.6 }}
             className="absolute inset-0 w-full h-full object-cover"
           />
         </AnimatePresence>
+
+        {/* Floating label */}
+        <div
+          className="absolute top-4 right-4 px-4 py-1.5 rounded-full text-sm font-semibold shadow-md backdrop-blur-sm"
+          style={{
+            backgroundColor: 'rgba(255,255,255,0.92)',
+            color: '#553B2E',
+          }}
+          data-testid={showAfter ? 'achievements-after-btn' : 'achievements-before-btn'}
+        >
+          {showAfter ? 'بعد' : 'قبل'}
+        </div>
       </div>
     </div>
   );
@@ -216,7 +228,7 @@ const Achievements = ({ language, setLanguage, t }) => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 lg:mb-8 ${isAr ? 'text-right' : 'text-left'}`}
+            className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-8 lg:mb-10 ${isAr ? 'text-right' : 'text-left'}`}
             style={{
               color: '#553B2E',
               fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
@@ -227,31 +239,57 @@ const Achievements = ({ language, setLanguage, t }) => {
             انجــازات اللجنــة
           </motion.h1>
 
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            transition={{ delay: 0.1 }}
-            className={`text-base lg:text-lg mb-8 lg:mb-12 ${isAr ? 'text-right' : 'text-left'}`}
-            style={{
-              color: '#553B2E',
-              fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
-            }}
+          {/* 2-column layout: project info on LEFT, slider on RIGHT (RTL) */}
+          <div
+            className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center"
+            dir={isAr ? 'rtl' : 'ltr'}
           >
-            {project.title}
-          </motion.p>
+            {/* Slider — on RIGHT in RTL (DOM-first) */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={fadeUp}
+              className="lg:col-span-5 order-1 lg:order-1"
+            >
+              <BeforeAfter before={project.before} after={project.after} isAr={isAr} />
+            </motion.div>
 
-          {/* Before/After slider */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={fadeUp}
-            className="flex justify-center"
-          >
-            <BeforeAfter before={project.before} after={project.after} isAr={isAr} />
-          </motion.div>
+            {/* Project info — on LEFT in RTL */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              transition={{ delay: 0.1 }}
+              className={`lg:col-span-7 order-2 lg:order-2 ${isAr ? 'text-right' : 'text-left'}`}
+            >
+              <p
+                className="text-xs font-medium mb-2"
+                style={{ color: '#7a6248', letterSpacing: '0.1em' }}
+              >
+                مشروع
+              </p>
+              <div className="h-[2px] w-16 mb-6" style={{ backgroundColor: '#BA9B70' }} />
+              <h2
+                className="text-xl sm:text-2xl lg:text-3xl font-bold mb-5 leading-tight"
+                style={{
+                  color: '#553B2E',
+                  fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
+                }}
+              >
+                {project.title}
+              </h2>
+              <p
+                className="text-sm lg:text-base"
+                style={{ color: '#5a5249', lineHeight: '1.9' }}
+              >
+                ضمن جهود لجنة إعمار الخليل للحفاظ على البلدة القديمة، تم ترميم
+                جانب من منزل عائلة الرجبي بأسلوب هندسي يحترم الطابع التاريخي
+                للحيّ ويعيد الحياة إلى تفاصيله الأصلية.
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 

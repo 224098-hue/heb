@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import CountUp from '../components/CountUp';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -17,11 +18,11 @@ const fadeUp = {
 };
 
 const stats = [
-  { value: '+10', label: 'أسواق', Icon: User },
-  { value: '+1500', label: 'وحدة سكنية تراثية', Icon: HandHeart },
-  { value: '+1000', label: 'مبنى تاريخي', Icon: CheckCircle2 },
-  { value: '+3', label: 'أحياء', Icon: Building2 },
-  { value: '+11', label: 'حارة أساسية', Icon: LayoutGrid },
+  { numericValue: 10,   label: 'أسواق',             Icon: User },
+  { numericValue: 1500, label: 'وحدة سكنية تراثية', Icon: HandHeart },
+  { numericValue: 1000, label: 'مبنى تاريخي',       Icon: CheckCircle2 },
+  { numericValue: 3,    label: 'أحياء',             Icon: Building2 },
+  { numericValue: 11,   label: 'حارة أساسية',       Icon: LayoutGrid },
 ];
 
 const districts = {
@@ -91,10 +92,7 @@ const Architecture = ({ language, setLanguage, t }) => {
               >
                 مدينة الخليل القديمة: النشأة والعمران
               </h1>
-              <div
-                className="h-[2px] w-32 mb-8"
-                style={{ backgroundColor: '#BA9B70' }}
-              />
+              <div className="h-[2px] w-32 mb-8" style={{ backgroundColor: '#BA9B70' }} />
 
               <p
                 className="text-sm lg:text-base mb-5"
@@ -114,16 +112,17 @@ const Architecture = ({ language, setLanguage, t }) => {
                 في العصر المملوكي، ثم استمر تطورها في العهد العثماني.
               </p>
 
-              <a
-                href="#challenges"
+              <button
+                onClick={() => document.getElementById('challenges')?.scrollIntoView({ behavior: 'smooth' })}
                 className="inline-flex items-center gap-3 px-8 py-3 rounded-full font-bold text-sm tracking-wide transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 border-2"
                 style={{ borderColor: '#553B2E', color: '#553B2E' }}
                 data-testid="arch-cta"
               >
                 <span>اعرف المزيد</span>
                 <ArrowLeft className={`w-4 h-4 ${isAr ? '' : 'rotate-180'}`} />
-              </a>
+              </button>
             </motion.div>
+            {/* ← هون كان ناقص إغلاق motion.div */}
 
             {/* Image — Left in RTL */}
             <motion.div
@@ -144,37 +143,37 @@ const Architecture = ({ language, setLanguage, t }) => {
             </motion.div>
           </div>
 
-          {/* Stats Bar */}
+          {/* Stats Bar — مع CountUp */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeUp}
-            className="mt-10 lg:mt-12 rounded-3xl shadow-md overflow-hidden"
+            className="mt-10 lg:mt-12 rounded-3xl shadow-md overflow-hidden px-6 py-10 lg:px-10 lg:py-12"
             style={{ backgroundColor: '#F1E9D6' }}
             data-testid="arch-stats"
           >
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-              {stats.map(({ value, label, Icon }, i) => (
+            <div className="flex flex-wrap justify-around items-center gap-y-8 gap-x-6">
+              {stats.map(({ numericValue, label, Icon }, i) => (
                 <motion.div
                   key={label}
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.4 }}
                   transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className="flex flex-col items-center justify-center text-center px-4 py-8 lg:py-10 border-l border-white/50 first:border-l-0 [&:nth-child(3n+1)]:border-l-0 md:[&:nth-child(3n+1)]:border-l lg:[&:nth-child(n)]:border-l lg:first:border-l-0"
+                  className="flex flex-col items-center text-center px-3 min-w-[120px]"
                   data-testid={`arch-stat-${i}`}
                 >
                   <Icon
-                    className="w-10 h-10 lg:w-12 lg:h-12 mb-4"
-                    style={{ color: '#1a1a1a' }}
-                    strokeWidth={2.2}
+                    className="w-8 h-8 lg:w-10 lg:h-10 mb-3"
+                    style={{ color: '#553B2E' }}
+                    strokeWidth={2}
                   />
                   <div
-                    className="text-base lg:text-lg font-bold mb-1"
+                    className="text-xl lg:text-2xl font-bold mb-1"
                     style={{ color: '#553B2E' }}
                   >
-                    {value}
+                    <CountUp to={numericValue} prefix="+" duration={2} />
                   </div>
                   <div
                     className="text-xs lg:text-sm font-medium"
@@ -200,7 +199,6 @@ const Architecture = ({ language, setLanguage, t }) => {
               className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start"
               dir={isAr ? 'rtl' : 'ltr'}
             >
-              {/* Image — Right in RTL (DOM-first) */}
               <motion.div
                 initial={{ opacity: 0, x: isAr ? 30 : -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -218,7 +216,6 @@ const Architecture = ({ language, setLanguage, t }) => {
                 </div>
               </motion.div>
 
-              {/* Text — Left in RTL */}
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -226,45 +223,24 @@ const Architecture = ({ language, setLanguage, t }) => {
                 variants={fadeUp}
                 className={`md:col-span-7 ${isAr ? 'text-right' : 'text-left'}`}
               >
-                <p
-                  className="text-sm lg:text-base mb-3"
-                  style={{ color: '#3a3a3a', lineHeight: '1.85' }}
-                >
+                <p className="text-sm lg:text-base mb-3" style={{ color: '#3a3a3a', lineHeight: '1.85' }}>
                   {districts.intro}
                 </p>
                 <ul className="mb-6 space-y-1.5">
                   {districts.list1.map((item) => (
-                    <li
-                      key={item}
-                      className="text-sm lg:text-base flex items-center gap-3"
-                      style={{ color: '#3a3a3a' }}
-                    >
-                      <span
-                        className="w-1.5 h-1.5 rounded-full"
-                        style={{ backgroundColor: '#553B2E' }}
-                      />
+                    <li key={item} className="text-sm lg:text-base flex items-center gap-3" style={{ color: '#3a3a3a' }}>
+                      <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: '#553B2E' }} />
                       {item}
                     </li>
                   ))}
                 </ul>
-
-                <p
-                  className="text-sm lg:text-base mb-3"
-                  style={{ color: '#3a3a3a', lineHeight: '1.85' }}
-                >
+                <p className="text-sm lg:text-base mb-3" style={{ color: '#3a3a3a', lineHeight: '1.85' }}>
                   {districts.intro2}
                 </p>
                 <ul className="space-y-1.5">
                   {districts.list2.map((item) => (
-                    <li
-                      key={item}
-                      className="text-sm lg:text-base flex items-center gap-3"
-                      style={{ color: '#3a3a3a' }}
-                    >
-                      <span
-                        className="w-1.5 h-1.5 rounded-full"
-                        style={{ backgroundColor: '#553B2E' }}
-                      />
+                    <li key={item} className="text-sm lg:text-base flex items-center gap-3" style={{ color: '#3a3a3a' }}>
+                      <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: '#553B2E' }} />
                       {item}
                     </li>
                   ))}
@@ -286,7 +262,6 @@ const Architecture = ({ language, setLanguage, t }) => {
               className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start"
               dir={isAr ? 'rtl' : 'ltr'}
             >
-              {/* Image — Right in RTL */}
               <motion.div
                 initial={{ opacity: 0, x: isAr ? 30 : -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -304,7 +279,6 @@ const Architecture = ({ language, setLanguage, t }) => {
                 </div>
               </motion.div>
 
-              {/* Text — Left in RTL */}
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -312,23 +286,13 @@ const Architecture = ({ language, setLanguage, t }) => {
                 variants={fadeUp}
                 className={`md:col-span-7 ${isAr ? 'text-right' : 'text-left'}`}
               >
-                <p
-                  className="text-sm lg:text-base mb-3"
-                  style={{ color: '#3a3a3a', lineHeight: '1.85' }}
-                >
+                <p className="text-sm lg:text-base mb-3" style={{ color: '#3a3a3a', lineHeight: '1.85' }}>
                   {markets.intro}
                 </p>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5">
                   {markets.list.map((item) => (
-                    <li
-                      key={item}
-                      className="text-sm lg:text-base flex items-center gap-3"
-                      style={{ color: '#3a3a3a' }}
-                    >
-                      <span
-                        className="w-1.5 h-1.5 rounded-full"
-                        style={{ backgroundColor: '#553B2E' }}
-                      />
+                    <li key={item} className="text-sm lg:text-base flex items-center gap-3" style={{ color: '#3a3a3a' }}>
+                      <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: '#553B2E' }} />
                       {item}
                     </li>
                   ))}
@@ -346,7 +310,6 @@ const Architecture = ({ language, setLanguage, t }) => {
         data-testid="arch-challenges-section"
       >
         <div className="max-w-7xl mx-auto">
-          {/* Challenges banner */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -359,25 +322,17 @@ const Architecture = ({ language, setLanguage, t }) => {
               className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 items-start"
               dir={isAr ? 'rtl' : 'ltr'}
             >
-              {/* Title — Right in RTL */}
               <h2
-                className={`md:col-span-4 text-base lg:text-lg font-bold leading-tight ${
-                  isAr ? 'text-right' : 'text-left'
-                }`}
+                className={`md:col-span-4 text-base lg:text-lg font-bold leading-tight ${isAr ? 'text-right' : 'text-left'}`}
                 style={{
                   color: '#553B2E',
-                  fontFamily:
-                    "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
+                  fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
                 }}
               >
                 التحديات التي واجهت العمران
               </h2>
-
-              {/* Paragraph — Left in RTL */}
               <p
-                className={`md:col-span-8 text-sm lg:text-base ${
-                  isAr ? 'text-right' : 'text-left'
-                }`}
+                className={`md:col-span-8 text-sm lg:text-base ${isAr ? 'text-right' : 'text-left'}`}
                 style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
                 تعرضت البلدة القديمة عبر تاريخها للعديد من الكوارث والتغيرات،
@@ -388,19 +343,13 @@ const Architecture = ({ language, setLanguage, t }) => {
             </div>
           </motion.div>
 
-          {/* 2 challenge images — staggered (left higher, right lower in RTL) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 mb-8 lg:mb-12 max-w-4xl mx-auto" dir={isAr ? 'rtl' : 'ltr'}>
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 mb-8 lg:mb-12 max-w-4xl mx-auto"
+            dir={isAr ? 'rtl' : 'ltr'}
+          >
             {[
-              {
-                src: '/old-town.webp',
-                alt: 'مخاطر داخل البلدة',
-                offset: 'md:mt-12 lg:mt-16',
-              },
-              {
-                src: 'https://images.unsplash.com/photo-1580310219243-dbad8c44e576?w=900&q=80',
-                alt: 'تحديات العمران',
-                offset: 'md:mt-0',
-              },
+              { src: '/old-town.webp', alt: 'مخاطر داخل البلدة', offset: 'md:mt-12 lg:mt-16' },
+              { src: 'https://images.unsplash.com/photo-1580310219243-dbad8c44e576?w=900&q=80', alt: 'تحديات العمران', offset: 'md:mt-0' },
             ].map((img, i) => (
               <motion.div
                 key={i}
@@ -411,17 +360,11 @@ const Architecture = ({ language, setLanguage, t }) => {
                 className={`rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-100 ${img.offset}`}
                 data-testid={`arch-challenge-img-${i}`}
               >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                />
+                <img src={img.src} alt={img.alt} loading="lazy" className="w-full h-full object-cover" />
               </motion.div>
             ))}
           </div>
 
-          {/* Services banner */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -436,22 +379,16 @@ const Architecture = ({ language, setLanguage, t }) => {
               dir={isAr ? 'rtl' : 'ltr'}
             >
               <h2
-                className={`md:col-span-4 text-base lg:text-lg font-bold leading-tight ${
-                  isAr ? 'text-right' : 'text-left'
-                }`}
+                className={`md:col-span-4 text-base lg:text-lg font-bold leading-tight ${isAr ? 'text-right' : 'text-left'}`}
                 style={{
                   color: '#553B2E',
-                  fontFamily:
-                    "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
+                  fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
                 }}
               >
                 الخدمات العامة والتطوير
               </h2>
-
               <p
-                className={`md:col-span-8 text-sm lg:text-base ${
-                  isAr ? 'text-right' : 'text-left'
-                }`}
+                className={`md:col-span-8 text-sm lg:text-base ${isAr ? 'text-right' : 'text-left'}`}
                 style={{ color: '#3a3a3a', lineHeight: '1.85' }}
               >
                 شهدت البلدة القديمة تطوراً تدريجياً في الخدمات مثل شبكات المياه
