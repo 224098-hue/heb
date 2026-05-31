@@ -20,19 +20,19 @@ const Goals = ({ language, setLanguage, t }) => {
         {
           title: 'الحفاظ على التراث',
           text: 'حماية وصيانة المباني التاريخية والمعالم الأثرية بما يحفظ الهوية المعمارية والثقافية للبلدة القديمة.',
-          image: '/hrc-frames.webp',
+          image: '/th.webp',
           alt: 'الحفاظ على التراث',
         },
         {
           title: 'إعمار وتأهيل البلدة القديمة',
           text: 'تنفيذ مشاريع ترميم وإعادة تأهيل للمباني والأسواق والأحياء التاريخية وفق معايير هندسية متخصصة.',
-          image: '/old-town.webp',
+          image: '/image (34).webp',
           alt: 'إعمار وتأهيل البلدة القديمة',
         },
         {
           title: 'تطوير البنية التحتية',
           text: 'تحقيق تنمية متوازنة تحافظ على الطابع التاريخي والثقافي للمدينة للأجيال القادمة.',
-          image: '/hrc-plaque.webp',
+          image: '/٢٠٢٦٠٥٠٥_١١٢٤٠٣.webp',
           alt: 'تطوير البنية التحتية',
         },
       ],
@@ -71,52 +71,51 @@ const Goals = ({ language, setLanguage, t }) => {
       <Header language={language} setLanguage={setLanguage} t={t} />
 
       <section
-        className="pt-24 lg:pt-28 pb-14 lg:pb-20 px-6 lg:px-12"
+        className="pt-36 lg:pt-40 pb-14 lg:pb-20 px-6 lg:px-12"
         data-testid="goals-section"
       >
         <div className="max-w-7xl mx-auto">
-          {/* العنوان والمقدمة - CENTERED */}
-          <div className="mb-10 lg:mb-14 flex flex-col items-center text-center" dir={isAr ? 'rtl' : 'ltr'}>
-            <motion.h1
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeUp}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4"
-              style={{
-                color: '#553B2E',
-                fontFamily:
-                  "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
-              }}
-              data-testid="goals-title"
-            >
-              {title}
-            </motion.h1>
+         {/* العنوان والمقدمة - يمين زي About */}
+<div className="mb-10 lg:mb-14" dir={isAr ? 'rtl' : 'ltr'}>
+  <motion.h1
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+    variants={fadeUp}
+    className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 ${isAr ? 'text-right' : 'text-left'}`}
+    style={{
+      color: '#553B2E',
+      fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
+    }}
+    data-testid="goals-title"
+  >
+    {title}
+  </motion.h1>
 
-            <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="h-[3px] w-24 mb-8"
-              style={{ backgroundColor: '#BA9B70' }}
-            />
+  <motion.div
+    initial={{ scaleX: 0 }}
+    whileInView={{ scaleX: 1 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8, delay: 0.2 }}
+    className={`h-[2px] w-32 mb-8 ${isAr ? 'mr-0' : 'ml-0'}`}
+    style={{ backgroundColor: '#BA9B70' }}
+  />
 
-            <motion.p
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeUp}
-              transition={{ delay: 0.15 }}
-              className="text-sm lg:text-base max-w-2xl"
-              style={{
-                color: '#3a3a3a',
-                lineHeight: '1.85',
-              }}
-            >
-              {intro}
-            </motion.p>
-          </div>
+  <motion.p
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+    variants={fadeUp}
+    transition={{ delay: 0.15 }}
+    className={`text-sm lg:text-base max-w-2xl ${isAr ? 'text-right' : 'text-left'}`}
+    style={{
+      color: '#3a3a3a',
+      lineHeight: '1.85',
+    }}
+  >
+    {intro}
+  </motion.p>
+</div>
 
           {/* الكروت الثلاثة — image + desc ينظمو سويا على الموبايل */}
           <div

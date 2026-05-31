@@ -10,21 +10,21 @@ const fadeUp = {
 };
 
 const previewCards = [
-  'https://images.unsplash.com/photo-1591456983933-0d680b2dca0d?w=800&q=80',
-  'https://images.unsplash.com/photo-1542596594-649edbc13630?w=800&q=80',
-  'https://images.unsplash.com/photo-1564769662533-4f00a87b4056?w=800&q=80',
-  'https://images.unsplash.com/photo-1604154687425-50fa53b16b1d?w=800&q=80',
+  'image (64).webp',
+  'Gemini_Generated_Image_rhfiqurhfiqurhfi (2).webp',
+  'Gemini_Generated_Image_2st33y2st33y2st3.webp',
+  'image (8).webp',
 ];
 
 const carouselImages = [
-  'https://images.unsplash.com/photo-1591456983933-0d680b2dca0d?w=600&q=75',
-  'https://images.unsplash.com/photo-1542596594-649edbc13630?w=600&q=75',
-  'https://images.unsplash.com/photo-1564769662533-4f00a87b4056?w=600&q=75',
-  'https://images.unsplash.com/photo-1604154687425-50fa53b16b1d?w=600&q=75',
-  'https://images.unsplash.com/photo-1538970272646-f61fabb3a8a2?w=600&q=75',
-  'https://images.unsplash.com/photo-1542896644-b2c95cf83bf6?w=600&q=75',
-  'https://images.unsplash.com/photo-1633788229431-a9683c7388dd?w=600&q=75',
-  'https://images.unsplash.com/photo-1580310219243-dbad8c44e576?w=600&q=75',
+  'Gemini_Generated_Image_xn9vyxxn9vyxxn9v.webp',
+  'Gemini_Generated_Image_91syz491syz491sy.webp',
+  'image (8).webp',
+  'Gemini_Generated_Image_566fke566fke566f.webp',
+  'Gemini_Generated_Image_rhfiqurhfiqurhfi (2).webp',
+  'Gemini_Generated_Image_ay8wxyay8wxyay8w.webp',
+  'Gemini_Generated_Image_2st33y2st33y2st3.webp',
+  'Gemini_Generated_Image_6dh3jl6dh3jl6dh3.webp',
 ];
 
 // ───────────── Auto-scroll Carousel ─────────────
@@ -245,46 +245,30 @@ const IbrahimiMosque = ({ language, setLanguage, t }) => {
     <div className={`bg-white ${isAr ? 'rtl' : 'ltr'}`} data-testid="haram-page">
       <Header language={language} setLanguage={setLanguage} t={t} />
 
-      {/* ───────────── HERO BANNER + TITLE ───────────── */}
-      <section
-        className="pt-24 lg:pt-28 px-6 lg:px-12 pb-12 lg:pb-16"
-        data-testid="haram-hero"
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={fadeUp}
-            className="relative rounded-3xl overflow-hidden shadow-xl"
+      {/* ───────────── HERO: fullscreen زي المهن والحرف ───────────── */}
+      <div className="relative w-full h-screen min-h-[500px] max-h-[700px]" data-testid="haram-hero">
+        <img
+          src="/1.webp"
+          alt="الحرم الإبراهيمي"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/30 pointer-events-none" />
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className={`absolute bottom-12 lg:bottom-16 ${isAr ? 'right-8 lg:right-16 text-right' : 'left-8 lg:left-16 text-left'}`}
+        >
+          <h1
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg"
+            style={{ fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif" }}
+            data-testid="haram-title"
           >
-            <img
-              src="https://images.unsplash.com/photo-1591456983933-0d680b2dca0d?w=1600&q=80"
-              alt="الحرم الإبراهيمي"
-              className="w-full h-[220px] sm:h-[320px] lg:h-[400px] object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-l from-[#553B2E]/70 via-[#553B2E]/30 to-[#553B2E]/40 pointer-events-none" />
-            <div
-              className={`absolute inset-0 flex items-start pt-10 lg:pt-16 ${
-                isAr ? 'justify-end pr-8 lg:pr-16' : 'justify-start pl-8 lg:pl-16'
-              }`}
-            >
-              <h1
-                className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-white drop-shadow-lg ${
-                  isAr ? 'text-right' : 'text-left'
-                }`}
-                style={{
-                  fontFamily:
-                    "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
-                }}
-                data-testid="haram-title"
-              >
-                {d.pageTitle}
-              </h1>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+            {d.pageTitle}
+          </h1>
+        </motion.div>
+      </div>
 
       {/* ───────────── EXPLORE SECTION ───────────── */}
       <section

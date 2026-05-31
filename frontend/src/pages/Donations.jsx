@@ -109,7 +109,7 @@ const Donations = ({ language, setLanguage, t }) => {
             >
               <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[3/4] bg-gray-100">
                 <img
-                  src="https://images.unsplash.com/photo-1633788229431-a9683c7388dd?w=900&q=80"
+                  src="Gemini_Generated_Image_qodvbxqodvbxqodv.webp"
                   alt="البلدة القديمة"
                   className="w-full h-full object-cover"
                 />

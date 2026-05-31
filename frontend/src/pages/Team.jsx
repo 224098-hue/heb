@@ -4,38 +4,85 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-// Team data — bilingual
+// صور الذكور والإناث
+const MALE_IMG = 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=900&q=80';
+const FEMALE_IMG = 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=900&q=80';
+const MALE_IMG_2 = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=80';
+const FEMALE_IMG_2 = 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=900&q=80';
+
 const TEAM_DATA = {
   ar: {
     title: 'فريق العمل',
     intro:
-      'يُشكِّل موظفو لجنة إعمار البلدة القديمة الركيزة الأساسية في عملية التطوير والإحياء المستمر، حيث يعملون بتفانٍ ومسؤولية على تنفيذ مشاريع الترميم، وتنسيق الجهود الميدانية، ومتابعة احتياجات المنطقة. إن جهودهم اليومية تسهم بشكل مباشر في الحفاظ على هوية البلدة القديمة وتعزيز استدامتها.',
+      'يُشكِّل موظفو لجنة إعمار البلدة القديمة الركيزة الأساسية في عملية التطوير والإحياء المستمر، حيث يعملون بتفانٍ ومسؤولية على تنفيذ مشاريع الترميم، وتنسيق الجهود الميدانية، ومتابعة احتياجات المنطقة.',
     members: [
-      { name: 'عبير إسماعيل المناصرة', role: 'مديرة شؤون الموظفين', department: 'الإدارة' },
-      { name: 'أحمد محمود السلايمة', role: 'مدير المشاريع', department: 'المشاريع الهندسية' },
-      { name: 'سامي عبد الرحمن الجعبري', role: 'منسق ميداني', department: 'الترميم' },
-      { name: 'فاطمة يوسف القاضي', role: 'مهندسة معمارية', department: 'الهندسة المعمارية' },
+      { name: 'أ. مهند الجعبري',            role: 'المدير العام',                          gender: 'male' },
+      { name: 'عبير إسماعيل المناصره',       role: 'مديرة شؤون الموظفين',                  gender: 'female' },
+      { name: 'محمود جلال ملحم',             role: 'مدير مالي',                            gender: 'male' },
+      { name: 'منال جهاد الحرباوي',          role: 'مسؤولة قسم العطاءات',                  gender: 'female' },
+      { name: 'م. زياد جابر',               role: 'مدير فني',                             gender: 'male' },
+      { name: 'توفيق "عبد الرحمن" جحشن',    role: 'محامي - المكتب القانوني',              gender: 'male' },
+      { name: 'ميسره ايوب صلاح',            role: 'منسقة أنشطة وفعاليات',                 gender: 'female' },
+      { name: 'نهى عزمي دنديس',             role: 'مهندسة',                               gender: 'female' },
+      { name: 'هشام محمود عويضات',           role: 'رئيس شعبة - القسم الهندسي',            gender: 'male' },
+      { name: 'وفاء زلوم',                  role: 'مهندسة',                               gender: 'female' },
+      { name: 'غسان ابو الفيلات',           role: 'مهندس',                                gender: 'male' },
+      { name: 'ميساء محرم',                 role: 'مهندسة',                               gender: 'female' },
+      { name: 'حسام ادريس',                 role: 'مهندس',                                gender: 'male' },
+      { name: 'منتصر مرقه',                 role: 'مهندس',                                gender: 'male' },
+      { name: 'سرين مناصره',                role: 'مهندسة',                               gender: 'female' },
+      { name: 'حسن السلامين',               role: 'باحث إجتماعي - المكتب القانوني',        gender: 'male' },
+      { name: 'لمى عبد الحافظ شبانه',       role: 'سكرتيرة - المكتب القانوني',            gender: 'female' },
+      { name: 'فاديه عبد العليم دعنا',      role: 'منسقة - المكتب القانوني',              gender: 'female' },
+      { name: 'خولة ناصر المحتسب',          role: 'سكرتيرة محاسبة',                       gender: 'female' },
+      { name: 'ندى الفلاح',                 role: 'محاسبة',                               gender: 'female' },
+      { name: 'هناء عبد المغني مجاهد',      role: 'مسؤولة صفحة الويب والارشيف',           gender: 'female' },
+      { name: 'ديانا "عبد المنعم" زلوم',    role: 'باحثة إجتماعية',                       gender: 'female' },
+      { name: 'ايمان ذيب العداربه',         role: 'باحثة إجتماعية',                       gender: 'female' },
+      { name: 'سامح جبر المحتسب',           role: 'فني',                                  gender: 'male' },
+      { name: 'خالد جمال شريف',             role: 'فني',                                  gender: 'male' },
     ],
   },
   en: {
     title: 'Our Team',
     intro:
-      'The staff of the Hebron Rehabilitation Committee form the cornerstone of the ongoing development and revival process. They work with dedication and responsibility to execute restoration projects, coordinate field efforts, and address the needs of the area. Their daily work directly contributes to preserving the identity of the Old Town and supporting its sustainability.',
+      'The staff of the Hebron Rehabilitation Committee form the cornerstone of the ongoing development and revival process. They work with dedication and responsibility to execute restoration projects, coordinate field efforts, and address the needs of the area.',
     members: [
-      { name: 'Abeer Ismail Al-Manasrah', role: 'HR Manager', department: 'Administration' },
-      { name: 'Ahmad Mahmoud Al-Salaymeh', role: 'Project Manager', department: 'Engineering Projects' },
-      { name: 'Sami Abdulrahman Al-Jabari', role: 'Field Coordinator', department: 'Restoration' },
-      { name: 'Fatima Yousef Al-Qadi', role: 'Architect', department: 'Architectural Engineering' },
+      { name: 'Muhannad Al-Jabari',          role: 'General Director',                     gender: 'male' },
+      { name: 'Abeer Ismail Al-Manasrah',    role: 'HR Manager',                           gender: 'female' },
+      { name: 'Mahmoud Jalal Mulhem',        role: 'Financial Director',                   gender: 'male' },
+      { name: 'Manal Jihad Al-Harbawy',      role: 'Tenders Department Officer',           gender: 'female' },
+      { name: 'Eng. Ziad Jaber',             role: 'Technical Director',                   gender: 'male' },
+      { name: 'Tawfiq Jahshan',              role: 'Lawyer - Legal Office',                gender: 'male' },
+      { name: 'Maysara Ayoub Salah',         role: 'Activities & Events Coordinator',      gender: 'female' },
+      { name: 'Noha Azmi Dandis',            role: 'Engineer',                             gender: 'female' },
+      { name: 'Hisham Mahmoud Oweida',       role: 'Head of Engineering Division',         gender: 'male' },
+      { name: 'Wafa Zaloum',                 role: 'Engineer',                             gender: 'female' },
+      { name: 'Ghassan Abu Al-Feelat',       role: 'Engineer',                             gender: 'male' },
+      { name: 'Maysaa Moharam',              role: 'Engineer',                             gender: 'female' },
+      { name: 'Husam Idris',                 role: 'Engineer',                             gender: 'male' },
+      { name: 'Muntaser Marqa',              role: 'Engineer',                             gender: 'male' },
+      { name: 'Sirin Manasrah',              role: 'Engineer',                             gender: 'female' },
+      { name: 'Hassan Al-Salamin',           role: 'Social Researcher - Legal Office',     gender: 'male' },
+      { name: 'Lama Abd Al-Hafez Shabana',   role: 'Secretary - Legal Office',             gender: 'female' },
+      { name: 'Fadya Abd Al-Aleem Dana',     role: 'Coordinator - Legal Office',           gender: 'female' },
+      { name: 'Khawla Naser Al-Muhtaseb',    role: 'Accounting Secretary',                 gender: 'female' },
+      { name: 'Nada Al-Fallah',              role: 'Accountant',                           gender: 'female' },
+      { name: 'Hanaa Abd Al-Mughni',         role: 'Web & Archive Officer',                gender: 'female' },
+      { name: 'Diana Zaloum',                role: 'Social Researcher',                    gender: 'female' },
+      { name: 'Iman Theeb Al-Adarba',        role: 'Social Researcher',                    gender: 'female' },
+      { name: 'Sameh Jaber Al-Muhtaseb',     role: 'Technician',                           gender: 'male' },
+      { name: 'Khaled Jamal Shareef',        role: 'Technician',                           gender: 'male' },
     ],
   },
 };
 
-const MEMBER_IMAGES = [
-  'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=900&q=80',
-  'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=900&q=80',
-  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=80',
-  'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=900&q=80',
-];
+const getImage = (gender, index) => {
+  if (gender === 'female') {
+    return index % 2 === 0 ? FEMALE_IMG : FEMALE_IMG_2;
+  }
+  return index % 2 === 0 ? MALE_IMG : MALE_IMG_2;
+};
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -46,7 +93,11 @@ const Team = ({ language, setLanguage, t }) => {
   const isAr = language === 'ar';
   const data = TEAM_DATA[language];
   const { title, intro } = data;
-  const teamMembers = data.members.map((m, i) => ({ ...m, image: MEMBER_IMAGES[i] }));
+  const teamMembers = data.members.map((m, i) => ({
+    ...m,
+    image: getImage(m.gender, i),
+  }));
+
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(1);
 
@@ -64,7 +115,6 @@ const Team = ({ language, setLanguage, t }) => {
     setIndex((prev) => (prev - 1 + total) % total);
   };
 
-  // اتجاه الأسهم: في RTL السهم اليمين هو "السابق" واليسار هو "التالي"
   const PrevIcon = isAr ? ArrowRight : ArrowLeft;
   const NextIcon = isAr ? ArrowLeft : ArrowRight;
 
@@ -85,71 +135,60 @@ const Team = ({ language, setLanguage, t }) => {
       <Header language={language} setLanguage={setLanguage} t={t} />
 
       <section
-        className="pt-24 lg:pt-28 pb-14 lg:pb-20 px-6 lg:px-12"
-        data-testid="team-section"
+  className="pt-36 lg:pt-40 pb-14 lg:pb-20 px-6 lg:px-12"
+  data-testid="team-section"
+>
+  <div className="max-w-7xl mx-auto">
+    {/* العنوان والمقدمة - يمين */}
+    <div className="mb-10 lg:mb-14" dir={isAr ? 'rtl' : 'ltr'}>
+      <motion.h1
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeUp}
+        className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 ${isAr ? 'text-right' : 'text-left'}`}
+        style={{
+          color: '#553B2E',
+          fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
+        }}
+        data-testid="team-title"
       >
-        <div className="max-w-7xl mx-auto">
-          {/* العنوان والمقدمة - CENTERED */}
-          <div className="mb-10 lg:mb-14 flex flex-col items-center text-center">
-            <motion.h1
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeUp}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4"
-              style={{
-                color: '#553B2E',
-                fontFamily:
-                  "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
-              }}
-              data-testid="team-title"
-            >
-              {title}
-            </motion.h1>
+        {title}
+      </motion.h1>
 
-            <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="h-[3px] w-24 mb-8"
-              style={{ backgroundColor: '#BA9B70' }}
-            />
+      <motion.div
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className={`h-[2px] w-32 mb-8 ${isAr ? 'mr-0' : 'ml-0'}`}
+        style={{ backgroundColor: '#BA9B70' }}
+      />
 
-            <motion.p
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeUp}
-              transition={{ delay: 0.15 }}
-              className="text-sm lg:text-base max-w-2xl"
-              style={{
-                color: '#3a3a3a',
-                lineHeight: '1.85',
-              }}
-            >
-              {intro}
-            </motion.p>
-          </div>
-
-          {/* قسم السلايدر */}
+      <motion.p
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeUp}
+        transition={{ delay: 0.15 }}
+        className={`text-sm lg:text-base max-w-2xl ${isAr ? 'text-right' : 'text-left'}`}
+        style={{ color: '#3a3a3a', lineHeight: '1.85' }}
+      >
+        {intro}
+      </motion.p>
+    </div>
+          {/* السلايدر */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-            {/* الصور — على اليسار في RTL */}
-            <div
-              className={`lg:col-span-7 ${
-                isAr ? 'order-2 lg:order-1' : 'order-2'
-              }`}
-            >
+            {/* الصور */}
+            <div className={`lg:col-span-7 ${isAr ? 'order-2 lg:order-1' : 'order-2'}`}>
               <div className="relative h-[440px] lg:h-[560px] flex items-center">
-                {/* البطاقة الخلفية (الشخص التالي) */}
+                {/* البطاقة الخلفية */}
                 <motion.div
                   key={`bg-${nextIndex}`}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
-                  className={`absolute top-1/2 -translate-y-1/2 ${
-                    isAr ? 'right-0' : 'left-0'
-                  }`}
+                  className={`absolute top-1/2 -translate-y-1/2 ${isAr ? 'right-0' : 'left-0'}`}
                   style={{ width: '38%', height: '85%' }}
                   data-testid="team-card-back"
                 >
@@ -163,12 +202,8 @@ const Team = ({ language, setLanguage, t }) => {
                   </div>
                 </motion.div>
 
-                {/* البطاقة الأمامية (الشخص الحالي) */}
-                <div
-                  className={`absolute top-0 ${
-                    isAr ? 'left-0' : 'right-0'
-                  } w-[60%] h-full`}
-                >
+                {/* البطاقة الأمامية */}
+                <div className={`absolute top-0 ${isAr ? 'left-0' : 'right-0'} w-[60%] h-full`}>
                   <AnimatePresence mode="wait" custom={direction}>
                     <motion.div
                       key={index}
@@ -177,10 +212,7 @@ const Team = ({ language, setLanguage, t }) => {
                       initial="enter"
                       animate="center"
                       exit="exit"
-                      transition={{
-                        duration: 0.5,
-                        ease: [0.4, 0, 0.2, 1],
-                      }}
+                      transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
                       className="w-full h-full rounded-3xl overflow-hidden shadow-2xl bg-gray-100"
                       data-testid="team-card-front"
                     >
@@ -196,11 +228,7 @@ const Team = ({ language, setLanguage, t }) => {
               </div>
 
               {/* أزرار التنقل */}
-              <div
-                className={`mt-8 flex items-center gap-4 ${
-                  isAr ? 'justify-start' : 'justify-end'
-                }`}
-              >
+              <div className={`mt-8 flex items-center gap-4 ${isAr ? 'justify-start' : 'justify-end'}`}>
                 <button
                   onClick={goPrev}
                   aria-label="السابق"
@@ -222,13 +250,8 @@ const Team = ({ language, setLanguage, t }) => {
               </div>
             </div>
 
-            {/* بيانات العضو — على اليمين في RTL */}
-            <div
-              className={`lg:col-span-5 ${
-                isAr ? 'order-1 lg:order-2 text-right' : 'order-1 text-left'
-              }`}
-            >
-              {/* شارة القسم */}
+            {/* بيانات العضو */}
+            <div className={`lg:col-span-5 ${isAr ? 'order-1 lg:order-2 text-right' : 'order-1 text-left'}`}>
               <AnimatePresence mode="wait">
                 <motion.span
                   key={`dept-${index}`}
@@ -237,17 +260,13 @@ const Team = ({ language, setLanguage, t }) => {
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.4 }}
                   className="inline-block px-4 py-1.5 rounded-full text-xs lg:text-sm font-medium mb-8"
-                  style={{
-                    backgroundColor: '#F1E9D6',
-                    color: '#553B2E',
-                  }}
+                  style={{ backgroundColor: '#F1E9D6', color: '#553B2E' }}
                   data-testid="team-department"
                 >
-                  {current.department}
+                  {`${index + 1} / ${total}`}
                 </motion.span>
               </AnimatePresence>
 
-              {/* الاسم والوظيفة */}
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`info-${index}`}
@@ -257,11 +276,10 @@ const Team = ({ language, setLanguage, t }) => {
                   transition={{ duration: 0.5 }}
                 >
                   <h2
-                    className="text-3xl lg:text-4xl font-bold mb-3"
+                    className="text-2xl lg:text-3xl font-bold mb-3"
                     style={{
                       color: '#553B2E',
-                      fontFamily:
-                        "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
+                      fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
                     }}
                     data-testid="team-name"
                   >
@@ -277,12 +295,8 @@ const Team = ({ language, setLanguage, t }) => {
                 </motion.div>
               </AnimatePresence>
 
-              {/* مؤشرات */}
-              <div
-                className={`flex gap-2 mt-10 ${
-                  isAr ? 'justify-end' : 'justify-start'
-                }`}
-              >
+              {/* مؤشرات — نقاط صغيرة بدل كل الـ 25 */}
+              <div className={`flex gap-2 mt-10 flex-wrap ${isAr ? 'justify-end' : 'justify-start'}`}>
                 {teamMembers.map((_, i) => (
                   <button
                     key={i}
@@ -294,9 +308,8 @@ const Team = ({ language, setLanguage, t }) => {
                     data-testid={`team-dot-${i}`}
                     className="h-2 rounded-full transition-all duration-300"
                     style={{
-                      width: i === index ? '32px' : '8px',
-                      backgroundColor:
-                        i === index ? '#553B2E' : '#D9CDB6',
+                      width: i === index ? '24px' : '6px',
+                      backgroundColor: i === index ? '#553B2E' : '#D9CDB6',
                     }}
                   />
                 ))}

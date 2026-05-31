@@ -41,60 +41,58 @@ const OldTown = ({ language, setLanguage, t }) => {
   const c = OLDTOWN_DATA[language];
   const { paragraphs } = c;
   const cards = [
-    { ...c.cards[0], to: '/architecture', image: 'https://images.unsplash.com/photo-1633788229431-a9683c7388dd?w=900&q=80' },
-    { ...c.cards[1], to: '/crafts', image: 'https://images.unsplash.com/photo-1562457141-8c1df886f92c?w=900&q=80' },
+    { ...c.cards[0], to: '/architecture', image: 'WhatsApp Image 2026-05-19 at 5.42.07 PM.jpeg' },
+    { ...c.cards[1], to: '/crafts', image: 'المهن.jpg' },
   ];
 
   return (
     <div className={`bg-white ${isAr ? 'rtl' : 'ltr'}`} data-testid="oldtown-page">
-      <Header language={language} setLanguage={setLanguage} t={t} />
 
+      {/* ── HERO: نفس ارتفاع وعرض صفحة المهن والحرف ── */}
+      <div className="relative w-full h-screen min-h-[500px] max-h-[700px]">
+        {/* الصورة */}
+        <img
+          src="/committee-building.webp"
+          alt="البلدة القديمة - الخليل"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+
+        {/* Overlay داكن من الأسفل */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/30 pointer-events-none" />
+
+        {/* Header فوق الصورة */}
+        <div className="absolute top-0 left-0 right-0 z-50">
+          <Header
+            language={language}
+            setLanguage={setLanguage}
+            t={t}
+            transparent
+          />
+        </div>
+
+        {/* العنوان — أسفل يمين */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className={`absolute bottom-12 lg:bottom-16 ${isAr ? 'right-8 lg:right-16 text-right' : 'left-8 lg:left-16 text-left'}`}
+        >
+          <h1
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg"
+            style={{ fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif" }}
+            data-testid="oldtown-title"
+          >
+            {c.title}
+          </h1>
+        </motion.div>
+      </div>
+
+      {/* ── المحتوى: فقرات + كرتين ── */}
       <section
-        className="pt-24 lg:pt-28 pb-14 lg:pb-20 px-6 lg:px-12"
+        className="pt-16 lg:pt-20 pb-14 lg:pb-20 px-6 lg:px-12"
         data-testid="oldtown-section"
       >
         <div className="max-w-7xl mx-auto">
-          {/* Banner Image with notch + protruding circle (mobile-style) */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={fadeUp}
-            className="relative mb-8 lg:mb-12"
-            data-testid="oldtown-banner"
-          >
-            <div
-              className="relative w-full h-[220px] sm:h-[300px] lg:h-[380px] overflow-hidden shadow-xl"
-              style={{
-                borderRadius: '24px',
-                WebkitMaskImage:
-                  'radial-gradient(circle 42px at 50% 100%, transparent 41px, #000 42px)',
-                maskImage:
-                  'radial-gradient(circle 42px at 50% 100%, transparent 41px, #000 42px)',
-              }}
-            >
-              <img
-                src="/old-town.webp"
-                alt="البلدة القديمة - الخليل"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#553B2E]/30 via-transparent to-transparent pointer-events-none" />
-            </div>
-
-            {/* Protruding circle — sits half inside the notch, half below */}
-            <div
-              className="absolute left-1/2 -translate-x-1/2 rounded-full shadow-md"
-              style={{
-                bottom: '-22px',
-                width: '60px',
-                height: '60px',
-                backgroundColor: '#D9D9D9',
-              }}
-              data-testid="oldtown-notch-circle"
-            />
-          </motion.div>
-
-          {/* Bottom: 2 sub-cards (left) + title/text (right) */}
           <div
             className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start"
             dir={isAr ? 'rtl' : 'ltr'}
@@ -107,16 +105,15 @@ const OldTown = ({ language, setLanguage, t }) => {
               variants={fadeUp}
               className={`lg:col-span-6 ${isAr ? 'text-right' : 'text-left'}`}
             >
-              <h1
-                className="text-base lg:text-lg font-bold mb-4"
+              <h2
+                className="text-2xl lg:text-3xl font-bold mb-4"
                 style={{
                   color: '#553B2E',
                   fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
                 }}
-                data-testid="oldtown-title"
               >
                 {c.title}
-              </h1>
+              </h2>
               <div
                 className="h-[2px] w-32 mb-8"
                 style={{ backgroundColor: '#BA9B70' }}
@@ -145,14 +142,14 @@ const OldTown = ({ language, setLanguage, t }) => {
                 >
                   <Link
                     to={c.to}
-                    className="relative block w-full aspect-[3/4] rounded-3xl overflow-hidden shadow-md group hover:shadow-2xl transition-shadow duration-300"
+                    className="relative block w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-md group hover:shadow-2xl transition-shadow duration-300"
                     data-testid={`oldtown-card-${i}`}
                   >
                     <img
                       src={c.image}
                       alt={c.alt}
                       loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#553B2E]/70 via-[#553B2E]/15 to-transparent" />
 

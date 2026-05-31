@@ -3,6 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Globe, ChevronDown } from 'lucide-react';
 
+// الصفحات اللي بدها النافبر شفافة
+const TRANSPARENT_PAGES = ['/old-town', '/crafts', '/ibrahimi-mosque'];
+
 const Header = ({ language, setLanguage, t }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -10,13 +13,12 @@ const Header = ({ language, setLanguage, t }) => {
   const [discoverOpen, setDiscoverOpen] = useState(false);
   const location = useLocation();
 
+  const isTransparentPage = TRANSPARENT_PAGES.includes(location.pathname);
+  const isTransparent = isTransparentPage && !scrolled;
+
   const isActive = (path) => location.pathname === path;
-
-  const isAboutActive = () =>
-    ['/about', '/goals', '/team'].includes(location.pathname);
-
-  const isDiscoverActive = () =>
-    ['/old-town', '/crafts', '/architecture', '/ibrahimi-mosque'].includes(location.pathname);
+  const isAboutActive = () => ['/about', '/goals', '/team'].includes(location.pathname);
+  const isDiscoverActive = () => ['/old-town', '/crafts', '/architecture', '/ibrahimi-mosque'].includes(location.pathname);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -24,12 +26,17 @@ const Header = ({ language, setLanguage, t }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // كلاس الروابط — أبيض لما شفاف، رمادي لما مش شفاف
   const desktopLinkClass = (active) =>
-    `relative font-medium text-sm transition-colors duration-200 pb-1 ${
-      active
-        ? 'text-[#BA9B70]'
-        : 'text-gray-700 hover:text-[#BA9B70]'
-    }`;
+  `relative text-sm transition-colors duration-300 pb-1 ${
+    isTransparent ? 'font-bold' : 'font-medium'
+  } ${
+    active
+      ? 'text-[#BA9B70]'
+      : isTransparent
+      ? 'text-white drop-shadow-md hover:text-white'
+      : 'text-gray-700 hover:text-[#BA9B70]'
+  }`;
 
   const ActiveBar = () => (
     <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#BA9B70] rounded-full" />
@@ -40,17 +47,23 @@ const Header = ({ language, setLanguage, t }) => {
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-white shadow-sm' : 'bg-white/95'
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          isTransparent
+            ? 'bg-transparent'
+            : scrolled
+            ? 'bg-white shadow-sm'
+            : 'bg-white/95'
         }`}
       >
         <div className="w-full px-4 py-4 lg:max-w-7xl lg:mx-auto lg:px-6 lg:py-5">
           <div className="flex items-center justify-between">
 
-            {/* Mobile Menu Button — على اليسار في RTL */}
+            {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-gray-800 order-3"
+              className={`lg:hidden p-2 order-3 transition-colors duration-300 ${
+                isTransparent ? 'text-white' : 'text-gray-800'
+              }`}
               aria-label="Menu"
             >
               <Menu className="w-6 h-6" strokeWidth={1.5} />
@@ -58,7 +71,6 @@ const Header = ({ language, setLanguage, t }) => {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-6 xl:gap-8 order-2 mx-auto">
-
               <Link to="/" className={`${desktopLinkClass(isActive('/'))} relative`}>
                 {t.nav.home}
                 {isActive('/') && <ActiveBar />}
@@ -107,34 +119,49 @@ const Header = ({ language, setLanguage, t }) => {
                 {t.nav.contact}
                 {isActive('/contact') && <ActiveBar />}
               </Link>
-
             </nav>
 
-            {/* Logo — على اليمين في RTL */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="flex items-center order-1"
-            >
-              <Link to="/">
-                <img
-                  src="/logo-optimized.webp"
-                  alt="لجنة إعمار الخليل - Hebron Reconstruction Committee"
-                  fetchpriority="high"
-                  decoding="async"
-                  className="h-11 lg:h-16 w-auto object-contain"
-                />
-              </Link>
-            </motion.div>
+            {/* Logo — الصورتين موجودتين دائماً، نغير opacity */}
+<motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.2 }}
+  className="flex items-center order-1"
+>
+  <Link to="/" className="relative block h-11 lg:h-16">
+    {/* الشعار العادي */}
+    <img
+      src="/logo1-02.png"
+      alt="لجنة إعمار الخليل"
+      fetchpriority="high"
+      decoding="async"
+      className={`h-full w-auto object-contain transition-opacity duration-300 ${
+        isTransparent ? 'opacity-0' : 'opacity-100'
+      }`}
+    />
+    {/* الشعار المفرغ — فوق العادي */}
+    <img
+      src="/logo1-02.png"
+      alt="لجنة إعمار الخليل"
+      decoding="async"
+      className={`absolute inset-0 h-full w-auto object-contain transition-opacity duration-300 ${
+  isTransparent ? 'opacity-100 brightness-0 invert' : 'opacity-0'
+}`}
+    />
+  </Link>
+</motion.div>
 
-            {/* Language Switcher — على اليسار في RTL */}
+            {/* Language Switcher */}
             <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
               onClick={() => setLanguage(language === 'ar' ? 'en' : 'ar')}
-              className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 hover:border-[#BA9B70] hover:bg-[#BA9B70] hover:text-white transition-all duration-200 order-3"
+              className={`hidden lg:flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-300 order-3 ${
+                isTransparent
+                  ? 'border-white/60 text-white hover:bg-white hover:text-[#553B2E]'
+                  : 'border-gray-300 hover:border-[#BA9B70] hover:bg-[#BA9B70] hover:text-white'
+              }`}
               data-testid="lang-toggle-desktop"
             >
               <Globe className="w-4 h-4" />
@@ -173,11 +200,7 @@ const Header = ({ language, setLanguage, t }) => {
               </button>
 
               <nav className="flex flex-col gap-1 text-right">
-                <Link
-                  to="/"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`font-medium text-xl py-4 border-b border-white/10 transition-colors ${isActive('/') ? 'text-[#BA9B70]' : 'text-white hover:text-[#BA9B70]'}`}
-                >
+                <Link to="/" onClick={() => setMobileMenuOpen(false)} className={`font-medium text-xl py-4 border-b border-white/10 transition-colors ${isActive('/') ? 'text-[#BA9B70]' : 'text-white hover:text-[#BA9B70]'}`}>
                   {t.nav.home}
                 </Link>
 
@@ -191,12 +214,7 @@ const Header = ({ language, setLanguage, t }) => {
                   </button>
                   <AnimatePresence>
                     {aboutUsOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        className="overflow-hidden"
-                      >
+                      <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
                         <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.aboutUsInfo}</Link>
                         <Link to="/goals" onClick={() => setMobileMenuOpen(false)} className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.aboutUsGoals}</Link>
                         <Link to="/team" onClick={() => setMobileMenuOpen(false)} className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.team}</Link>
@@ -215,12 +233,7 @@ const Header = ({ language, setLanguage, t }) => {
                   </button>
                   <AnimatePresence>
                     {discoverOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        className="overflow-hidden"
-                      >
+                      <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
                         <Link to="/old-town" onClick={() => setMobileMenuOpen(false)} className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.oldTown}</Link>
                         <Link to="/crafts" onClick={() => setMobileMenuOpen(false)} className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.crafts}</Link>
                         <Link to="/architecture" onClick={() => setMobileMenuOpen(false)} className="block text-white/80 hover:text-[#BA9B70] py-3 pr-6 text-lg">{t.nav.architecture}</Link>
@@ -230,15 +243,9 @@ const Header = ({ language, setLanguage, t }) => {
                   </AnimatePresence>
                 </div>
 
-                <Link to="/achievements" onClick={() => setMobileMenuOpen(false)} className={`font-medium text-xl py-4 border-b border-white/10 transition-colors ${isActive('/achievements') ? 'text-[#BA9B70]' : 'text-white hover:text-[#BA9B70]'}`}>
-                  {t.nav.achievements}
-                </Link>
-                <Link to="/donations" onClick={() => setMobileMenuOpen(false)} className={`font-medium text-xl py-4 border-b border-white/10 transition-colors ${isActive('/donations') ? 'text-[#BA9B70]' : 'text-white hover:text-[#BA9B70]'}`}>
-                  {t.nav.donations}
-                </Link>
-                <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className={`font-medium text-xl py-4 border-b border-white/10 transition-colors ${isActive('/contact') ? 'text-[#BA9B70]' : 'text-white hover:text-[#BA9B70]'}`}>
-                  {t.nav.contact}
-                </Link>
+                <Link to="/achievements" onClick={() => setMobileMenuOpen(false)} className={`font-medium text-xl py-4 border-b border-white/10 transition-colors ${isActive('/achievements') ? 'text-[#BA9B70]' : 'text-white hover:text-[#BA9B70]'}`}>{t.nav.achievements}</Link>
+                <Link to="/donations" onClick={() => setMobileMenuOpen(false)} className={`font-medium text-xl py-4 border-b border-white/10 transition-colors ${isActive('/donations') ? 'text-[#BA9B70]' : 'text-white hover:text-[#BA9B70]'}`}>{t.nav.donations}</Link>
+                <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className={`font-medium text-xl py-4 border-b border-white/10 transition-colors ${isActive('/contact') ? 'text-[#BA9B70]' : 'text-white hover:text-[#BA9B70]'}`}>{t.nav.contact}</Link>
               </nav>
             </div>
           </motion.div>

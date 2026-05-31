@@ -13,22 +13,21 @@ const fadeUp = {
 const projectImages = [
   {
     before:
-      'https://images.unsplash.com/photo-1580310219243-dbad8c44e576?w=1000&q=80',
+      'صورة2.jpg',
     after:
-      'https://images.unsplash.com/photo-1564769662533-4f00a87b4056?w=1000&q=80',
+      'p5.jpg',
     title: 'إعادة ترميم جانب من منزل إبراهيم الرجبي',
   },
 ];
 
 const galleryImages = [
-  'https://images.unsplash.com/photo-1633788229431-a9683c7388dd?w=600&q=75',
-  'https://images.unsplash.com/photo-1580310219243-dbad8c44e576?w=600&q=75',
-  'https://images.unsplash.com/photo-1562457141-8c1df886f92c?w=600&q=75',
-  'https://images.unsplash.com/photo-1591456983933-0d680b2dca0d?w=600&q=75',
-  'https://images.unsplash.com/photo-1604154687425-50fa53b16b1d?w=600&q=75',
-  'https://images.unsplash.com/photo-1538970272646-f61fabb3a8a2?w=600&q=75',
-  'https://images.unsplash.com/photo-1542896644-b2c95cf83bf6?w=600&q=75',
-  'https://images.unsplash.com/photo-1542596594-649edbc13630?w=600&q=75',
+  'لقطة الشاشة 2026-05-13 200722.png',
+  'Gemini_Generated_Image_pp9xdvpp9xdvpp9x.png',
+  'word-habitat.jpg',
+  '1000134585.jpg',
+  '684202805_1381655957319771_1006406700362135953_n.jpg',
+  'IMG_1478.jpg',
+  'after-p3.jpg',
 ];
 
 // ───────── Before/After Toggle ─────────

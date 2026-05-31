@@ -11,7 +11,7 @@ const fadeUp = {
 };
 
 const MAP_URL =
-  'https://yellowpages.com.ps/companies/30072?utm_source=chatgpt.com';
+  'https://maps.app.goo.gl/BCTnEmvk9zvDJT5DA';
 
 const CONTACT_DATA = {
   ar: {
@@ -265,7 +265,7 @@ const Contact = ({ language, setLanguage, t }) => {
                 data-testid="contact-map-image"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=900&q=80"
+                  src="الخريطة.webp"
                   alt="موقع لجنة إعمار الخليل"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />

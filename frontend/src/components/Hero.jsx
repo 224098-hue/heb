@@ -4,25 +4,41 @@ import { ChevronDown } from 'lucide-react';
 
 const Hero = ({ language, t }) => {
   return (
-    <section className="relative min-h-screen flex flex-col items-start justify-start overflow-hidden px-4 lg:px-12 pt-24 lg:pt-28">
+    <section className="relative min-h-screen flex flex-col items-start justify-start lg:justify-center overflow-hidden px-4 lg:px-12 pt-32 lg:pt-0">
       {/* Background with rotating circular pattern on left side */}
       <div className="absolute inset-0 bg-white">
         {/* Rotating circular pattern - positioned on left, covers from top to bottom */}
         <motion.div
-          className="absolute left-[-200px] top-0 w-[600px] h-full opacity-[0.15]"
-          animate={{ rotate: 360 }}
-          transition={{
-            duration: 120,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          style={{
-            backgroundImage: `url('/pattern-original.webp')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            borderRadius: '50%',
-          }}
-        />
+  className="absolute left-[-200px] top-0 w-[600px] h-full opacity-[0.15] lg:hidden"
+  animate={{ rotate: 360 }}
+  transition={{
+    duration: 120,
+    repeat: Infinity,
+    ease: "linear"
+  }}
+  style={{
+    backgroundImage: `url('/pattern-original.webp')`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    borderRadius: '50%',
+  }}
+/>
+
+{/* البانر الكاملة للاب فقط */}
+<div
+  className="hidden lg:block absolute inset-0 opacity-[0.07]"
+  animate={{ rotate: 360 }}
+  transition={{
+    duration: 200,
+    repeat: Infinity,
+    ease: "linear"
+  }}
+  style={{
+    backgroundImage: `url('/pattern-original.webp')`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  }}
+/>
         
         {/* Subtle overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/60 to-white" />
@@ -36,7 +52,7 @@ const Hero = ({ language, t }) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight"
+          className="text-5xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight"
           style={{ fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif" }}
         >
           <motion.span 
@@ -65,7 +81,7 @@ const Hero = ({ language, t }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 1.2 }}
-        className="absolute bottom-[240px] lg:bottom-12 left-1/2 transform -translate-x-1/2 z-20"
+        className="absolute bottom-[280px] lg:bottom-12 left-1/2 transform -translate-x-1/2 z-20"
       >
         <motion.div
           animate={{ y: [0, 12, 0] }}

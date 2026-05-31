@@ -149,7 +149,6 @@ const Architecture = ({ language, setLanguage, t }) => {
                 <ArrowLeft className={`w-4 h-4 ${isAr ? '' : 'rotate-180'}`} />
               </button>
             </motion.div>
-            {/* ← هون كان ناقص إغلاق motion.div */}
 
             {/* Image — Left in RTL */}
             <motion.div
@@ -161,7 +160,7 @@ const Architecture = ({ language, setLanguage, t }) => {
             >
               <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[3/4] bg-gray-100">
                 <img
-                  src="/committee-building.webp"
+                  src="/image (63).webp"
                   alt="مدينة الخليل القديمة"
                   className="w-full h-full object-cover"
                 />
@@ -235,7 +234,7 @@ const Architecture = ({ language, setLanguage, t }) => {
               >
                 <div className="relative rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-100">
                   <img
-                    src="https://images.unsplash.com/photo-1633788229431-a9683c7388dd?w=900&q=80"
+                    src="/حارات.webp"
                     alt="حارات البلدة القديمة"
                     loading="lazy"
                     className="w-full h-full object-cover"
@@ -298,7 +297,7 @@ const Architecture = ({ language, setLanguage, t }) => {
               >
                 <div className="relative rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-100">
                   <img
-                    src="https://images.unsplash.com/photo-1562457141-8c1df886f92c?w=900&q=80"
+                    src="/أسواق.webp"
                     alt="أسواق البلدة القديمة"
                     loading="lazy"
                     className="w-full h-full object-cover"
@@ -372,8 +371,8 @@ const Architecture = ({ language, setLanguage, t }) => {
             dir={isAr ? 'rtl' : 'ltr'}
           >
             {[
-              { src: '/old-town.webp', alt: 'مخاطر داخل البلدة', offset: 'md:mt-12 lg:mt-16' },
-              { src: 'https://images.unsplash.com/photo-1580310219243-dbad8c44e576?w=900&q=80', alt: 'تحديات العمران', offset: 'md:mt-0' },
+              { src: '/WhatsApp Image 2026-05-13 at 7.10.52 PM.webp', alt: 'مخاطر داخل البلدة', offset: 'md:mt-12 lg:mt-16' },
+              { src: '/Gemini_Generated_Image_4w8caf4w8caf4w8c.webp', alt: 'تحديات العمران', offset: 'md:mt-0' },
             ].map((img, i) => (
               <motion.div
                 key={i}

@@ -95,45 +95,45 @@ const CRAFTS_DATA = {
   },
 };
 
+// صور التفاصيل التحتية
 const CRAFT_IMAGES = [
-  '/old-town.webp',
-  '/old-town.webp',
-  '/pattern-original.webp',
-  '/pattern-original.webp',
+  '/image (68).webp',
+  '/image (86).jpg',
+  '/image (96).jpg',
+  '/image (29).jpg',
+];
+
+// صور الكاردات العلوية — مختلفة
+const PREVIEW_IMAGES = [
+  '/image (68).webp',
+  '/image (86).jpg',
+  '/image (96).jpg',
+  '/image (29).jpg',
 ];
 
 const Crafts = ({ language, setLanguage, t }) => {
   const isAr = language === 'ar';
   const c = CRAFTS_DATA[language];
   const intro = c.intro;
-  const crafts = c.crafts.map((cr, i) => ({ ...cr, image: CRAFT_IMAGES[i] }));
+  const crafts = c.crafts.map((cr, i) => ({
+    ...cr,
+    image: CRAFT_IMAGES[i],
+    previewImage: PREVIEW_IMAGES[i],
+  }));
 
   return (
     <div className={`bg-white ${isAr ? 'rtl' : 'ltr'}`} data-testid="crafts-page">
+      <Header language={language} setLanguage={setLanguage} t={t} />
 
-      {/* ── HERO: fullscreen مع Header شفاف فوقها ── */}
-      <div className="relative w-full h-screen min-h-[500px] max-h-[800px]">
-        {/* الصورة */}
+      {/* ── HERO ── */}
+      <div className="relative w-full h-screen min-h-[500px] max-h-[700px]">
         <img
-          src="/old-town.webp"
+          src="/Screenshot_٢٠٢٦٠٥١١_٢٠٤٤١٧_Gallery.webp"
           alt="المهن والحرف في الخليل"
           className="absolute inset-0 w-full h-full object-cover"
         />
-
-        {/* Overlay داكن من الأسفل */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/30 pointer-events-none" />
 
-        {/* Header شفاف فوق الصورة */}
-        <div className="absolute top-0 left-0 right-0 z-50">
-          <Header
-            language={language}
-            setLanguage={setLanguage}
-            t={t}
-            transparent
-          />
-        </div>
-
-        {/* العنوان — أسفل يمين */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -195,14 +195,14 @@ const Crafts = ({ language, setLanguage, t }) => {
             </motion.div>
           </div>
 
-          {/* 4 preview cards */}
+          {/* 4 preview cards — صور مختلفة */}
           <div
             className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6"
             dir={isAr ? 'rtl' : 'ltr'}
           >
-            {crafts.map((c, i) => (
+            {crafts.map((craft, i) => (
               <motion.a
-                key={c.title}
+                key={craft.title}
                 href={`#craft-${i}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -212,8 +212,8 @@ const Crafts = ({ language, setLanguage, t }) => {
                 data-testid={`craft-preview-${i}`}
               >
                 <img
-                  src={c.image}
-                  alt={c.title}
+                  src={craft.previewImage}
+                  alt={craft.title}
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -222,7 +222,7 @@ const Crafts = ({ language, setLanguage, t }) => {
                   className={`absolute bottom-4 ${isAr ? 'right-4' : 'left-4'} text-white text-sm lg:text-base font-bold`}
                   style={{ fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif" }}
                 >
-                  {c.title}
+                  {craft.title}
                 </div>
               </motion.a>
             ))}
@@ -230,12 +230,12 @@ const Crafts = ({ language, setLanguage, t }) => {
         </div>
       </section>
 
-      {/* ── Detailed crafts list ── */}
+      {/* ── Detailed crafts list — صور مختلفة ── */}
       <section className="px-6 lg:px-12 pb-14 lg:pb-20" data-testid="crafts-detail-section">
         <div className="max-w-6xl mx-auto">
-          {crafts.map((c, i) => (
+          {crafts.map((craft, i) => (
             <motion.div
-              key={c.title}
+              key={craft.title}
               id={`craft-${i}`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -250,8 +250,8 @@ const Crafts = ({ language, setLanguage, t }) => {
               <div className="md:col-span-4">
                 <div className="relative rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-100">
                   <img
-                    src={c.image}
-                    alt={c.title}
+                    src={craft.image}
+                    alt={craft.title}
                     loading="lazy"
                     className="w-full h-full object-cover"
                   />
@@ -266,9 +266,9 @@ const Crafts = ({ language, setLanguage, t }) => {
                     fontFamily: "'Qasira', 'IBM Plex Sans Arabic', sans-serif",
                   }}
                 >
-                  {c.title}
+                  {craft.title}
                 </h3>
-                {c.text.map((para, k) => (
+                {craft.text.map((para, k) => (
                   <p
                     key={k}
                     className="text-sm lg:text-base mb-4"
